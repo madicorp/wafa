@@ -1,0 +1,8 @@
+DB:
+  DATABASE_ENGINE: xxxxxxxxxx
+  DATABASE_USER: xxxxxxxxxxx
+  DATABASE_PASS: xxxxxxxxx
+  DATABASE_NAME: xxxxxxxxx
+  DATABASE_HOST: xxxxxxxxxxx
+  DATABASE_PORT: xxxxxxxxx
+SECRET_KEY: xxxxxxxxxxxx
