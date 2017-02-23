@@ -34,4 +34,6 @@ Admin page accessible at `http://127.0.0.1:8000/admin/`
 
 ## Deploy on prod
 
-create a `config.yml` file base on `sample.config.yml` and set variables
+- create a `config.yml` file base on `sample.config.yml` and set variables <br>
+- change `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wafa.settings.dev")` by `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wafa.settings.production")` in `manage.py`
+
