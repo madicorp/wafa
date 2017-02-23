@@ -27,6 +27,8 @@ Install dependencies <br>
 
 `./manage.py migrate` <br>
 `./manage.py createsuperuser` <br>
+
+**lauch server** <br>
 `./manage.py runserver` <br>
 
 Deployed on `http://127.0.0.1:8000/` <br>
