@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-python wsgi.py migrate
+python ../wafa/wsgi.py migrate
