@@ -19,6 +19,7 @@ COMPRESS_CSS_FILTERS = [
     'compressor.filters.cssmin.CSSMinFilter',
 ]
 COMPRESS_CSS_HASHING_METHOD = 'content'
+ALLOWED_HOSTS = [env['ALLOWED_HOSTS']]
 try:
     from .local import *
 except ImportError:
