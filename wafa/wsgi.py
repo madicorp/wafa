@@ -22,5 +22,5 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wafa.settings.production")
 application = get_wsgi_application()
 application = DjangoWhiteNoise(application)
 
-if sys.argv[0]== 'wsgi.py':
+if sys.argv[0]== 'wafa/wsgi.py':
     execute_from_command_line(sys.argv)
