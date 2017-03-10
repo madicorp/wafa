@@ -1,0 +1,65 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Hanlding Updates
+-----------------------------------------------------------------*/
+
+.sticky-header #flag ul li > a {
+    padding: 0;
+    padding-top: 44px;
+    font-size: inherit;
+    width: inherit !important;
+    background-color: transparent !important;
+}
+
+#flag ul li > a {
+    padding: 0;
+    padding-top: 44px;
+    font-size: inherit;
+    width: inherit !important;
+    background-color: transparent !important;
+}
+
+.sticky-header #flag ul li > a {
+    padding-top: 25px;
+}
+
+ #flag ul li > a.dropdown-toggle {
+    margin-left: 4px;
+    margin-top: 10px;
+}
+
+.sticky-header #flag ul li > a.dropdown-toggle {
+    margin-left: 4px;
+    margin-top: 0;
+}
+
+#flag ul.dropdown-menu {
+    width: 30px !important;
+    min-width: 0;
+    padding-left: 4px;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+#primary-menu ul li > a i {
+    width: 1.33333333em !important;
+
+}
+
+
+#flag ul ul li:hover {
+    background-color: transparent !important;
+    color: #fff !important;
+}
+
+#primary-menu ul li > a {
+    font-size: 12px;
+    padding: 34px 10px;
+}
+
+.title-bottom-border.heading-block:after {
+    border-top: none;
+}
+
