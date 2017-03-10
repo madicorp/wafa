@@ -4,8 +4,9 @@ import dj_database_url
 import yaml
 from .base import *
 
-DEBUG = False
 env = os.environ.copy()
+DEBUG = env['DEBUG']
+
 SECRET_KEY = env['SECRET_KEY']
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
