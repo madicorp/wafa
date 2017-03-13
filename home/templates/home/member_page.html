@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+    <!-- Bootstrap Data Table Plugin -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-datatable.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    {% header page.slug %}
+    <div class="clear"></div>
+    {% page_title page.title "West African Fertilizer Professionals are united and commited!" %}
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+
+                <div class="heading-block center">
+                    <h3>{% trans "Wafa Membership" %}</h3>
+                </div>
+
+                <!-- Post Content
+                ============================================= -->
+                <div class="postcontent nobottommargin clearfix">
+                    <div class="tabs tabs-bordered clearfix" id="tab-2">
+
+                        <ul class="tab-nav clearfix">
+                            <li><a href="#tabs-membership">{% trans "Membership" %}</a></li>
+                            <li><a href="#tabs-memberslist">{% trans "Members List" %}</a></li>
+                        </ul>
+
+                        <div class="tab-container">
+
+                            <div class="tab-content clearfix" id="tabs-membership">
+                                {% membership %}
+                            </div>
+                            <div class="tab-content clearfix" id="tabs-memberslist">
+                                {% members_list %}
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!-- .postcontent end -->
+
+                <!-- Sidebar
+                ============================================= -->
+                <div class="sidebar nobottommargin col_last clearfix">
+                    <div class="spacer-40"></div>
+                    <a href="#" class="button button-desc">
+                        <div>{% trans "Membership application form" %}</div>
+                        <span>{% trans "Click to download the membership application Form" %}</span>
+                    </a>
+                </div><!-- .sidebar end -->
+
+            </div>
+
+        </div>
+
+    </section><!-- #content end -->
+    {% footer %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Bootstrap Data Table Plugin -->
+    <script type="text/javascript" src="{% static 'js/components/bs-datatable.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/member.script.js' %}"></script>
+
+{% endblock %}

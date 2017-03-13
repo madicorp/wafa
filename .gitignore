@@ -93,3 +93,7 @@ ENV/
 .idea
 
 config.yml
+
+media/*
+
+db.sqlite3*

@@ -1,0 +1,29 @@
+{% load wafa_tags static wagtailcore_tags i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+<header id="header" class="full-header" data-sticky-class="not-dark">
+
+    <div id="header-wrap">
+
+        <div class="container clearfix">
+
+            <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+            <!-- Logo
+            ============================================= -->
+            <div id="logo">
+                <a href="/{{ LANGUAGE_CODE }}" class="standard-logo" data-dark-logo="{% static 'img/logo.png' %}"><img
+                        src="{% static 'img/logo.png' %}" alt="Canvas Logo"></a>
+                <a href="/{{ LANGUAGE_CODE }}" class="retina-logo" data-dark-logo="{% static 'img/logo.png' %}"><img
+                        src="{% static 'img/logo.png' %}" alt="Canvas Logo"></a>
+            </div><!-- #logo end -->
+
+            <!-- Primary Navigation
+            ============================================= -->
+            {% menu slug%}
+        </div>
+
+    </div>
+
+</header><!-- #header end -->
