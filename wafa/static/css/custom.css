@@ -25,7 +25,7 @@
     padding-top: 25px;
 }
 
- #flag ul li > a.dropdown-toggle {
+#flag ul li > a.dropdown-toggle {
     margin-left: 4px;
     margin-top: 10px;
 }
@@ -48,10 +48,16 @@
 
 }
 
-
 #flag ul ul li:hover {
     background-color: transparent !important;
     color: #fff !important;
+}
+
+#primary-menu ul ul li:hover > a{
+    padding-left: 0 !important;
+}
+.centered{
+    text-align: center;
 }
 
 #primary-menu ul li > a {
@@ -63,3 +69,25 @@
     border-top: none;
 }
 
+#page-title.map {
+    background-image: url(../img/map.jpg);
+    background-position-y: center;
+
+}
+
+#page-title.map span, #page-title.map .active{
+    color: #000;
+    font-weight: 500;
+}
+
+.postcontent.col_last, .sidebar.col_last{
+    float: left;
+}
+
+.postcontent, .sidebar{
+    margin-right: 0;
+}
+
+.spacer-40{
+    margin-top: 40px;
+}

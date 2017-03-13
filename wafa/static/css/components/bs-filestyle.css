@@ -17,7 +17,7 @@
 	font-size: 999px;
 	text-align: right;
 	color: #fff;
-	background: transparent url('../../images/preloader.gif') top left no-repeat;
+	background: transparent url('../../img/preloader.gif') top left no-repeat;
 	border: none;
 }
 
@@ -142,7 +142,7 @@
 .file-input-new .fileinput-remove-button, .file-input-new .fileinput-upload-button,
 .file-input-ajax-new .fileinput-remove-button, .file-input-ajax-new .fileinput-upload-button { display: none; }
 
-.file-thumb-loading { background: transparent url('../../images/preloader.gif') no-repeat scroll center center content-box !important; }
+.file-thumb-loading { background: transparent url('../../img/preloader.gif') no-repeat scroll center center content-box !important; }
 
 .file-actions { margin-top: 15px; }
 

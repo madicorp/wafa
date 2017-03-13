@@ -25,7 +25,8 @@
     {# Global stylesheets #}
     <link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
           rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/wafa.css' %}">
     <!--[if lt IE 9]>
 		<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
@@ -36,8 +37,8 @@
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
-{% wagtailuserbar %}
 <div id="wrapper" class="clearfix">
+    {% wagtailuserbar %}
     {% block content %}{% endblock %}
 </div> <!-- #wrapper end -->
 

@@ -84,6 +84,7 @@ msgstr "A Venir"
 msgid "Quality , A Priority"
 msgstr "La Qualité, Une Priorité"
 
+
 msgid "One of the key objectives of WAFA is the quality of fertilizers."
 msgstr "L'un des principaux objectifs de la WAFA est la qualité des engrais."
 
@@ -120,6 +121,30 @@ msgstr "Les Professionels de l'engrais en Afrique de l'Ouest s'unissent et s'eng
 
 msgid "Board Members"
 msgstr "Membres du conseil d'administration"
+
+msgid "Organization Chart / Structure"
+msgstr "Organigramme / structure"
+
+#########################################################
+#:  home/templates/home/member_page.html
+#########################################################
+
+msgid "Membership application form"
+msgstr "Formulaire de demande d'adhésion"
+
+msgid "Click to download the membership application Form"
+msgstr "Cliquez pour télécharger le formulaire de demande d'adhésion"
+
+msgid "Membership"
+msgstr "Adhésion"
+
+msgid "Members List"
+msgstr "Liste des membres"
+
+msgid "Wafa Membership"
+msgstr "Adhésion Wafa"
+
+
 
 
 

@@ -12,7 +12,7 @@
 	top: 0px;
 	left: 0px;
 	z-index:20;
-	background: transparent url("../images/preloader.gif") no-repeat center center;
+	background: transparent url("../img/preloader.gif") no-repeat center center;
 	color: #fff;
 	text-align: center;
 	line-height: 500px;

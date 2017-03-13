@@ -61,7 +61,7 @@
 }
 
 .editableform-loading {
-	background: url('../../images/preloader.gif') center center no-repeat;
+	background: url('../../img/preloader.gif') center center no-repeat;
 	height: 25px;
 	width: auto;
 	min-width: 25px;

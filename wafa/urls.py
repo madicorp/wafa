@@ -11,6 +11,8 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 
+from home.urls import urlpatterns as home_urlpatterns
+
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
@@ -18,6 +20,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 ]
 
+urlpatterns += home_urlpatterns
 urlpatterns += i18n_patterns(
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),

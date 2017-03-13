@@ -100,7 +100,7 @@
 	text-decoration: none;
 }
 .camera_loader {
-    background: url(../images/preloader.gif) no-repeat center;
+    background: url(../img/preloader.gif) no-repeat center;
 	height: 48px;
 	left: 50%;
 	overflow: hidden;
