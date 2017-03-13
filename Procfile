@@ -1,0 +1,1 @@
+web: gunicorn wafa.wsgi --log-file -
