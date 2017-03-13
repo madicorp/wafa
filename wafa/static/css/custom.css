@@ -91,3 +91,12 @@
 .spacer-40{
     margin-top: 40px;
 }
+
+.sidebar .button.button-desc{
+    padding: 24px 14px;
+    font-size: 17px;
+}
+
+.sidebar .button.button-desc span{
+    font-size: 11px;
+}
