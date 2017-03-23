@@ -1,0 +1,103 @@
+{% extends "blog.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags puput_tags social_widgets %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+{% endblock %}
+{% block title %}{% if search_term %}{{ search_term }} | {{ blog_page.title }}{% else %}{{ block.super }}
+{% endif %}{% endblock title %}
+
+{% block meta_title %}{% if search_term %}{% trans 'Entries for' %} {{ search_type }} {{ search_term }}{% else %}
+    {{ block.super }}{% endif %}{% endblock meta_title %}
+{% block meta_description %}{% if search_term %}{% trans 'Entries for' %} {{ search_type }} {{ search_term }}{% else %}
+    {{ block.super }}{% endif %}{% endblock meta_description %}
+{% block social_share %}
+    {% image blog_page.header_image fill-800x450 as share_image %}
+    <meta property="og:title" content="{{ blog_page.title }}"/>
+    <meta property="og:description" content="{{ blog_page.description }}"/>
+    <meta property="og:url" content="{% canonical_url %}"/>
+    {% if blog_page.header_image %}
+        <meta property="og:image" content="{% image_url share_image.url %}"/>
+        <meta property="og:image:width" content="800"/>
+        <meta property="og:image:height" content="450"/>
+        <meta name="twitter:image" content="{% image_url share_image.url %}"/>
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{ blog_page.title }}"/>
+    <meta name="twitter:description" content="{{ blog_page.description }}"/>
+{% endblock social_share %}
+{% block content %}
+
+    <div class="single-post nobottommargin">
+
+        <!-- Single Post
+        ============================================= -->
+        <div class="entry clearfix">
+
+            <!-- Entry Title
+            ============================================= -->
+            <div class="entry-title">
+                <h2>{{ self.title }}</h2>
+            </div><!-- .entry-title end -->
+
+            <!-- Entry Meta
+            ============================================= -->
+            <ul class="entry-meta clearfix">
+                <li><i class="icon-calendar3"></i> {{ self.date|date:"d M Y" }}</li>
+            </ul><!-- .entry-meta end -->
+
+            <!-- Entry Image
+            ============================================= -->
+            {% if self.header_image %}
+                <div class="entry-image">
+
+                    {% image self.header_image fill-800x240 as header_image %}
+                    {% image self.header_image original as cover %}
+                    <a href="{{ cover.url }}" data-lightbox="image"><img class="image_fade"
+                                                                         alt="{{ self.header_image.title }}"
+                                                                         src="{{ header_image.url }}"></a>
+                </div><!-- .entry-image end -->
+            {% endif %}
+            <!-- Entry Content
+            ============================================= -->
+            <div class="entry-content notopmargin">
+                {% dynamic_trans self 'body' as body %}
+                {{ body|richtext }}
+                <!-- Tag Cloud
+                ============================================= -->
+                <div class="tagcloud clearfix bottommargin">
+
+                    {% tags_list None self.tags %}
+                </div><!-- .tagcloud end -->
+
+                <div class="clear"></div>
+
+                <!-- Post Single - Share
+                ============================================= -->
+                <div class="si-share noborder clearfix">
+                    <span>{% trans "Share this Post" %}:</span>
+                    <div style="display: inline-block">
+                        {% entry_url self blog_page as url %}
+
+                        <div style="margin-left: 10px">
+                            {% social_widget_render "google/plus_share_button.html" href=url %}
+                        </div>
+
+                        <div style="margin-left: 10px">
+                            {% social_widget_render "twitter/share_button.html" href=url %}
+                        </div>
+                        <div style="margin-left: 10px">
+                            {% social_widget_render "facebook/share_button.html" href=url %}
+                        </div>
+
+                    </div><!-- Post Single - Share End -->
+
+                </div>
+            </div><!-- .entry end -->
+        </div>
+    </div>
+{% endblock %}
+{% block extra_content %}
+    {% if self.has_related %}
+        {% include 'puput/related_entries.html' with entry=self %}
+    {% endif %}
+{% endblock extra_content %}

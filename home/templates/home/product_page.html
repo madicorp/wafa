@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% block body_class %}stretched{% endblock %}
+
+{% block content %}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% slider %}
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% footer %}
+
+{% endblock %}
+
+{% block extra_js %}
+{% endblock %}

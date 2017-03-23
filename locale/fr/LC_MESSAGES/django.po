@@ -36,15 +36,12 @@ msgstr "Membres"
 msgid "Products"
 msgstr "Produits"
 
-msgid "Activities/Training"
-msgstr "Activités / Formation"
-
-msgid "Statistics"
-msgstr "Statistiques"
+msgid "Activities"
+msgstr "Activités"
 
 
-msgid "Blog"
-msgstr "Blog"
+msgid "News"
+msgstr "Publications"
 
 msgid "Events"
 msgstr "Evenements"
@@ -145,6 +142,54 @@ msgid "Wafa Membership"
 msgstr "Adhésion Wafa"
 
 
+msgid "Name"
+msgstr "Nom"
 
 
+msgid "Deputy"
+msgstr "Représentant"
+
+
+msgid "Country"
+msgstr "Pays"
+
+
+msgid "Activity"
+msgstr "Activité"
+
+
+msgid "Contact"
+msgstr "Contact"
+
+
+#########################################################
+#:  wafa/templates/puput/blog_page.html
+#########################################################
+
+msgid "Last Posts"
+msgstr "Derniers Articles"
+
+msgid "Posts for"
+msgstr "Articles Pour"
+
+
+msgid "Popular Posts"
+msgstr "A la Une"
+
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "No results found."
+msgstr "Aucun résultat trouvé."
+
+msgid "Related Posts"
+msgstr "Articles Similaires"
+
+msgid "Share this Post"
+msgstr "Partager cet Article"
+
+
+msgid "No categories yet"
+msgstr "Aucune catégorie encore"
 

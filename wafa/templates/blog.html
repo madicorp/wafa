@@ -1,0 +1,138 @@
+{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailuserbar compress puput_tags wafa_tags %}
+{% wagtailuserbar %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WAFA FERTILIZER |
+        {% block title %}{{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}
+        {% endif %}{% endblock title %}</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="title" content="
+
+
+
+
+
+
+
+
+
+
+            {% block meta_title %}{% if blog_page.seo_title %}{{ blog_page.seo_title }}{% else %}{{ blog_page.title }}{% endif %}{% endblock meta_title %}"/>
+    <meta name="description"
+          content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}"/>
+    {% block social_share %}{% endblock social_share %}
+    <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
+
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,100italic,100,400italic,500,500italic,700,900,700italic,900italic'
+          rel='stylesheet' type='text/css'>
+    {% compress css %}
+        <link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+              rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css"
+              href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/wafa.css' %}">
+    {% endcompress %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<div id="wrapper" class="clearfix">
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% trans self.title as title %}
+    {% page_title title "West African Fertilizer Professionals are united and commited!" %}
+    <section id="content" class="container">
+        <div class="content-wrap">
+            <div class="container clearfix">
+                <div class="postcontent nobottommargin clearfix">
+                    {% block content %}{% endblock content %}
+                    {% block extra_content %}{% endblock extra_content %}
+                </div>
+
+                <div class="sidebar nobottommargin col_last clearfix">
+                    <div class="blog_sidebar">
+                        <div class="widget widget-twitter-feed clearfix">
+
+                            <h4>Feed RSS</h4>
+                            <a href="{% feeds_url blog_page %}" target="_blank" title="RSS"
+                               class="social-icon si-borderless si-rss">
+                                <i class="icon-rss"></i>
+                                <i class="icon-rss"></i>
+                            </a>
+                        </div>
+                        <div class="widget clearfix">
+
+                            <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+                                <ul class="tab-nav clearfix">
+                                    <li><a href="#tabs-popular">{% trans 'Popular Posts' %}</a></li>
+                                    <li><a href="#tabs-recent">{% trans 'Last Posts' %}</a></li>
+                                </ul>
+                                <div class="tab-container">
+
+                                    <div class="tab-content clearfix" id="tabs-popular">
+                                        <div id="popular-post-list-sidebar">
+                                            {% popular_entries blog_page.num_popular_entries %}
+                                        </div>
+                                    </div>
+                                    <div class="tab-content clearfix" id="tabs-recent">
+                                        <div id="recent-post-list-sidebar">
+                                            {% recent_entries blog_page.num_last_entries %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="line"></div>
+                        {% if blog_page.display_categories %}
+                            <ul class="sidebar">
+                                <h4>{% trans 'Categories' %}</h4>
+                                {% categories_list %}
+                            </ul>
+                        {% endif %}
+                        {% if blog_page.display_tags %}
+                            <div id="tags" class="widget clearfix">
+
+                                <h4 class="highlight-me">{% trans 'Tags' %}</h4>
+                                <div class="tagcloud">
+
+                                    {% tags_list %}
+
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if blog_page.display_archive %}
+
+                            <div class="widget clearfix">
+                                <h4 class="highlight-me">{% trans 'Archive' %}</h4>
+                                <div class="tagcloud">
+
+                                    {% archives_list %}
+
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% footer %}
+</div>
+{% compress js %}
+    <!-- External JavaScripts
+============================================= -->
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+
+    {# Global javascript #}
+    <script type="text/javascript" src="{% static 'js/wafa.js' %}"></script>
+{% endcompress js %}
+</body>
+</html>

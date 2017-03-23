@@ -15,14 +15,14 @@
 
 #flag ul li > a {
     padding: 0;
-    padding-top: 44px;
+    padding-top: 44px !important;
     font-size: inherit;
     width: inherit !important;
     background-color: transparent !important;
 }
 
 .sticky-header #flag ul li > a {
-    padding-top: 25px;
+    padding-top: 25px !important;
 }
 
 #flag ul li > a.dropdown-toggle {
@@ -53,10 +53,11 @@
     color: #fff !important;
 }
 
-#primary-menu ul ul li:hover > a{
+#primary-menu #flag ul ul li:hover > a {
     padding-left: 0 !important;
 }
-.centered{
+
+.centered {
     text-align: center;
 }
 
@@ -75,28 +76,25 @@
 
 }
 
-#page-title.map span, #page-title.map .active{
+#page-title.map span, #page-title.map .active {
     color: #000;
     font-weight: 500;
 }
 
-.postcontent.col_last, .sidebar.col_last{
+.postcontent.col_last, .sidebar.col_last {
     float: left;
 }
 
-.postcontent, .sidebar{
-    margin-right: 0;
-}
 
-.spacer-40{
+.spacer-40 {
     margin-top: 40px;
 }
 
-.sidebar .button.button-desc{
+.sidebar .button.button-desc {
     padding: 24px 14px;
     font-size: 17px;
 }
 
-.sidebar .button.button-desc span{
+.sidebar .button.button-desc span {
     font-size: 11px;
 }

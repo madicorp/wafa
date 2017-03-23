@@ -1,0 +1,27 @@
+{% load i18n wagtailimages_tags puput_tags %}
+{% for entry in entries %}
+    <div class="spost clearfix">
+
+        {% if entry.header_image %}
+            <div class="entry-image">
+
+                {% image entry.header_image original as header_image %}
+                <a href="#" class="nobg">
+                    <img class="img-circle"
+                         alt="{{ entry.header_image.title }}"
+                         src="{{ header_image.url }}">
+                </a>
+            </div>
+        {% endif %}
+        <div class="entry-c">
+            <div class="entry-title">
+                <h4><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h4>
+            </div>
+            <ul class="entry-meta">
+                <li><i class="icon-calendar3"></i> {{ entry.date|date:"d M Y" }}</li>
+            </ul>
+        </div>
+    </div>
+    {% empty %}
+    {% trans 'No entries yet' %}
+{% endfor %}

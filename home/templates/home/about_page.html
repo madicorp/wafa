@@ -7,25 +7,26 @@
 {% endblock %}
 
 {% block content %}
-    {% header page.slug %}
+    {% header self.slug %}
     <div class="clear"></div>
-    {% page_title page.title "West African Fertilizer Professionals are united and commited!" %}
+    {% page_title self.title "West African Fertilizer Professionals are united and commited!" %}
 
     <!-- Content ============================================= -->
     <section id="content">
+        <div class="content-wrap">
 
-        {% board_members page.officers %}
-        {% organization_chart %}
-
-    </section>
+            <div class="container clearfix">
+                <div class="heading-block center">
+                    <h3>{% trans "Board Members" %}</h3>
+                </div>
+                {% board_members self.officers %}
+            </div>
+        </div>
+           </section>
 
     {% footer %}
 
 {% endblock %}
 
 {% block extra_js %}
-    <script type="text/javascript"
-            src="//cdn.rawgit.com/jakerella/jquery-mockjax/master/dist/jquery.mockjax.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/orgchart/jquery.orgchart.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/orgchart.script.js' %}"></script>
 {% endblock %}

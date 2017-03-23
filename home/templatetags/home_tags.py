@@ -20,26 +20,3 @@ def board_members(context, members):
         'request': context['request']
     }
 
-
-@register.inclusion_tag("tags/about/organization-chart.html", takes_context=True)
-def organization_chart(context):
-    self = context.get('self')
-    return {
-        'request': context['request']
-    }
-
-
-@register.inclusion_tag("tags/member/membership.html", takes_context=True)
-def membership(context):
-    self = context.get('self')
-    return {
-        'request': context['request']
-    }
-
-
-@register.inclusion_tag("tags/member/members-list.html", takes_context=True)
-def members_list(context):
-    self = context.get('self')
-    return {
-        'request': context['request']
-    }

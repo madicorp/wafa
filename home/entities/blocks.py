@@ -5,7 +5,6 @@ from wagtail.wagtailcore.blocks import StructBlock
 
 
 class MemberBlock(StructBlock):
-    image = ImageChooserBlock()
     member_name = TextBlock(label='Nom')
     deputy_name = TextBlock(label='Representant')
     country = TextBlock(label='Pays')
@@ -19,12 +18,10 @@ class AboutMembersBlock(StreamBlock):
 
 
 class OfficerBlock(MemberBlock):
+    image = ImageChooserBlock()
     position_fr = TextBlock(label='Poste FR', required=False)
     position_en = TextBlock(label='Poste EN', required=False)
-    code = TextBlock(label='Code')
-    code_parent = TextBlock(label='Code Parent')
 
 
 class AboutOfficerBlock(StreamBlock):
     office = OfficerBlock(label='Membre', icon='user', required=False)
-
