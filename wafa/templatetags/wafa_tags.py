@@ -1,7 +1,6 @@
 from django import template
 from django.core.urlresolvers import resolve, reverse
 from django.utils.translation import activate, get_language, ugettext as _
-
 register = template.Library()
 
 

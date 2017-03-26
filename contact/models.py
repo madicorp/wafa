@@ -1,5 +1,9 @@
 from __future__ import unicode_literals
+from wagtail.wagtailcore.models import Page
 
 from django.db import models
 
-# Create your models here.
+
+
+class HomePage(Page):
+    pass

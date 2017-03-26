@@ -9,13 +9,13 @@ from django.utils.feedgenerator import Rss201rev2Feed
 from django.template.defaultfilters import truncatewords_html
 
 from wagtail.wagtailcore.models import Site
-from .models import BlogPage
+from .models import EventsPage
 
 
-class BlogPageFeedGenerator(Rss201rev2Feed):
+class EventsPageFeedGenerator(Rss201rev2Feed):
 
     def add_root_elements(self, handler):
-        super(BlogPageFeedGenerator, self).add_root_elements(handler)
+        super(EventsPageFeedGenerator, self).add_root_elements(handler)
         if self.feed['image_link']:
             handler.addQuickElement(u"image", '',
                                     {
@@ -25,43 +25,43 @@ class BlogPageFeedGenerator(Rss201rev2Feed):
                                     })
 
 
-class BlogPageFeed(Feed):
+class EventsPageFeed(Feed):
 
-    feed_type = BlogPageFeedGenerator
+    feed_type = EventsPageFeedGenerator
 
     def __call__(self, request, *args, **kwargs):
-        if request.resolver_match.url_name == 'blog_page_feed_slug':
-            self.blog_page = BlogPage.extra.get_by_path(kwargs['blog_path'])
-            if not self.blog_page:
+        if request.resolver_match.url_name == 'events_page_feed_slug':
+            self.events_page = EventsPage.extra.get_by_path(kwargs['events_path'])
+            if not self.events_page:
                 raise http.Http404
         else:
-            self.blog_page = BlogPage.objects.first()
+            self.events_page = EventsPage.objects.first()
         self.request = request
-        return super(BlogPageFeed, self).__call__(request, *args, **kwargs)
+        return super(EventsPageFeed, self).__call__(request, *args, **kwargs)
 
     def title(self):
-        return self.blog_page.title
+        return self.events_page.title
 
     def description(self):
-        return self.blog_page.description
+        return self.events_page.description
 
     def link(self):
-        return self.blog_page.last_url_part
+        return self.events_page.last_url_part
 
     def items(self):
-        return self.blog_page.get_entries()[:20]
+        return self.events_page.get_events()[:20]
 
     def item_title(self, item):
         return item.title
 
     def _item_short_description(self, item):
-        if item.excerpt_en and item.excerpt_en.strip() != '':
-            return item.excerpt_en
+        if item.excerpt and item.excerpt.strip() != '':
+            return item.excerpt
         else:
             return truncatewords_html(item.body, 70)
 
     def item_description(self, item):
-        if self.blog_page.short_feed_description:
+        if self.events_page.short_feed_description:
             return self._item_short_description(item)
         return item.body
 
@@ -69,9 +69,9 @@ class BlogPageFeed(Feed):
         return item.date
 
     def item_link(self, item):
-        from .urls import get_entry_url
-        entry_url = get_entry_url(item, self.blog_page.page_ptr, self.request.site.root_page)
-        return self.request.build_absolute_uri(entry_url)
+        from .urls import get_event_url
+        event_url = get_event_url(item, self.events_page.page_ptr, self.request.site.root_page)
+        return self.request.build_absolute_uri(event_url)
 
     def item_enclosure_url(self, item):
         if item.header_image:
@@ -91,9 +91,9 @@ class BlogPageFeed(Feed):
         return 0
 
     def _channel_image_link(self):
-        if self.blog_page.header_image:
+        if self.events_page.header_image:
             site = Site.find_for_request(self.request)
-            return urllib_parse.urljoin(site.root_url, self.blog_page.header_image.file.url)
+            return urllib_parse.urljoin(site.root_url, self.events_page.header_image.file.url)
 
     def feed_extra_kwargs(self, obj):
         return {

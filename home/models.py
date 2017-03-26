@@ -47,21 +47,18 @@ class AboutPage(Page):
         index.SearchField('officers'),
     ]
 
-    api_fields = [
-        'officers',
-    ]
-
     class Meta:
         verbose_name = "About Us Page"
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('company_desc_fr', classname='full title'),
-        FieldPanel('company_desc_en', classname='full title'),
-        StreamFieldPanel('officers'),
-    ]
 
-    promote_panels = Page.promote_panels
+content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('company_desc_fr', classname='full title'),
+    FieldPanel('company_desc_en', classname='full title'),
+    StreamFieldPanel('officers'),
+]
+
+promote_panels = Page.promote_panels
 
 
 class MemberPage(Page):

@@ -36,7 +36,7 @@
             {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
             {% paginate per_page entries %}
             {% if search_term %}
-                <div class="searchTerm">{% trans 'Posts for' %} {{ search_type }} "{{ search_term }}"</div>
+                <div class="searchTerm"><h3>{% trans 'Posts for' %} {{ search_type }} "{{ search_term }}"</h3></div>
             {% endif %}
             {% for entry in entries %}
 
@@ -47,22 +47,24 @@
                         {{ entry.date|date:"d" }}<span> {{ entry.date|date:"M" }}</span>
                         <div class="timeline-divider"></div>
                     </div>
-                {% if entry.header_image %}
-                    <div class="entry-image">
+                    {% if entry.header_image %}
+                        <div class="entry-image">
 
                             {% image entry.header_image fill-800x240 as header_image %}
                             {% image entry.header_image original as cover %}
                             <a href="{{ cover.url }}" data-lightbox="image"><img class="image_fade"
-                                                                   alt="{{ entry.header_image.title }}"
-                                                                   src="{{ header_image.url }}"></a>
-                            </div>
-                        {% endif %}
+                                                                                 alt="{{ entry.header_image.title }}"
+                                                                                 src="{{ header_image.url }}"></a>
+                        </div>
+                    {% endif %}
                     <div class="entry-title">
                         <h2><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h2>
                     </div>
                     {% categories_list entry.categories %}
+                <div class="tagcloud">
                     {% tags_list blog_page.num_tags_entry_header entry.tags %}
-
+                </div>
+                    <div class="line"></div>
                     <div class="entry-content">
                         <p>
                             {% if entry.excerpt %}
@@ -79,8 +81,12 @@
                 {% empty %}
                 <span>{% trans 'No results found.' %}</span>
             {% endfor %}
-            <div class="pager nomargin">
-                {% show_paginator %}
+            <div class="line"></div>
+            <div class="center nomargin">
+                <ul class="pagination">
+                    {% show_paginator %}
+
+                </ul>
             </div>
         {% endwith %}
 

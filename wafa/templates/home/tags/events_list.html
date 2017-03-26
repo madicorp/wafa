@@ -1,0 +1,35 @@
+{% load static i18n wagtailimages_tags event_tags %}
+{% for event in events_upcoming %}
+    {% get_current_language as LANGUAGE_CODE %}
+    <div class="oc-item">
+        <div class="iportfolio">
+            <div class="portfolio-image">
+
+                {% if event.header_image %}
+                    {% image event.header_image original as header_image %}
+                    <a href="#">
+                        <img src="{{ header_image.url }}" alt="{{ event.header_image.title }}">
+                    </a>
+                    <div class="portfolio-overlay">
+                        <a href="{{ header_image.url }}" class="left-icon"
+                           data-lightbox="image"><i
+                                class="icon-line-plus"></i></a>
+                        <a href="/{{ LANGUAGE_CODE }}/events" class="right-icon">
+                            <i class="icon-line-ellipsis"></i>
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="portfolio-desc">
+                <h3><a href="/{{ LANGUAGE_CODE }}/events">{{ event.title }}</a></h3>
+                <span>
+                    {{ event.start_date|date:"d M Y" }} -
+                    {{ event.start_date|date:"h:m" }} /
+                    <a href="#">{{ event.location }}</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    {% trans 'No events yet' %}
+{% endfor %}

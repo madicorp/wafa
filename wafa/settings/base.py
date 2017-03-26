@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'wafa',
+    'event',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -97,6 +98,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 PUPUT_AS_PLUGIN = True
+EVENT_AS_PLUGIN = True
 
 WSGI_APPLICATION = 'wafa.wsgi.application'
 

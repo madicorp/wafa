@@ -1,0 +1,11 @@
+{% load i18n wagtailroutablepage_tags %}
+
+
+{% for category in categories %}
+
+    <a href="{% routablepageurl blog_page "entries_by_category" category.slug %}"><span
+            class="label label-info">{{ category.name }}</span></a>
+
+    {% empty %}
+    <span class="label label-info">{% trans 'No categories yet' %}</span>
+{% endfor %}

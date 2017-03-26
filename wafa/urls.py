@@ -5,6 +5,7 @@ from django.conf.urls import include, url
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from puput.urls import urlpatterns as puput_urlpatterns
+from event.urls import urlpatterns as event_urlpatterns
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -17,6 +18,7 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'', include(puput_urlpatterns)),
+    url(r'', include(event_urlpatterns)),
 ]
 urlpatterns += i18n_patterns(
     url(r'^search/$', search_views.search, name='search'),

@@ -10,7 +10,7 @@ from ..models import Category, Tag
 register = Library()
 
 
-@register.inclusion_tag('puput/tags/entries_list.html', takes_context=True)
+@register.inclusion_tag('puput/tags/recent_entries_list.html', takes_context=True)
 def recent_entries(context, limit=None):
     blog_page = context['blog_page']
     entries = blog_page.get_entries().order_by('-date')
@@ -20,7 +20,7 @@ def recent_entries(context, limit=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/entries_list.html', takes_context=True)
+@register.inclusion_tag('puput/tags/popular_entries_list.html', takes_context=True)
 def popular_entries(context, limit=None):
     blog_page = context['blog_page']
     entries = blog_page.get_entries().order_by('-num_comments', '-date')
