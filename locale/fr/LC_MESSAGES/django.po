@@ -46,9 +46,6 @@ msgstr "Publications"
 msgid "Events"
 msgstr "Evenements"
 
-msgid "Contact"
-msgstr "Contact"
-
 #########################################################
 #:  home/templates/home/home_page.html
 #######################################################
@@ -161,9 +158,6 @@ msgid "Activity"
 msgstr "Activité"
 
 
-msgid "Contact"
-msgstr "Contact"
-
 
 #########################################################
 #:  wafa/templates/puput/blog_page.html
@@ -223,8 +217,6 @@ msgstr "Envoyer"
 msgid "Subject"
 msgstr "Objet"
 
-msgid "Name"
-msgstr "Nom"
 
 msgid "Send us an Email"
 msgstr "Envoyez-nous un e-mail"
