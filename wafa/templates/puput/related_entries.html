@@ -1,0 +1,43 @@
+{% load i18n wagtailcore_tags wagtailimages_tags puput_tags %}
+
+<h4>{% trans 'Related Posts' %}:</h4>
+
+<div class="related-posts clearfix">
+
+    <div class="nobottommargin">
+        {% for related_entry in entry.related|slice:':4' %}
+        <div class="mpost clearfix">
+            {% if entry.header_image %}
+                <div class="entry-image">
+
+                    {% image entry.header_image fill-800x240 as header_image %}
+                    {% image entry.header_image original as cover %}
+                    <a href="{{ cover.url }}" data-lightbox="image"><img class="image_fade"
+                                                                         alt="{{ entry.header_image.title }}"
+                                                                         src="{{ header_image.url }}"></a>
+                </div>
+            {% endif %}
+            <div class="entry-c">
+                <div class="entry-title">
+                    <h4><a href="{% entry_url related_entry blog_page %}">{{ related_entry.title }}</a></h4>
+                </div>
+                <ul class="entry-meta clearfix">
+                    <li><i class="icon-calendar3"></i> {{ related_entry.date|date:"d M Y" }}</li>
+                </ul>
+                <div class="entry-content">
+                    <p>
+                        {% if related_entry.excerpt %}
+                            {% dynamic_trans related_entry 'excerpt' as excerpt %}
+                            {{ excerpt|richtext|truncatewords_html:30 }}
+                        {% else %}
+                            {% dynamic_trans related_entry 'body' as body %}
+                            {{ body|richtext|truncatewords_html:30 }}
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

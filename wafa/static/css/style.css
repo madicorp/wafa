@@ -5730,7 +5730,6 @@ body:not(.device-touch) .entry-link {
 .fb-comments > span > iframe,
 .fb_iframe_widget > span > iframe {
 	display: block !important;
-	width: 100% !important;
 	margin: 0;
 }
 

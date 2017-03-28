@@ -97,3 +97,5 @@ config.yml
 media/*
 
 db.sqlite3*
+
+locals.bat

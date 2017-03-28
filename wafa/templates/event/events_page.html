@@ -1,0 +1,117 @@
+{% extends "event.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags event_tags %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+
+{% block title %}{% if search_term %}{{ search_term }} | {{ events_page.title }}{% else %}{{ block.super }}
+{% endif %}{% endblock title %}
+{% block meta_title %}{% if search_term %}{% trans 'Events for' %} {{ search_type }} {{ search_term }}{% else %}
+    {{ block.super }}{% endif %}{% endblock meta_title %}
+{% block meta_description %}{% if search_term %}{% trans 'Events for' %} {{ search_type }} {{ search_term }}{% else %}
+    {{ block.super }}{% endif %}{% endblock meta_description %}
+{% block social_share %}
+    {% image events_page.header_image fill-800x450 as share_image %}
+    <meta property="og:title" content="{{ events_page.title }}"/>
+    <meta property="og:description" content="{{ events_page.description }}"/>
+    <meta property="og:url" content="{% canonical_url %}"/>
+    {% if events_page.header_image %}
+        <meta property="og:image" content="{% image_url share_image.url %}"/>
+        <meta property="og:image:width" content="800"/>
+        <meta property="og:image:height" content="450"/>
+        <meta name="twitter:image" content="{% image_url share_image.url %}"/>
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{{ events_page.title }}"/>
+    <meta name="twitter:description" content="{{ events_page.description }}"/>
+{% endblock social_share %}
+
+{% block content %}
+
+
+    <div id="posts" class="events small-thumbs">
+        {% with per_page=events_page.num_events_page %}
+            {# 'paginate' tag cannot render dotted variables, so we need to create a context var #}
+            {% paginate per_page events %}
+            {% if search_term %}
+                <div class="searchTerm">{% trans 'Posts for' %} {{ search_type }} "{{ search_term }}"</div>
+            {% endif %}
+            {% for event in events %}
+                <div class="entry clearfix">
+                    {% if event.header_image %}
+                        <div class="entry-image">
+                            {% image event.header_image original as header_image %}
+                            {% image event.header_image original as cover %}
+                            <a href="{{ cover.url }}" data-lightbox="image">
+                                <img class="image_fade" alt="{{ event.header_image.title }}"
+                                     src="{{ header_image.url }}">
+                                <div class="entry-date">
+                                    {{ event.start_date|date:"d" }}<span>{{ event.start_date|date:"M" }}</span>
+                                </div>
+                            </a>
+                            <div class="spacer-20"></div>
+                            <div class="tagcloud">
+                                {% tags_list events_page.num_tags_event_header event.tags %}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="entry-c">
+                        <div class="entry-title">
+                            <h2><a href="{% event_url event events_page %}">{{ event.title }}</a></h2>
+                        </div>
+                        <ul class="entry-meta">
+                            <li>
+                                {% categories_list event.categories %}
+                            </li>
+                        </ul>
+                        <ul class="entry-meta clearfix">
+                            <li>
+                                <a href="#">
+                                    <i class="icon-time"></i>
+                                    {{ event.start_date|date:"d M Y" }} - {{ event.start_date|date:"h:m" }} /
+                                    {{ event.end_date|date:"d M Y" }} - {{ event.end_date|date:"h:m" }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="icon-map-marker2"></i>
+                                    {{ event.location }}
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="spacer-40"></div>
+                        <div class="entry-content">
+                            {% if event.excerpt %}
+                                {% dynamic_trans event 'excerpt' as excerpt %}
+                                {{ excerpt|richtext|truncatewords_html:50 }}
+                            {% else %}
+                                {% dynamic_trans event 'body' as body %}
+                                {{ body|richtext|truncatewords_html:50 }}
+                            {% endif %}
+                            {% if event.link %}
+                                <a href="{{ event.link }}" class="btn btn-default">
+                                    {% trans 'Register' %}
+                                </a>
+                            {% endif %}
+                            <a href="{% event_url event events_page %}" class="btn btn-danger">
+                                {% trans 'Learn more' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <span>{% trans 'No results found.' %}</span>
+            {% endfor %}
+            <div class="center nomargin">
+                <ul class="pagination">
+                    {% show_paginator %}
+                </ul>
+            </div>
+        {% endwith %}
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}

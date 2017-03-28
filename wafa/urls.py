@@ -1,29 +1,31 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
-
-from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-
-from search import views as search_views
+from puput.urls import urlpatterns as puput_urlpatterns
+from event.urls import urlpatterns as event_urlpatterns
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from contact.views import post_message
 
-from home.urls import urlpatterns as home_urlpatterns
+from search import views as search_views
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
-]
+    url(r'', include(puput_urlpatterns)),
+    url(r'', include(event_urlpatterns)),
 
-urlpatterns += home_urlpatterns
+]
 urlpatterns += i18n_patterns(
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),
+    url(r'^contact/sendemail.php', post_message),
     prefix_default_language=True
 )
 

@@ -1,0 +1,6 @@
+{% load i18n wagtailroutablepage_tags %}
+{% for tag in tags %}
+     <a href="{% routablepageurl events_page "events_by_tag" tag.slug %}">{{ tag }}</a>
+    {% empty %}
+    {% trans 'No tags yet' %}
+{% endfor %}

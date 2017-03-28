@@ -36,15 +36,12 @@ msgstr "Membres"
 msgid "Products"
 msgstr "Produits"
 
-msgid "Activities/Training"
-msgstr "Activités / Formation"
-
-msgid "Statistics"
-msgstr "Statistiques"
+msgid "Activities"
+msgstr "Activités"
 
 
-msgid "Blog"
-msgstr "Blog"
+msgid "News"
+msgstr "Publications"
 
 msgid "Events"
 msgstr "Evenements"
@@ -135,6 +132,9 @@ msgstr "Formulaire de demande d'adhésion"
 msgid "Click to download the membership application Form"
 msgstr "Cliquez pour télécharger le formulaire de demande d'adhésion"
 
+msgid "Download"
+msgstr "Télécharger"
+
 msgid "Membership"
 msgstr "Adhésion"
 
@@ -145,6 +145,102 @@ msgid "Wafa Membership"
 msgstr "Adhésion Wafa"
 
 
+msgid "Name"
+msgstr "Nom"
 
+
+msgid "Deputy"
+msgstr "Représentant"
+
+
+msgid "Country"
+msgstr "Pays"
+
+
+msgid "Activity"
+msgstr "Activité"
+
+
+msgid "Contact"
+msgstr "Contact"
+
+
+#########################################################
+#:  wafa/templates/puput/blog_page.html
+#########################################################
+
+msgid "Last Posts"
+msgstr "Derniers Articles"
+
+msgid "Posts for"
+msgstr "Articles Pour"
+
+
+msgid "Popular Posts"
+msgstr "A la Une"
+
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "No results found."
+msgstr "Aucun résultat trouvé."
+
+msgid "Related Posts"
+msgstr "Articles Similaires"
+
+msgid "Share this Post"
+msgstr "Partager cet Article"
+
+
+msgid "No categories yet"
+msgstr "Aucune catégorie encore"
+
+#########################################################
+#:  wafa/templates/event/blog_page.html
+#########################################################
+
+msgid "Upcoming Events"
+msgstr "Evènements à Venir"
+
+
+#########################################################
+#:  wafa/templates/contact/contact_page.html
+#########################################################
+
+msgid "Our Emails"
+msgstr "Nos Emails"
+
+msgid "Speak to Us"
+msgstr "Appelez nous"
+
+msgid "Follow on Social' Media"
+msgstr "Suivre sur les Réseaux Sociaux"
+
+msgid "Submit"
+msgstr "Envoyer"
+
+msgid "Subject"
+msgstr "Objet"
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Send us an Email"
+msgstr "Envoyez-nous un e-mail"
+
+
+#########################################################
+#: contact/views.py
+#########################################################
+
+msgid "Dear %s,\n\nWe received your message %s and will answer soon.\n"
+msgstr "Cher %s,\n\nNous avons reçu votre message #%s et vous répondrons bientôt.\n"
+
+msgid "Your Message:\n\n%s\n\nSincerely,\n\nWAFA Team"
+msgstr "Votre demande :\n\n%s\n\nCordialement,\n\nL'équipe WAFA"
+
+msgid "Your Message has been sent . Wafa Team Thanks You !"
+msgstr "Votre message a été envoyé . L'équipe Wafa vous remercie!"
 
 

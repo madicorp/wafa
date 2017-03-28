@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+    <!-- Bootstrap Data Table Plugin -->
+    <link rel="stylesheet" href="{% static 'css/components/bs-datatable.css' %}" type="text/css"/>
+    <style rel="stylesheet" type="text/css">
+        .postcontent, .sidebar {
+            margin-right: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% page_title self.title "West African Fertilizer Professionals are united and commited!" %}
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+
+                <div class="heading-block center">
+                    <h3>{% trans "Wafa Membership" %}</h3>
+                </div>
+
+                <div class="promo promo-dark promo-flat bottommargin">
+                    <h3>{% trans "Membership application form" %}</h3>
+                    <span>{% trans "Click to download the membership application Form" %}</span>
+                    <a href="{{ self.file.url }}" class="button button-dark button-xlarge button-rounded">
+                        {% trans "Download" %} <i class="icon-download"></i>
+                    </a>
+                </div>
+
+                <div class="nobottommargin clearfix">
+                    <div class="tabs tabs-bordered clearfix" id="tab-2">
+
+                        <ul class="tab-nav clearfix">
+                            <li><a href="#tabs-membership">{% trans "Membership" %}</a></li>
+                            <li><a href="#tabs-memberslist">{% trans "Members List" %}</a></li>
+                        </ul>
+
+                        <div class="tab-container">
+
+                            <div class="tab-content clearfix" id="tabs-membership">
+                                {% dynamic_trans self 'membership' as membership %}
+
+                                <p> {{ membership|richtext }}</p>
+                            </div>
+                            <div class="tab-content clearfix" id="tabs-memberslist">
+                                <table id="members-table" class="table table-striped table-bordered" cellspacing="0"
+                                       width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Deputy" %}</th>
+                                        <th>{% trans "Country" %}</th>
+                                        <th>{% trans "Activity" %}</th>
+                                        <th>{% trans "Contact" %}</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>{% trans "Name" %}</th>
+                                        <th>{% trans "Deputy" %}</th>
+                                        <th>{% trans "Country" %}</th>
+                                        <th>{% trans "Activity" %}</th>
+                                        <th>{% trans "Contact" %}</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    {% for member in self.members %}
+                                        <tr>
+                                            <td>{{ member.value.member_name }}</td>
+                                            <td>{{ member.value.deputy_name }}</td>
+                                            <td>{{ member.value.country }}</td>
+                                            {% dynamic_trans member.value 'activity' as activity %}
+                                            <td>{{ activity }}</td>
+                                            <td>{{ member.value.contact }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section><!-- #content end -->
+    {% footer %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Bootstrap Data Table Plugin -->
+    <script type="text/javascript" src="{% static 'js/components/bs-datatable.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/member.script.js' %}"></script>
+
+{% endblock %}

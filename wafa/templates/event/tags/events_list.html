@@ -1,0 +1,29 @@
+{% load i18n wagtailimages_tags event_tags %}
+{% for event in events_upcoming %}
+    <div class="spost clearfix">
+        {% if event.header_image %}
+            <div class="entry-image">
+                {% image event.header_image original as header_image %}
+                <a href="#" class="nobg">
+                    <img class="img-circle"
+                         alt="{{ event.header_image.title }}"
+                         src="{{ header_image.url }}">
+                </a>
+            </div>
+        {% endif %}
+        <div class="entry-c">
+            <div class="entry-title">
+                <h4><a href="{% event_url event events_page %}">{{ event.title }}</a></h4>
+            </div>
+            <ul class="entry-meta">
+                <li>
+                    <i class="icon-calendar3"></i>
+                    {{ event.start_date|date:"d M Y" }} -
+                    {{ event.start_date|date:"h:m" }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% empty %}
+    {% trans 'No events yet' %}
+{% endfor %}

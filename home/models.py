@@ -5,7 +5,6 @@ from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailsearch import index
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from django.shortcuts import render
 
 from home.entities.blocks import AboutOfficerBlock, AboutMembersBlock
 
@@ -48,21 +47,18 @@ class AboutPage(Page):
         index.SearchField('officers'),
     ]
 
-    api_fields = [
-        'officers',
-        ]
-
     class Meta:
         verbose_name = "About Us Page"
 
-    content_panels = [
-        FieldPanel('title', classname="full title"),
-        FieldPanel('company_desc_fr', classname='full title'),
-        FieldPanel('company_desc_en', classname='full title'),
-        StreamFieldPanel('officers'),
-    ]
 
-    promote_panels = Page.promote_panels
+content_panels = [
+    FieldPanel('title', classname="full title"),
+    FieldPanel('company_desc_fr', classname='full title'),
+    FieldPanel('company_desc_en', classname='full title'),
+    StreamFieldPanel('officers'),
+]
+
+promote_panels = Page.promote_panels
 
 
 class MemberPage(Page):
@@ -96,3 +92,7 @@ class MemberPage(Page):
     ]
 
     promote_panels = Page.promote_panels
+
+
+class ProductPage(Page):
+    pass

@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'home',
     'search',
     'wafa',
+    'event',
+    'contact',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -41,17 +43,20 @@ INSTALLED_APPS = [
     'wagtail.wagtailsearch',
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
-    'wagtail.api.v2',
-
+    'wagtail.contrib.wagtailsitemaps',
+    'wagtail.contrib.wagtailroutablepage',
+    'compressor',
     'modelcluster',
     'taggit',
-
+    'puput',
+    'social_widgets',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [
@@ -89,6 +94,13 @@ TEMPLATES = [
         },
     },
 ]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.request',
+)
+
+PUPUT_AS_PLUGIN = True
+EVENT_AS_PLUGIN = True
 
 WSGI_APPLICATION = 'wafa.wsgi.application'
 

@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% block body_class %}stretched{% endblock %}
+
+{% block content %}
+    {% get_current_language as LANGUAGE_CODE %}
+    {% slider %}
+    {% header self.slug %}
+    <div class="clear"></div>
+
+    <!-- Content ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap">
+
+            <div id="intro" class="container clearfix">
+
+
+                <div class="col_two_third bottommargin-sm">
+
+                    <div class="heading-block topmargin-sm fancy-title title-bottom-border">
+                        <h2><span>{% trans "Who" %}</span> {% trans "Are We" %}</h2>
+                    </div>
+
+                    <p>
+                        {% dynamic_trans self 'who_are_we' as who_are_we %}
+                        {{ who_are_we|richtext }}
+                    </p>
+
+                    <a href="/{{ LANGUAGE_CODE }}/about"
+                       class="button button-border button-dark button-rounded button-large noleftmargin topmargin-sm">
+                        {% trans "Learn more" %}
+                    </a>
+
+                </div>
+                <div class="col_one_third bottommargin-sm center col_last">
+                    <img data-animate="fadeInRight" src="{% static 'img/fingerprint.png' %}" alt="We are Wafa !">
+                </div>
+
+                <div class="clear"></div>
+                <div class="line bottommargin-lg"></div>
+
+                <div class="col_two_fifth nobottommargin">
+                    <img data-animate="fadeInLeft" src="{% static 'img/our-mission.png' %}" alt="our-mission">
+                </div>
+
+                <div class="col_three_fifth nobottommargin col_last">
+
+                    <div class="heading-block fancy-title title-bottom-border">
+                        <h2>{% trans "Our" %} <span>{% trans "Mission" %}</span> / <span>{% trans "Vision" %}</span>
+                        </h2>
+                    </div>
+
+                    <p>
+                        {% dynamic_trans self 'mission_vision' as mission_vision %}
+                        {{ mission_vision|richtext }}
+                    </p>
+
+                </div>
+
+            </div>
+            <div class="line bottommargin-lg"></div>
+            <div class="container clearfix">
+
+                <div class="heading-block center bottommargin-lg">
+                    <h2> WAFA <span>FERTILIZER</span></h2>
+                    <span>{% trans "Quality A Priority" %}</span>
+                </div>
+                <div class="rich-text centered">
+                    <p>
+                        {% trans "One of the key objectives of WAFA is the quality of fertilizers." %}
+                        <br>
+                        {% trans "To achieve this objective, a close partnership with the Agricultural Research Institutes of the Region is necessary:" %}
+                    </p>
+                </div>
+                <div class="col_one_third nobottommargin">
+                    <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="i-alt">1</i></a>
+                        </div>
+                        <h3>
+                            {% trans "Improve he quality of fertilizers" %}
+                            <span class="subtitle">{% trans "By working with agronomists and project-crop managers" %}</span>
+                        </h3>
+                    </div>
+
+                </div>
+
+                <div class="col_one_third nobottommargin">
+
+                    <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="i-alt">2</i></a>
+                        </div>
+                        <h3>
+                            {% trans "Promote the use of specific fertilizers by region and culture" %}
+                            <span class="subtitle">{% trans "By providing access to producers of the various recommendations formulas made by the research" %}</span>
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="col_one_third nobottommargin col_last">
+                    <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                        <div class="fbox-icon">
+                            <a href="#"><i class="i-alt">3</i></a>
+                        </div>
+                        <h3>
+                            {% trans "Developing the use of fertilizers in quantity and quality" %}
+                            <span class="subtitle">{% trans "Adoption of specific sustainable solutions for crops and soils" %}</span>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+
+            </div>
+            <div class="line bottommargin-lg"></div>
+            <div class="container clearfix">
+
+                <div class="heading-block center">
+                    <h3>{% trans "Some" %} <span>{% trans "Events" %}</span> {% trans "To Come" %}</h3>
+                </div>
+
+                <div id="oc-portfolio" class="owl-carousel portfolio-carousel portfolio-nomargin carousel-widget"
+                     data-margin="1" data-pagi="false" data-autoplay="5000" data-items-xxs="1" data-items-xs="2"
+                     data-items-sm="3" data-items-lg="4">
+                    {% upcoming_events %}
+
+                </div>
+            </div>
+
+            <!--div class="container clearfix">
+
+                <div id="oc-clients" class="owl-carousel owl-carousel-full image-carousel carousel-widget"
+                     data-margin="30" data-loop="true" data-nav="false" data-autoplay="5000" data-pagi="false"
+                     data-items-xxs="2" data-items-xs="3" data-items-sm="4" data-items-md="5" data-items-lg="6"
+                     style="padding: 20px 0;">
+
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/1.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/2.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/3.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/4.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/5.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/6.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/7.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/8.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/9.png"
+                                                                             alt="Clients"></a></div>
+                    <div class="oc-item"><a href="http://logofury.com/"><img src="images/clients/10.png" alt="Clients"></a>
+                    </div>
+
+                </div>
+
+            </div-->
+
+            <a class="button button-full center tright footer-stick">
+                <div class="container clearfix">
+                    Canvas comes with Unlimited Customizations &amp; Options. <strong>Check Out</strong> <i
+                        class="icon-caret-right" style="top:4px;"></i>
+                </div>
+            </a>
+
+        </div>
+    </section><!-- #content end -->
+
+    {% footer %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript">
+        $(function () {
+            var swiper = new Swiper('.swiper-containers', {
+                slidesPerView: 'auto',
+                centeredSlides: true,
+                autoplay: 5000,
+                autoplayDisableOnInteraction: true
+            });
+        });
+    </script>
+{% endblock %}

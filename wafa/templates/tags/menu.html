@@ -2,7 +2,7 @@
 
 {% get_current_language as LANGUAGE_CODE %}
 
-<nav id="primary-menu" class="dark">
+<nav id="primary-menu">
 
     <ul>
         <li {% if slug == 'home' %}class="current"{% endif %}>
@@ -10,86 +10,75 @@
                 <div> {% trans "Home" %}</div>
             </a>
         </li>
-        <li  {% if slug == 'about' %}class="current"{% endif %}>
+        <li {% if slug == 'about' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/about">
                 <div> {% trans "About Us" %}</div>
             </a>
         </li>
-        <li  {% if slug == 'members' %}class="current"{% endif %}>
+        <li {% if slug == 'members' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/members">
-                <div>{% trans "Members"%}</div>
+                <div>{% trans "Members" %}</div>
             </a>
         </li>
-        <li  {% if slug == '' %}class="current"{% endif %}>
+        <li class="sub-menu {% if slug == '' %}current{% endif %}">
             <a href="/{{ LANGUAGE_CODE }}/products">
-                <div>{% trans "Products"%}</div>
+                <div>{% trans "Products" %}</div>
             </a>
-
-        <li  {% if slug == '' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/activities-training">
-                <div>{% trans "Activities/Training"%}</div>
+            <ul>
+                <li {% if slug == '' %}class="current"{% endif %}>
+                    <a href="/{{ LANGUAGE_CODE }}/products">
+                        <div>WAFBIM</div>
+                    </a>
+                </li>
+                <li {% if slug == '' %}class="current"{% endif %}>
+                    <a href="/{{ LANGUAGE_CODE }}/products">
+                        <div>FERWAM</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+               <li {% if slug == 'news' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/news">
+                <div>{% trans "News" %}</div>
             </a>
         </li>
-        <li  {% if slug == '' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/statistics">
-                <div>{% trans "Statistics"%}</div>
-            </a>
-        </li>
-        <li  {% if slug == '' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/blog">
-                <div>{% trans "Blog"%}</div>
-            </a>
-        </li>
-        <li  {% if slug == '' %}class="current"{% endif %}>
+        <li {% if slug == 'events' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/events">
-                <div>{% trans "Events"%}</div>
+                <div>{% trans "Events" %}</div>
             </a>
         </li>
-        <li  {% if slug == '' %}class="current"{% endif %}>
+        <li {% if slug == 'contact' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/contact">
-                <div>{% trans "Contact"%}</div>
+                <div>{% trans "Contact" %}</div>
             </a>
         </li>
     </ul>
-
-
     <div id="flag" class="navbar-collapse collapse navbar-right">
         <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-expanded="false">
-                    {% if LANGUAGE_CODE == "en" %}
-                        <i class="flag-icon flag-icon-gb"></i>
-                    {% else %}
-                        <i class="flag-icon flag-icon-{{ LANGUAGE_CODE }}"></i>
-                    {% endif %}
-                </a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    {% get_available_languages as languages %}
-                    {% for lang_code, lang_name in languages %}
-                        <li role="presentation">
-                            {% if lang_code !=  LANGUAGE_CODE %}
-                                <a role="menuitem" tabindex="-1" href="{% change_lang lang_code %}">
-                                    {% if lang_code == "en" %}
-                                        <i class="flag-icon flag-icon-gb"></i>
-                                    {% else %}
-                                        <i class="flag-icon flag-icon-{{ lang_code }}"></i>
-                                    {% endif %}
-                                </a>
+            {% get_available_languages as languages %}
+            {% for lang_code, lang_name in languages %}
+                <li class="dropdown">
+                    {% if lang_code !=  LANGUAGE_CODE %}
+                        <a role="menuitem" tabindex="-1" href="{% change_lang lang_code %}">
+                            {% if lang_code == "en" %}
+                                <i class="flag-icon flag-icon-gb"></i>
+                            {% else %}
+                                <i class="flag-icon flag-icon-{{ lang_code }}"></i>
                             {% endif %}
-                        </li>
+                        </a>
+                    {% endif %}
 
-                    {% endfor %}
-                </ul>
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div> <!--/.navbar-collapse -->
     <!-- Top Search
     ============================================= -->
     <div id="top-search">
         <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-        <form action="search.html" method="get">
-            <input type="text" name="q" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
+        <form name="search_form" class="search_form" method="get"
+                          action="/{{ LANGUAGE_CODE }}/news/search/">
+            <input type="search" name="q" placeholder="{% trans 'Search' %}">
         </form>
     </div><!-- #top-search end -->
 
