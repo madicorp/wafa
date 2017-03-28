@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'search',
     'wafa',
     'event',
+    'contact',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'location_field.apps.DefaultConfig',
 ]
 
 MIDDLEWARE = [

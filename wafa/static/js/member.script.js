@@ -3,10 +3,7 @@
 (function ($) {
 
     $(function () {
-        $(document).ready(function () {
-            $('#members-table').DataTable();
-        });
+        $('#members-table').DataTable();
     });
-
 
 })(jQuery);

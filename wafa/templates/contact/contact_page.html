@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% block body_class %}stretched{% endblock %}
+
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% page_title self.title "West African Fertilizer Professionals are united and commited!" %}
+
+
+    <!-- Content ============================================= -->
+    <section id="content">
+
+        <div class="content-wrap">
+            <div class="container clearfix">
+
+                <!-- Contact Form
+                ============================================= -->
+                <div class="col_half">
+
+                    <div class="fancy-title title-dotted-border">
+                        <h3>{% trans "Send us an Email" %}</h3>
+                    </div>
+
+                    <div class="contact-widget customjs">
+
+                        <div class="contact-form-result"></div>
+
+                        <form class="nobottommargin" id="template-contactform" name="template-contactform"
+                              action="sendemail.php" method="post">
+                            {% csrf_token %}
+                            <div class="form-process"></div>
+
+                            <div class="col">
+                                <label for="template-contactform-name">{% trans "Name" %}
+                                    <small>*</small>
+                                </label>
+                                <input type="text" id="template-contactform-name" name="name"
+                                       value="" class="sm-form-control required"/>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="col">
+                                <label for="template-contactform-email">Email
+                                    <small>*</small>
+                                </label>
+                                <input type="email" id="template-contactform-email" name="email"
+                                       value="" class="required email sm-form-control"/>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="col">
+                                <label for="template-contactform-subject">{% trans "Subject" %}
+                                    <small>*</small>
+                                </label>
+                                <input type="text" id="template-contactform-subject" name="subject"
+                                       value="" class="required sm-form-control"/>
+                            </div>
+                            <div class="clear"></div>
+
+                            <div class="col_full">
+                                <label for="template-contactform-message">Message
+                                    <small>*</small>
+                                </label>
+                                <textarea class="required sm-form-control" id="template-contactform-message"
+                                          name="message" rows="6" cols="30"></textarea>
+                            </div>
+
+                            <div class="col_full hidden">
+                                <input type="text" id="template-contactform-botcheck"
+                                       name="template-contactform-botcheck" value="" class="sm-form-control"/>
+                            </div>
+
+                            <div class="col_full">
+                                <div class="g-recaptcha" data-sitekey="6LeVgRoUAAAAAEVuMUzxys8H_DVFZeyXCv4GwDEW"></div>
+                            </div>
+
+                            <div class="col_full">
+                                <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit"
+                                        class="button button-3d nomargin">{% trans "Submit" %}
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div><!-- Contact Form End -->
+
+                <!-- Google Map
+                ============================================= -->
+                <div class="col_half col_last">
+
+                    <section id="google-map" class="gmap" style="height: 410px;"></section>
+
+                </div><!-- Google Map End -->
+
+                <div class="clear"></div>
+
+                <!-- Contact Info
+                ============================================= -->
+                <div class="row clear-bottommargin">
+
+                    <div class="col-md-4 col-sm-6 bottommargin clearfix">
+                        <div class="feature-box fbox-center fbox-bg fbox-plain">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-envelope2"></i></a>
+                            </div>
+                            <h3>
+                                {% trans "Our Emails" %}
+                                {% split self.email ";" as emails %}
+                                {% for mail in emails %}
+                                    <span class="subtitle">{{ mail }}</span>
+                                {% endfor %}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6 bottommargin clearfix">
+                        <div class="feature-box fbox-center fbox-bg fbox-plain">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-phone3"></i></a>
+                            </div>
+                            <h3>{% trans "Speak to Us" %}
+                                <span class="subtitle"><i class="icon-phone"></i> : {{ self.phone }}</span>
+                                {% if self.fax %}
+                                    <span class="subtitle"><i class="icon-print"></i> {{ self.fax }}</span>
+                                {% endif %}
+                            </h3>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 col-sm-6 bottommargin clearfix">
+                        <div class="feature-box fbox-center fbox-bg fbox-plain">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-globe"></i></a>
+                            </div>
+                            <h3>
+                                {% trans "Follow on Social' Media" %}
+                                <span class="subtitle" style="display: inline-block">
+                                     <a target="_blank" href="{{ self.facebook }}"
+                                        class="social-icon si-borderless si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                     <a target="_blank" href="{{ self.twitter }}"
+                                        class="social-icon si-borderless si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a target="_blank" href="{{ self.googleplus }}"
+                                       class="social-icon si-borderless si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                    <a target="_blank" href="{{ self.linkedin }}"
+                                       class="social-icon si-borderless si-linkedin">
+                                        <i class="icon-linkedin"></i>
+                                        <i class="icon-linkedin"></i>
+                                    </a>
+                                </span>
+                            </h3>
+                        </div>
+                    </div>
+
+
+                </div><!-- Contact Info End -->
+
+            </div>
+        </div>
+    </section><!-- #content end -->
+
+    {% footer %}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript"
+            src="https://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.gmap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/js.cookie.js' %}"></script>
+    <script type="text/javascript">
+        var city = "{{ self.city }}", marker = "{% static "img/map-icon.png" %}";
+    </script>
+    <script type="text/javascript" src="{% static 'js/contact.script.js' %}"></script>
+{% endblock %}

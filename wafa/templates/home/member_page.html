@@ -4,7 +4,7 @@
 {% block extra_css %}
     <!-- Bootstrap Data Table Plugin -->
     <link rel="stylesheet" href="{% static 'css/components/bs-datatable.css' %}" type="text/css"/>
-    <style  rel="stylesheet" type="text/css">
+    <style rel="stylesheet" type="text/css">
         .postcontent, .sidebar {
             margin-right: 0;
         }
@@ -25,9 +25,15 @@
                     <h3>{% trans "Wafa Membership" %}</h3>
                 </div>
 
-                <!-- Post Content
-                ============================================= -->
-                <div class="postcontent nobottommargin clearfix">
+                <div class="promo promo-dark promo-flat bottommargin">
+                    <h3>{% trans "Membership application form" %}</h3>
+                    <span>{% trans "Click to download the membership application Form" %}</span>
+                    <a href="{{ self.file.url }}" class="button button-dark button-xlarge button-rounded">
+                        {% trans "Download" %} <i class="icon-download"></i>
+                    </a>
+                </div>
+
+                <div class="nobottommargin clearfix">
                     <div class="tabs tabs-bordered clearfix" id="tab-2">
 
                         <ul class="tab-nav clearfix">
@@ -80,17 +86,7 @@
                         </div>
 
                     </div>
-                </div><!-- .postcontent end -->
-
-                <!-- Sidebar
-                ============================================= -->
-                <div class="sidebar nobottommargin col_last clearfix">
-                    <div class="spacer-40"></div>
-                    <a href="{{ self.file.url }}" class="button button-desc">
-                        <div>{% trans "Membership application form" %}</div>
-                        <span>{% trans "Click to download the membership application Form" %}</span>
-                    </a>
-                </div><!-- .sidebar end -->
+                </div>
 
             </div>
 

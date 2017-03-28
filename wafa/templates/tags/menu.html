@@ -37,17 +37,17 @@
                 </li>
             </ul>
         </li>
-               <li {% if slug == '' %}class="current"{% endif %}>
+               <li {% if slug == 'news' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/news">
                 <div>{% trans "News" %}</div>
             </a>
         </li>
-        <li {% if slug == '' %}class="current"{% endif %}>
+        <li {% if slug == 'events' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/events">
                 <div>{% trans "Events" %}</div>
             </a>
         </li>
-        <li {% if slug == '' %}class="current"{% endif %}>
+        <li {% if slug == 'contact' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/contact">
                 <div>{% trans "Contact" %}</div>
             </a>

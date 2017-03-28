@@ -1,6 +1,8 @@
 from django import template
 from django.core.urlresolvers import resolve, reverse
 from django.utils.translation import activate, get_language, ugettext as _
+from contact.models import ContactPage
+
 register = template.Library()
 
 
@@ -35,8 +37,10 @@ def page_title(context, title, description):
 @register.inclusion_tag("tags/footer.html", takes_context=True)
 def footer(context):
     self = context.get('self')
+    contact = ContactPage.objects.get(slug='contact')
     return {
-        'request': context['request']
+        'request': context['request'],
+        'contact': contact
     }
 
 
@@ -65,3 +69,8 @@ def dynamic_trans(context, obj, field_name, get_lang_fn=get_language):
     except AttributeError:
         # For wagtail StructValue
         return obj[field_name_language]
+
+
+@register.simple_tag(takes_context=False)
+def split(value, separator):
+    return value.split(separator)

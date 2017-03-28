@@ -9,6 +9,7 @@ from event.urls import urlpatterns as event_urlpatterns
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from contact.views import post_message
 
 from search import views as search_views
 
@@ -19,11 +20,12 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'', include(puput_urlpatterns)),
     url(r'', include(event_urlpatterns)),
+
 ]
 urlpatterns += i18n_patterns(
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),
-
+    url(r'^contact/sendemail.php', post_message),
     prefix_default_language=True
 )
 
