@@ -27,11 +27,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    'home',
-    'search',
-    'wafa',
-    'event',
-    'contact',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -47,8 +42,6 @@ INSTALLED_APPS = [
     'wagtail.contrib.wagtailroutablepage',
     'compressor',
     'modelcluster',
-    'taggit',
-    'puput',
     'social_widgets',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -57,6 +50,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
+    'puput',
+    'home',
+    'search',
+    'wafa',
+    'event',
+    'contact',
+    'taggit',
 ]
 
 MIDDLEWARE = [
@@ -110,7 +110,7 @@ WSGI_APPLICATION = 'wafa.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3.test'),
     }
 }
 
