@@ -41,6 +41,13 @@ class AboutPage(Page):
     company_desc_fr = RichTextField(blank=False, verbose_name='Description de l\'association FR', default='')
     company_desc_en = RichTextField(blank=False, verbose_name='Description de l\'association EN', default='')
     officers = StreamField(AboutOfficerBlock(), verbose_name='Bureau')
+
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('company_desc_fr', classname='full title'),
+        FieldPanel('company_desc_en', classname='full title'),
+    ]
+
     search_fields = Page.search_fields + [
         index.SearchField('company_desc_fr'),
         index.SearchField('company_desc_en'),
