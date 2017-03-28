@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('wagtailcore', '0033_auto_20170323_0108'),
+        ('wagtailcore', '0019_verbose_names_cleanup'),
     ]
 
     operations = [
