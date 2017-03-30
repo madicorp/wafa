@@ -15,12 +15,59 @@
 
             <div class="container clearfix">
                 <div class="heading-block center">
+                    <h3>{% trans "About WAFA" %}</h3>
+                </div>
+                {% dynamic_trans self 'company_desc' as company_desc %}
+                <p>{{ company_desc|richtext }}</p>
+            </div>
+
+            <div class="container clearfix">
+                <div class="heading-block center">
                     <h3>{% trans "Board Members" %}</h3>
                 </div>
                 {% board_members self.officers %}
             </div>
+
+            <div class="container clearfix">
+                <div class="heading-block center">
+                    <h3>{% trans "Member countries" %}</h3>
+                </div>
+                <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
+                    <div class="portfolio-item pf-media pf-icons clearfix">
+                        <div class="portfolio-image">
+                            <a href="javascript:void(0)">
+                                <img src="{% static 'img/map.jpg' %}" alt="{% trans "Member countries" %}">
+                            </a>
+                            <div class="portfolio-overlay">
+                                <a href="{% static 'img/map.jpg' %}" class="left-icon" data-lightbox="image"><i
+                                        class="icon-line-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="portfolio-desc">
+                            <div id="oc-clients"
+                                 class="owl-carousel owl-carousel-full image-carousel carousel-widget"
+                                 data-margin="30" data-loop="true" data-nav="false" data-autoplay="true"
+                                 data-speed="20000"
+                                 data-pagi="false"
+                                 data-items-xxs="1" data-items-xs="1" data-items-sm="1" data-items-md="1"
+                                 data-items-lg="1"
+                                 style="padding: 20px 0;">
+                                {% for country in self.countries %}
+                                    <div class="oc-item">
+                                        <a href="http://logofury.com/">
+                                            {% image country.value.flag original as flag %}
+                                            <img alt="{{ country.value.name }}" src="{{ flag.url }}" alt="Clients">
+                                            <h3><a href="javascript:void(0)">{{ country.value.name }}</a></h3>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-           </section>
+    </section>
 
     {% footer %}
 

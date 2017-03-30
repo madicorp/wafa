@@ -123,6 +123,9 @@
 
     {# Global javascript #}
     <script type="text/javascript" src="{% static 'js/wafa.js' %}"></script>
+        {% block extra_js %}
+        {# Override this in templates to add extra javascript #}
+    {% endblock %}
 {% endcompress js %}
 </body>
 </html>

@@ -52,9 +52,9 @@
 
                     {% image self.header_image fill-800x240 as header_image %}
                     {% image self.header_image original as cover %}
-                    <a href="{{ cover.url }}" data-lightbox="image"><img class="image_fade"
-                                                                         alt="{{ self.header_image.title }}"
-                                                                         src="{{ header_image.url }}"></a>
+                    <a href="{{ cover.url }}" data-lightbox="image">
+                        <img class="image_fade" alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
+                    </a>
                 </div><!-- .entry-image end -->
             {% endif %}
             <!-- Entry Content
