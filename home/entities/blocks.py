@@ -25,3 +25,12 @@ class OfficerBlock(MemberBlock):
 
 class AboutOfficerBlock(StreamBlock):
     office = OfficerBlock(label='Membre', icon='user', required=False)
+
+
+class CountryBlock(StructBlock):
+    flag = ImageChooserBlock(label='Drapeau')
+    name = TextBlock(label='Nom')
+
+
+class AboutCountryBlock(StreamBlock):
+    countries = CountryBlock(label='Pays Membre', required=False)

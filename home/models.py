@@ -6,7 +6,7 @@ from wagtail.wagtailsearch import index
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 
-from home.entities.blocks import AboutOfficerBlock, AboutMembersBlock
+from home.entities.blocks import AboutOfficerBlock, AboutMembersBlock, AboutCountryBlock
 
 
 class HomePage(Page):
@@ -41,22 +41,24 @@ class AboutPage(Page):
     company_desc_fr = RichTextField(blank=False, verbose_name='Description de l\'association FR', default='')
     company_desc_en = RichTextField(blank=False, verbose_name='Description de l\'association EN', default='')
     officers = StreamField(AboutOfficerBlock(), verbose_name='Bureau')
+    countries = StreamField(AboutCountryBlock(), verbose_name='Pays', blank=True)
 
     search_fields = Page.search_fields + [
         index.SearchField('company_desc_fr'),
         index.SearchField('company_desc_en'),
         index.SearchField('officers'),
+        index.SearchField('countries'),
     ]
 
     class Meta:
         verbose_name = "About Us Page"
-
 
     content_panels = [
         FieldPanel('title', classname="full title"),
         FieldPanel('company_desc_fr', classname='full title'),
         FieldPanel('company_desc_en', classname='full title'),
         StreamFieldPanel('officers'),
+        StreamFieldPanel('countries'),
     ]
 
     promote_panels = Page.promote_panels

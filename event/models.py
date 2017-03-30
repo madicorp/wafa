@@ -164,8 +164,8 @@ class Category(models.Model):
 
     class Meta:
         ordering = ['name']
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
+        verbose_name = _("Event Category")
+        verbose_name_plural = _("Event Categories")
 
 
 class CategoryEventPage(models.Model):
@@ -186,6 +186,9 @@ class Tag(TaggitTag):
 
     class Meta:
         proxy = True
+        ordering = ['name']
+        verbose_name = _("Events Tags")
+        verbose_name_plural = _("Events Tags")
 
 
 class EventPageRelated(models.Model):

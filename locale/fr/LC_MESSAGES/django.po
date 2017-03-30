@@ -94,7 +94,7 @@ msgstr "Améliorer la qualité des engrais"
 msgid "Promote the use of specific fertilizers by region and culture"
 msgstr "Promouvoir l'utilisation d'engrais spécifiques par région et culture"
 
-msgid "by providing access to producers of the various recommendations formulas made by the research"
+msgid "By providing access to producers of the various recommendations formulas made by the research"
 msgstr "En donnant accès aux producteurs des différentes recommandations formulées par la recherche"
 
 msgid "Developing the use of fertilizers in quantity and quality"
@@ -110,6 +110,9 @@ msgstr "l'adoption de solutions durables spécifiques pour les cultures et les s
 msgid "About Page"
 msgstr "À propos"
 
+msgid "About WAFA"
+msgstr "À propos de WAFA"
+
 msgid "West African Fertilizer Professionals are united and commited!"
 msgstr "Les Professionels de l'engrais en Afrique de l'Ouest s'unissent et s'engagent !"
 
@@ -118,6 +121,11 @@ msgstr "Membres du conseil d'administration"
 
 msgid "Organization Chart / Structure"
 msgstr "Organigramme / structure"
+
+msgid "Member countries"
+msgstr "Pays membres"
+
+
 
 #########################################################
 #:  home/templates/home/member_page.html
@@ -190,12 +198,34 @@ msgstr "Partager cet Article"
 msgid "No categories yet"
 msgstr "Aucune catégorie encore"
 
+msgid "No entries yet"
+msgstr "Pas encore d'articles"
+
+
+
 #########################################################
-#:  wafa/templates/event/blog_page.html
+#:  wafa/templates/event/events_page.html
 #########################################################
 
 msgid "Upcoming Events"
 msgstr "Evènements à Venir"
+
+msgid "Starts in"
+msgstr "Démarre dans"
+
+msgid "Event Info"
+msgstr "Informations sur l'événement"
+
+msgid "Details"
+msgstr "Détails"
+
+
+#########################################################
+#:  wafa/templates/event/tags/events_list.html
+#########################################################
+
+msgid "No events yet"
+msgstr "Pas encore d'événement"
 
 
 #########################################################
