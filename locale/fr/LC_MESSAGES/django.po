@@ -64,7 +64,7 @@ msgid "Who"
 msgstr "Qui"
 
 msgid "Are We"
-msgstr "Somme Nous"
+msgstr "Sommes Nous"
 
 msgid "Learn more"
 msgstr "En Savoir +"
