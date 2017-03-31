@@ -20,18 +20,18 @@
                 <div>{% trans "Members" %}</div>
             </a>
         </li>
-        <li class="sub-menu {% if slug == '' %}current{% endif %}">
-            <a href="/{{ LANGUAGE_CODE }}/products">
+        <li class="sub-menu {% if slug == 'wafbim' or  slug == 'fermwam' %}current{% endif %}">
+            <a href="javascript:void(0)">
                 <div>{% trans "Products" %}</div>
             </a>
             <ul>
-                <li {% if slug == '' %}class="current"{% endif %}>
-                    <a href="/{{ LANGUAGE_CODE }}/products">
+                <li {% if slug == 'wafbim' %}class="current"{% endif %}>
+                    <a href="/{{ LANGUAGE_CODE }}/wafbim">
                         <div>WAFBIM</div>
                     </a>
                 </li>
-                <li {% if slug == '' %}class="current"{% endif %}>
-                    <a href="/{{ LANGUAGE_CODE }}/products">
+                <li {% if slug == 'fermwam' %}class="current"{% endif %}>
+                    <a href="/{{ LANGUAGE_CODE }}/ferwam">
                         <div>FERWAM</div>
                     </a>
                 </li>

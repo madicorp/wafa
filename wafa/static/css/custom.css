@@ -101,3 +101,8 @@
 .sidebar .button.button-desc span {
     font-size: 11px;
 }
+
+.feature-box h3 {
+    font-size: 15px;
+    font-weight: 600;
+}

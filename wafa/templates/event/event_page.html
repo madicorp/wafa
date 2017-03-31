@@ -48,7 +48,7 @@
                         <li><i class="icon-calendar3"></i> {{ self.start_date|date:"d M Y" }}</li>
                         <li><i class="icon-time"></i> {{ self.start_date|date:"h:m" }}</li>
                         <li><i class="icon-map-marker2"></i>{{ self.location }}</li>
-                        <input type="hidden" id="eventStartDate" data-year="{{ self.start_date|date:"Y" }}" data-month="{{ self.start_date|date:"m" }}" data-day="{{ self.start_date|date:"d" }}">
+                        <input type="hidden" id="eventStartDate" data-start="{{ self.start_date|date:"Y-m-d h:m" }}">
                     </ul>
                 </div>
             </div>
@@ -72,14 +72,12 @@
 {% endblock %}
 
 {% block extra_js %}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var eventStartDate = new Date(),
-            elem = $("#eventStartDate"),
-            year = $(elem).data("year"),
-            month = $(elem).data("month"),
-            day = $(elem).data("day");
-            eventStartDate = new Date(year, month, day);
+            var elem = $("#eventStartDate"),
+                date = $(elem).data("start"),
+                eventStartDate = new Date(moment(date, "YYYY-MM-DD HH:mm"));
             $('#event-countdown').countdown({until: eventStartDate});
         })
     </script>

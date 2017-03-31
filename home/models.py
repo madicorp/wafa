@@ -3,12 +3,13 @@ from django.db import models
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailsearch import index
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel
+from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from django.conf import settings
 from home.entities.blocks import AboutOfficerBlock, AboutMembersBlock, AboutCountryBlock, ProductStreamBlock
 from django.utils.translation import ugettext_lazy as _
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+
 
 class HomePage(Page):
     who_are_we_fr = RichTextField(blank=False, verbose_name='Qui sommes nous FR', default='')
@@ -99,7 +100,8 @@ class MemberPage(Page):
 
 
 class ProductPage(Page):
-    header_image = models.ForeignKey(getattr(settings, 'WAGTAILIMAGES_IMAGE_MODEL', 'wagtailimages.Image'), verbose_name=_('Header image'), null=True, blank=True,
+    header_image = models.ForeignKey(getattr(settings, 'WAGTAILIMAGES_IMAGE_MODEL', 'wagtailimages.Image'),
+                                     verbose_name=_('Header image'), null=True, blank=True,
                                      on_delete=models.SET_NULL, related_name='+', )
     excerpt_en = RichTextField(default="", verbose_name=_('excerpt_en'), blank=True,
                                help_text=_("Entry excerpt to be displayed on entries list. "
@@ -108,6 +110,8 @@ class ProductPage(Page):
                                help_text=_("Entry excerpt to be displayed on entries list. "
                                            "If this field is not filled, a truncate version of body text will be used."))
     products = StreamField(ProductStreamBlock(), blank=True)
+
+    num_events_page = models.IntegerField(default=5, verbose_name=_('Product per page'))
     content_panels = [
         FieldPanel('title', classname="full title"),
         ImageChooserPanel('header_image'),
@@ -115,7 +119,11 @@ class ProductPage(Page):
         FieldPanel('excerpt_en', classname='full title'),
         StreamFieldPanel('products'),
     ]
-
+    settings_panels = Page.settings_panels + [
+        MultiFieldPanel([
+            FieldPanel('num_events_page'),
+        ], heading=_("Parameters")),
+    ]
     search_fields = Page.search_fields + [
         index.SearchField('header_image'),
         index.SearchField('excerpt_fr'),
