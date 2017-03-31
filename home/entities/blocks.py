@@ -43,6 +43,7 @@ class ProductBlock(StructBlock):
     desc_en = RichTextBlock(blank=False, verbose_name='Description de l\'edition EN', default='')
     file_fr = DocumentChooserBlock(blank=True, verbose_name='Document Version FR')
     file_en = DocumentChooserBlock(blank=True, verbose_name='Document Version FR')
+    start_date = DateBlock(label='Date l\'edition')
 
 
 class ProductStreamBlock(StreamBlock):
