@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags image %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 {% endblock %}
@@ -12,6 +12,7 @@
     <!-- Content ============================================= -->
     <section id="content">
         <div class="content-wrap">
+            <div class="bottommargin-lg"></div>
 
             <div class="container clearfix">
                 <div class="heading-block center">
@@ -20,50 +21,122 @@
                 {% dynamic_trans self 'company_desc' as company_desc %}
                 <p>{{ company_desc|richtext }}</p>
             </div>
+            <div class="line bottommargin-lg"></div>
+            <div class="section">
+                <div class="container clearfix">
+                    <div class="col_two_fifth nobottommargin">
+                        <img class="margin-top-120" data-animate="fadeInLeft" src="{% static 'img/bulk-min.png' %}"
+                             alt="our-mission">
+                    </div>
 
-            <div class="container clearfix">
-                <div class="heading-block center">
-                    <h3>{% trans "Board Members" %}</h3>
+                    <div class="col_three_fifth nobottommargin col_last">
+
+                        <div class="heading-block fancy-title title-bottom-border">
+                            <h2>{% trans "Our" %} <span>{% trans "Vision" %}</span>
+                            </h2>
+                        </div>
+
+                        <p>
+                            {% dynamic_trans self 'vision' as vision %}
+                            {{ vision|richtext }}
+                        </p>
+
+                    </div>
                 </div>
-                {% board_members self.officers %}
+            </div>
+            <div class="bottommargin-lg ">
+                 {% get_images_advertising height=720 campaign='about' cls="aligncenter notopmargin nobottommargin" %}
             </div>
 
             <div class="container clearfix">
-                <div class="heading-block center">
-                    <h3>{% trans "Member countries" %}</h3>
+                <div class="col_three_fifth nobottommargin ">
+
+                    <div class="heading-block fancy-title title-bottom-border">
+                        <h2>{% trans "Our" %} <span>{% trans "Mission" %}</span>
+                        </h2>
+                    </div>
+
+                    <p>
+                        {% dynamic_trans self 'mission' as mission %}
+                        {{ mission|richtext }}
+                    </p>
+
                 </div>
-                <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
-                    <div class="portfolio-item pf-media pf-icons clearfix">
-                        <div class="portfolio-image">
-                            <a href="javascript:void(0)">
-                                <img src="{% static 'img/map.jpg' %}" alt="{% trans "Member countries" %}">
-                            </a>
-                            <div class="portfolio-overlay">
-                                <a href="{% static 'img/map.jpg' %}" class="left-icon" data-lightbox="image"><i
-                                        class="icon-line-plus"></i></a>
+                <div class="col_two_fifth nobottommargin col_last">
+                    <img class="margin-top-120" data-animate="fadeInRight" src="{% static 'img/growth-min.jpeg' %}"
+                         alt="our-mission">
+                </div>
+
+            </div>
+
+            <div class="section parallax nobottommargin"
+                 style="background-size: 100%; background-image: url('{% static "img/analyse-min.jpeg" %}'); padding: 100px 0;"
+                 data-stellar-background-ratio="0.3">
+                <div class="heading-block center nobottomborder nobottommargin">
+                    <h2 style="color: #ffffff">"{% trans "Quality , A Priority" %}"</h2>
+                </div>
+            </div>
+            <div class="section nomargin">
+                <div class="container clearfix">
+
+                    <div class="heading-block center bottommargin-lg">
+                        <h2> {% trans "Our" %} <span>{% trans "Objectivies" %}</span></h2>
+                    </div>
+                    <div class="rich-text centered">
+                        <p>
+                            {% trans "Many objectivies have already been considered and prioritized. We have already begun activity on three of them due to the commitment of a working group elected from among the founder members." %}
+                            <br>
+                            {% trans "One of the key objectives of WAFA is the quality of fertilizers." %}
+                        </p>
+                    </div>
+                    {% get_objectif_at self.objectives 0 as first %}
+                    {% get_objectif_at self.objectives 1 as secound %}
+                    {% get_objectif_at self.objectives 2 as third %}
+                    <div data-animate="fadeInLeft" class="col_one_third nobottommargin">
+                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                            <div class="fbox-icon">
+                                <a href="javascript:void(0)"><i class="i-alt">1</i></a>
                             </div>
+                            {% dynamic_trans first.value 'title' as first_title %}
+                            {% dynamic_trans first.value 'description' as first_description %}
+                            {% format_quality_text first_description as first_description %}
+                            <h3>
+                                {{ first_title }}
+                                <span class="subtitle"> {{ first_description |richtext }}</span>
+                            </h3>
                         </div>
-                        <div class="portfolio-desc">
-                            <div id="oc-clients"
-                                 class="owl-carousel owl-carousel-full image-carousel carousel-widget"
-                                 data-margin="30" data-loop="true" data-nav="false" data-autoplay="true"
-                                 data-speed="20000"
-                                 data-pagi="false"
-                                 data-items-xxs="1" data-items-xs="1" data-items-sm="1" data-items-md="1"
-                                 data-items-lg="1"
-                                 style="padding: 20px 0;">
-                                {% for country in self.countries %}
-                                    <div class="oc-item">
-                                        <a href="http://logofury.com/">
-                                            {% image country.value.flag original as flag %}
-                                            <img alt="{{ country.value.name }}" src="{{ flag.url }}" alt="Clients">
-                                            <h3><a href="javascript:void(0)">{{ country.value.name }}</a></h3>
-                                        </a>
-                                    </div>
-                                {% endfor %}
+
+                    </div>
+
+                    <div data-animate="fadeInUp" class="col_one_third nobottommargin">
+                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                            <div class="fbox-icon">
+                                <a href="javascript:void(0)"><i class="i-alt">2</i></a>
                             </div>
+                            {% dynamic_trans secound.value 'title' as secound_title %}
+                            {% dynamic_trans secound.value 'description' as secound_description %}
+                            {% format_quality_text secound_description as secound_description %}
+                            <h3>
+                                {{ secound_title }}
+                                <span class="subtitle">{{ secound_description|richtext }} </span>
+                            </h3>
                         </div>
                     </div>
+                    <div data-animate="fadeInRight" class="col_one_third nobottommargin col_last">
+                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                            <div class="fbox-icon">
+                                <a href="javascript:void(0)"><i class="i-alt">3</i></a>
+                            </div>
+                            {% dynamic_trans third.value 'title' as third_title %}
+                            {% dynamic_trans third.value 'description' as third_description %}
+                            {% format_quality_text third_description as third_description %}
+                            <h3>
+                                {{ third_title }}
+                                <span class="subtitle">{{ third_description |richtext }} </span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
                 </div>
             </div>
         </div>

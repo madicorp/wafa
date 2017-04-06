@@ -1,4 +1,4 @@
-{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailuserbar compress event_tags wafa_tags %}
+{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailuserbar compress event_tags wafa_tags image %}
 {% wagtailuserbar %}
 <!DOCTYPE HTML>
 <html>
@@ -9,6 +9,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="title" content="
+
 
 
 
@@ -51,6 +52,9 @@
                                 {% upcoming_events events_page.num_last_events %}
                             </div>
                         </div>
+                        <div class="widget clearfix">
+                            {% get_images_advertising height=720 campaign='event' cls="aligncenter" %}
+                        </div>
                     </div>
 
                 </div>
@@ -73,9 +77,9 @@
     ============================================= -->
     <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
 
+    <script src="{% static 'advertising/js/events.js' %}"></script>
     {# Global javascript #}
     <script type="text/javascript" src="{% static 'js/wafa.js' %}"></script>
-
     {% block extra_js %}
         {# Override this in templates to add extra javascript #}
     {% endblock %}

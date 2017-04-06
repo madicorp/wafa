@@ -24,7 +24,7 @@
                 <h3><a href="/{{ LANGUAGE_CODE }}/events">{{ event.title }}</a></h3>
                 <span>
                     {{ event.start_date|date:"d M Y" }} -
-                    {{ event.start_date|date:"h:m" }} /
+                    {{ event.end_date|date:"d M Y" }} /
                     <a href="#">{{ event.location }}</a>
                 </span>
             </div>

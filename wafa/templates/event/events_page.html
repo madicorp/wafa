@@ -1,5 +1,5 @@
 {% extends "event.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags event_tags%}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags event_tags image %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 
@@ -46,8 +46,10 @@
                             <a href="{{ cover.url }}" data-lightbox="image">
                                 <img class="image_fade" alt="{{ event.header_image.title }}"
                                      src="{{ header_image.url }}">
-                                <div class="entry-date">
+                                <div class="event entry-date">
                                     {{ event.start_date|date:"d" }}<span>{{ event.start_date|date:"M" }}</span>
+                                    <span>{% trans "to" %} </span>
+                                    {{ event.end_date|date:"d" }}<span>{{ event.end_date|date:"M" }}</span>
                                 </div>
                             </a>
                             <div class="spacer-20"></div>
@@ -69,8 +71,7 @@
                             <li>
                                 <a href="#">
                                     <i class="icon-time"></i>
-                                    {{ event.start_date|date:"d M Y" }} - {{ event.start_date|date:"h:m" }} /
-                                    {{ event.end_date|date:"d M Y" }} - {{ event.end_date|date:"h:m" }}
+                                    {{ event.start_date|date:"d M Y" }} - {{ event.end_date|date:"d M Y" }}
                                 </a>
                             </li>
                             <li>
@@ -100,6 +101,11 @@
                         </div>
                     </div>
                 </div>
+                {% if forloop.counter|divisibleby:3 %}
+                    <div class="bottommargin-lg ">
+                        {% get_images_advertising height=720 campaign='event' cls="aligncenter notopmargin nobottommargin" %}
+                    </div>
+                {% endif %}
                 {% empty %}
                 <span>{% trans 'No results found.' %}</span>
             {% endfor %}

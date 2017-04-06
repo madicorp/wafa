@@ -1509,10 +1509,10 @@ var SEMICOLON = SEMICOLON || {};
 
 				if( $sliderParallaxEl.hasClass('revslider-wrap') || $sliderParallaxEl.find('.carousel-widget').length > 0 ) {
 					parallaxElHeight = $sliderParallaxEl.find('.slider-parallax-inner').children().first().outerHeight();
-					$sliderParallaxEl.height( parallaxElHeight );
+					$sliderParallaxEl.height( parallaxElHeight - 100 );
 				}
 
-				$sliderParallaxEl.find('.slider-parallax-inner').height( parallaxElHeight );
+				$sliderParallaxEl.find('.slider-parallax-inner').height( parallaxElHeight - 100 );
 
 				if( $body.hasClass('side-header') ) {
 					$sliderParallaxEl.find('.slider-parallax-inner').width( parallaxElWidth );

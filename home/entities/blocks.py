@@ -8,43 +8,33 @@ from django.db import models
 
 class MemberBlock(StructBlock):
     member_name = TextBlock(label='Nom')
-    deputy_name = TextBlock(label='Representant')
     country = TextBlock(label='Pays')
     activity_fr = TextBlock(label='Activite FR')
     activity_en = TextBlock(label='Activite EN')
-    contact = TextBlock(label='Contact', required=False)
 
 
-class AboutMembersBlock(StreamBlock):
+class MemberMembersBlock(StreamBlock):
     member = MemberBlock(label='Membre', icon='user', required=False)
 
 
 class OfficerBlock(MemberBlock):
+    deputy_name = TextBlock(label='Representant')
+    contact = TextBlock(label='Contact', required=False)
     image = ImageChooserBlock()
     position_fr = TextBlock(label='Poste FR', required=False)
     position_en = TextBlock(label='Poste EN', required=False)
 
 
-class AboutOfficerBlock(StreamBlock):
+class MemberOfficerBlock(StreamBlock):
     office = OfficerBlock(label='Membre', icon='user', required=False)
 
 
-class CountryBlock(StructBlock):
-    flag = ImageChooserBlock(label='Drapeau')
-    name = TextBlock(label='Nom')
+class ObjectifBlock(StructBlock):
+    title_fr = TextBlock(label='Titre_fr')
+    title_en = TextBlock(label='Titre_en')
+    description_fr = TextBlock(label='description_fr')
+    description_en = TextBlock(label='description_en')
 
 
-class AboutCountryBlock(StreamBlock):
-    countries = CountryBlock(label='Pays Membre', required=False)
-
-
-class ProductBlock(StructBlock):
-    desc_fr = RichTextBlock(blank=False, verbose_name='Description de l\'edition FR', default='')
-    desc_en = RichTextBlock(blank=False, verbose_name='Description de l\'edition EN', default='')
-    file_fr = DocumentChooserBlock(blank=True, verbose_name='Document Version FR')
-    file_en = DocumentChooserBlock(blank=True, verbose_name='Document Version FR')
-    start_date = DateBlock(label='Date l\'edition')
-
-
-class ProductStreamBlock(StreamBlock):
-    products = ProductBlock(label='Produit', blank=True)
+class AboutObjectifBlock(StreamBlock):
+    objectives = ObjectifBlock(label='Objectifs', required=False)

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags image %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
     <!-- Bootstrap Data Table Plugin -->
@@ -19,6 +19,37 @@
 
         <div class="content-wrap">
 
+
+            <div class="container clearfix">
+                <div class="heading-block center">
+                    <h3>{% trans "Board Members" %}</h3>
+                </div>
+                {% board_members self.officers %}
+            </div>
+            <div class="line bottommargin-lg"></div>
+            <div class="section">
+                <div class="container clearfix">
+                    <div class="heading-block center">
+                        <h3>{% trans "Member countries" %}</h3>
+                    </div>
+                    <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
+                        <div class="portfolio-item pf-media pf-icons clearfix">
+
+                            <a href="javascript:void(0)">
+                                <img src="{% static 'img/map.jpg' %}" alt="{% trans "Member countries" %}">
+                            </a>
+                            <div class="portfolio-overlay">
+                                <a href="{% static 'img/map.jpg' %}" class="left-icon" data-lightbox="image"><i
+                                        class="icon-line-plus"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottommargin-lg ">
+                 {% get_images_advertising height=720 campaign='member' cls="aligncenter notopmargin nobottommargin" %}
+            </div>
             <div class="container clearfix">
 
                 <div class="heading-block center">
@@ -34,58 +65,41 @@
                 </div>
 
                 <div class="nobottommargin clearfix">
-                    <div class="tabs tabs-bordered clearfix" id="tab-2">
+                    <h4>{% trans "Membership" %}</h4>
+                    {% dynamic_trans self 'membership' as membership %}
 
-                        <ul class="tab-nav clearfix">
-                            <li><a href="#tabs-membership">{% trans "Membership" %}</a></li>
-                            <li><a href="#tabs-memberslist">{% trans "Members List" %}</a></li>
-                        </ul>
-
-                        <div class="tab-container">
-
-                            <div class="tab-content clearfix" id="tabs-membership">
-                                {% dynamic_trans self 'membership' as membership %}
-
-                                <p> {{ membership|richtext }}</p>
-                            </div>
-                            <div class="tab-content clearfix" id="tabs-memberslist">
-                                <table id="members-table" class="table table-striped table-bordered" cellspacing="0"
-                                       width="100%">
-                                    <thead>
-                                    <tr>
-                                        <th>{% trans "Name" %}</th>
-                                        <th>{% trans "Deputy" %}</th>
-                                        <th>{% trans "Country" %}</th>
-                                        <th>{% trans "Activity" %}</th>
-                                        <th>{% trans "Contact" %}</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>{% trans "Name" %}</th>
-                                        <th>{% trans "Deputy" %}</th>
-                                        <th>{% trans "Country" %}</th>
-                                        <th>{% trans "Activity" %}</th>
-                                        <th>{% trans "Contact" %}</th>
-                                    </tr>
-                                    </tfoot>
-                                    <tbody>
-                                    {% for member in self.members %}
-                                        <tr>
-                                            <td>{{ member.value.member_name }}</td>
-                                            <td>{{ member.value.deputy_name }}</td>
-                                            <td>{{ member.value.country }}</td>
-                                            {% dynamic_trans member.value 'activity' as activity %}
-                                            <td>{{ activity }}</td>
-                                            <td>{{ member.value.contact }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
+                    <p> {{ membership|richtext }}</p>
+                    <div class="divider"><i class="icon-circle"></i></div>
+                    {% if False %}
+                        <h4> {% trans "Members List" %}</h4>
+                        <table id="members-table" class="table table-striped table-bordered" cellspacing="0"
+                               width="100%">
+                            <thead>
+                            <tr>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Country" %}</th>
+                                <th>{% trans "Activity" %}</th>
+                            </tr>
+                            </thead>
+                            <tfoot>
+                            <tr>
+                                <th>{% trans "Name" %}</th>
+                                <th>{% trans "Country" %}</th>
+                                <th>{% trans "Activity" %}</th>
+                            </tr>
+                            </tfoot>
+                            <tbody>
+                            {% for member in self.members %}
+                                <tr>
+                                    <td>{{ member.value.member_name }}</td>
+                                    <td>{{ member.value.country }}</td>
+                                    {% dynamic_trans member.value 'activity' as activity %}
+                                    <td>{{ activity }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
                 </div>
 
             </div>
