@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailforms', '0003_capitalizeverbose'),
-        ('wagtailcore', '0033_auto_20170323_0108'),
+        ('wagtailcore', '0019_verbose_names_cleanup'),
         ('wagtailredirects', '0005_capitalizeverbose'),
         ('home', '0004_auto_20170331_1309'),
     ]
