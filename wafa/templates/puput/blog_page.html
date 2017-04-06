@@ -1,5 +1,5 @@
 {% extends "blog.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags puput_tags %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags puput_tags image %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 
@@ -40,8 +40,6 @@
             {% endif %}
             {% for entry in entries %}
 
-
-
                 <div class="entry clearfix">
                     <div class="entry-timeline">
                         {{ entry.date|date:"d" }}<span> {{ entry.date|date:"M" }}</span>
@@ -61,9 +59,9 @@
                         <h2><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h2>
                     </div>
                     {% categories_list entry.categories %}
-                <div class="tagcloud">
-                    {% tags_list blog_page.num_tags_entry_header entry.tags %}
-                </div>
+                    <div class="tagcloud">
+                        {% tags_list blog_page.num_tags_entry_header entry.tags %}
+                    </div>
                     <div class="line"></div>
                     <div class="entry-content">
                         <p>
@@ -78,6 +76,12 @@
                         <a href="{% entry_url entry blog_page %}" class="more-link">{% trans 'Learn more' %}</a>
                     </div>
                 </div>
+
+                {% if forloop.counter|divisibleby:3 %}
+                    <div class="bottommargin-lg ">
+                        {% get_images_advertising height=720 campaign='blog' cls="aligncenter notopmargin nobottommargin" %}
+                    </div>
+                {% endif %}
                 {% empty %}
                 <span>{% trans 'No results found.' %}</span>
             {% endfor %}

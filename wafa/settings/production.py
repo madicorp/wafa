@@ -12,6 +12,14 @@ SECRET_KEY = '38(^651wmne0(!4p7y$qf8&e6*#-u@wd%6enu#&ybto9dgv)ql'
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
+AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME']
+AWS_ACCESS_KEY_ID = env['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = env['AWS_SECRET_ACCESS_KEY']
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 COMPRESS_OFFLINE = True

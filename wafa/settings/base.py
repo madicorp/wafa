@@ -57,6 +57,8 @@ INSTALLED_APPS = [
     'event',
     'contact',
     'taggit',
+    'storages',
+    'advertising',
 ]
 
 MIDDLEWARE = [

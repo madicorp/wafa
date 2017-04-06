@@ -36,8 +36,8 @@ class Event(EventAbstract):
     location = models.CharField(default="", verbose_name=_("Location"), max_length=250)
     tags = ClusterTaggableManager(through='event.TagEventPage', blank=True)
     categories = models.ManyToManyField('event.Category', through='event.CategoryEventPage', blank=True)
-    start_date = models.DateTimeField(verbose_name=_("Event Start date"), default=datetime.datetime.today)
-    end_date = models.DateTimeField(verbose_name=_("Event End date"), default=datetime.datetime.today)
+    start_date = models.DateField(verbose_name=_("Event Start date"), default=datetime.datetime.today)
+    end_date = models.DateField(verbose_name=_("Event End date"), default=datetime.datetime.today)
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),

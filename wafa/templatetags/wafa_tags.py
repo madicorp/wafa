@@ -16,10 +16,11 @@ def menu(context, slug):
 
 
 @register.inclusion_tag("tags/header.html", takes_context=True)
-def header(context, slug):
+def header(context, slug, offset=''):
     self = context.get('self')
     return {
         'slug': slug,
+        'offset': offset,
         'request': context['request']
     }
 

@@ -78,12 +78,15 @@ msgstr "A Venir"
 msgid "Quality , A Priority"
 msgstr "La Qualité, Une Priorité"
 
+msgid "Objectivies"
+msgstr "Objectifs"
+
 
 msgid "One of the key objectives of WAFA is the quality of fertilizers."
 msgstr "L'un des principaux objectifs de la WAFA est la qualité des engrais."
 
-msgid "To achieve this objective, a close partnership with the Agricultural Research Institutes of the Region is necessary:"
-msgstr "Pour atteindre cet objectif, un partenariat étroit avec les instituts de recherche agricoles de la Région est nécessaire:"
+msgid "Many objectivies have already been considered and prioritized. We have already begun activity on three of them due to the commitment of a working group elected from among the founder members."
+msgstr "De nombreux objectifs ont déjà été retenus et priorisés, dont 3 pour lesquels nous avons déjà commencé des activités grâce à l’engagement d’un groupe de travail élu parmi les membres fondateurs."
 
 msgid "By working with agronomists and project-crop managers"
 msgstr "En Collaborant avec les agronomes et les gestionnaires de projets agricoles"
@@ -114,7 +117,7 @@ msgid "About WAFA"
 msgstr "À propos de WAFA"
 
 msgid "West African Fertilizer Professionals are united and commited!"
-msgstr "Les Professionels de l'engrais en Afrique de l'Ouest s'unissent et s'engagent !"
+msgstr "Les Professionnels de l'engrais en Afrique de l'Ouest s'unissent et s'engagent !"
 
 msgid "Board Members"
 msgstr "Membres du conseil d'administration"
@@ -218,6 +221,12 @@ msgstr "Informations sur l'événement"
 
 msgid "Details"
 msgstr "Détails"
+
+msgid "Register"
+msgstr "Participer"
+
+msgid "to"
+msgstr "à"
 
 
 #########################################################

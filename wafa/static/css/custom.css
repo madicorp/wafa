@@ -106,3 +106,13 @@
     font-size: 15px;
     font-weight: 600;
 }
+
+.event.entry-date{
+    display: table;
+}
+
+@media (min-width: 768px) {
+.margin-top-120{
+    margin-top: 120px;
+}
+}

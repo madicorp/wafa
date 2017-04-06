@@ -20,24 +20,7 @@
                 <div>{% trans "Members" %}</div>
             </a>
         </li>
-        <li class="sub-menu {% if slug == 'wafbim' or  slug == 'fermwam' %}current{% endif %}">
-            <a href="javascript:void(0)">
-                <div>{% trans "Products" %}</div>
-            </a>
-            <ul>
-                <li {% if slug == 'wafbim' %}class="current"{% endif %}>
-                    <a href="/{{ LANGUAGE_CODE }}/wafbim">
-                        <div>WAFBIM</div>
-                    </a>
-                </li>
-                <li {% if slug == 'fermwam' %}class="current"{% endif %}>
-                    <a href="/{{ LANGUAGE_CODE }}/ferwam">
-                        <div>FERWAM</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-               <li {% if slug == 'news' %}class="current"{% endif %}>
+        <li {% if slug == 'news' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/news">
                 <div>{% trans "News" %}</div>
             </a>
@@ -77,7 +60,7 @@
     <div id="top-search">
         <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
         <form name="search_form" class="search_form" method="get"
-                          action="/{{ LANGUAGE_CODE }}/news/search/">
+              action="/{{ LANGUAGE_CODE }}/news/search/">
             <input type="search" name="q" placeholder="{% trans 'Search' %}">
         </form>
     </div><!-- #top-search end -->
