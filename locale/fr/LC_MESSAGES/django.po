@@ -126,7 +126,7 @@ msgid "West African Fertilizer Professionals are united and commited!"
 msgstr "Les Professionnels de l'engrais en Afrique de l'Ouest s'unissent et s'engagent !"
 
 msgid "Board Members"
-msgstr "Membres du conseil d'administration"
+msgstr "Membres du bureau"
 
 msgid "Organization Chart / Structure"
 msgstr "Organigramme / structure"
