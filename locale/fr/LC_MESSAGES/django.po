@@ -54,6 +54,9 @@ msgstr "Evenements"
 msgid "Our"
 msgstr "Notre"
 
+msgid "Our "
+msgstr "Nos"
+
 msgid "Mission"
 msgstr "Mission"
 
@@ -111,6 +114,9 @@ msgstr "l'adoption de solutions durables spécifiques pour les cultures et les s
 #########################################################
 
 msgid "About Page"
+msgstr "À propos"
+
+msgid "About"
 msgstr "À propos"
 
 msgid "About WAFA"
@@ -243,6 +249,9 @@ msgstr "Pas encore d'événement"
 
 msgid "Our Emails"
 msgstr "Nos Emails"
+
+msgid "Our Email Address"
+msgstr "Notre adresse e-mail"
 
 msgid "Speak to Us"
 msgstr "Appelez nous"
