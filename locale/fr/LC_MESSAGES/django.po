@@ -210,6 +210,9 @@ msgstr "Aucune catégorie encore"
 msgid "No entries yet"
 msgstr "Pas encore d'articles"
 
+msgid "Click to download"
+msgstr "Cliquer pour télécharger"
+
 
 
 #########################################################
