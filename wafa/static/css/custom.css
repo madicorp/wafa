@@ -107,12 +107,17 @@
     font-weight: 600;
 }
 
-.event.entry-date{
+.event.entry-date {
     display: table;
 }
 
-@media (min-width: 768px) {
-.margin-top-120{
-    margin-top: 120px;
+.entry-link.document {
+    background-color: rgba(0, 0, 0, 0.70);
+    color: #FFFFFF;
 }
+
+@media (min-width: 768px) {
+    .margin-top-120 {
+        margin-top: 120px;
+    }
 }

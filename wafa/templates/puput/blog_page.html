@@ -39,7 +39,7 @@
                 <div class="searchTerm"><h3>{% trans 'Posts for' %} {{ search_type }} "{{ search_term }}"</h3></div>
             {% endif %}
             {% for entry in entries %}
-
+                {% is_product entry.categories as is_product %}
                 <div class="entry clearfix">
                     <div class="entry-timeline">
                         {{ entry.date|date:"d" }}<span> {{ entry.date|date:"M" }}</span>
@@ -47,34 +47,53 @@
                     </div>
                     {% if entry.header_image %}
                         <div class="entry-image">
-
                             {% image entry.header_image fill-800x240 as header_image %}
                             {% image entry.header_image original as cover %}
-                            <a href="{{ cover.url }}" data-lightbox="image"><img class="image_fade"
-                                                                                 alt="{{ entry.header_image.title }}"
-                                                                                 src="{{ header_image.url }}"></a>
+                            <a href="{{ cover.url }}" data-lightbox="image">
+                                <img class="image_fade" alt="{{ entry.header_image.title }}"
+                                     src="{{ header_image.url }}">
+                            </a>
                         </div>
                     {% endif %}
-                    <div class="entry-title">
-                        <h2><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h2>
-                    </div>
-                    {% categories_list entry.categories %}
-                    <div class="tagcloud">
-                        {% tags_list blog_page.num_tags_entry_header entry.tags %}
-                    </div>
-                    <div class="line"></div>
-                    <div class="entry-content">
-                        <p>
-                            {% if entry.excerpt %}
-                                {% dynamic_trans entry 'excerpt' as excerpt %}
-                                {{ excerpt|richtext }}
-                            {% else %}
-                                {% dynamic_trans entry 'body' as body %}
-                                {{ body|richtext|truncatewords_html:70 }}
-                            {% endif %}
-                        </p>
-                        <a href="{% entry_url entry blog_page %}" class="more-link">{% trans 'Learn more' %}</a>
-                    </div>
+                    {% if is_product %}
+                        <div class="entry-image preloader">
+                            {% dynamic_trans entry 'body' as body %}
+                            {% dynamic_trans entry 'excerpt' as excerpt %}
+                            {% product_document body as document %}
+                            <a href="{{ document.url }}" class="entry-link document" target="_blank">
+                                {{ entry.title }}
+                                <span>
+                                     {% if entry.excerpt %}
+                                         {{ excerpt|richtext|truncatewords_html:50 }}
+                                     {% else %}
+                                         {{ body|richtext|truncatewords_html:50 }}
+                                     {% endif %}
+                                </span>
+                                <span>{% trans "Click to download" %}</span>
+                            </a>
+                        </div>
+                    {% else %}
+                        <div class="entry-title">
+                            <h2><a href="{% entry_url entry blog_page %}">{{ entry.title }}</a></h2>
+                        </div>
+                        {% categories_list entry.categories %}
+                        <div class="tagcloud">
+                            {% tags_list blog_page.num_tags_entry_header entry.tags %}
+                        </div>
+                        <div class="line"></div>
+                        <div class="entry-content">
+                            <p>
+                                {% if entry.excerpt %}
+                                    {% dynamic_trans entry 'excerpt' as excerpt %}
+                                    {{ excerpt|richtext }}
+                                {% else %}
+                                    {% dynamic_trans entry 'body' as body %}
+                                    {{ body|richtext|truncatewords_html:70 }}
+                                {% endif %}
+                            </p>
+                            <a href="{% entry_url entry blog_page %}" class="more-link">{% trans 'Learn more' %}</a>
+                        </div>
+                    {% endif %}
                 </div>
 
                 {% if forloop.counter|divisibleby:3 %}
@@ -99,5 +118,6 @@
 {% endblock %}
 
 {% block extra_js %}
-
+    <script type="text/javascript" src="{% static "js/pdf.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/blog.script.js" %}"></script>
 {% endblock %}

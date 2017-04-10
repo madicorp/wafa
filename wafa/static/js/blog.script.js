@@ -3,7 +3,7 @@
 (function ($, PDFJS) {
 
     $(function () {
-        $(".preview").each(function () {
+        $(".document").each(function () {
             var elem = $(this), url = $(elem).attr("href");
             var reader = new FileReader();
             reader.onload = function (e) {
@@ -27,7 +27,7 @@
                             canvasContext: ctx,
                             viewport: viewport
                         }).then(function () {
-                            $(elem).find("img").attr("src", canvas.toDataURL()).removeClass("preloader");
+                            $(elem).parents(".entry-image").css("background-image", "url("+canvas.toDataURL()+")").css("background-size", "cover").removeClass("preloader");
                         });
 
                     });

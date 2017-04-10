@@ -2,6 +2,13 @@ from django import template
 from django.core.urlresolvers import resolve, reverse
 from django.utils.translation import activate, get_language, ugettext as _
 from contact.models import ContactPage
+from wagtail.wagtaildocs.models import get_document_model
+from django.shortcuts import get_object_or_404
+
+try:
+    from BeautifulSoup import BeautifulSoup
+except ImportError:
+    from bs4 import BeautifulSoup
 
 register = template.Library()
 
@@ -75,3 +82,17 @@ def dynamic_trans(context, obj, field_name, get_lang_fn=get_language):
 @register.simple_tag(takes_context=False)
 def split(value, separator):
     return value.split(separator)
+
+
+@register.simple_tag(takes_context=False)
+def product_document(html):
+    id = BeautifulSoup(html).find('a', attrs={'linktype': 'document'}).get("id")
+    return get_object_or_404(get_document_model(), id=id)
+
+
+@register.simple_tag(takes_context=False)
+def is_product(categories):
+    for category in categories.all():
+        if category.slug == 'wafbim' or category.slug == 'ferwam':
+            return True
+    return False
