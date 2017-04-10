@@ -1,1 +1,1 @@
-web: gunicorn wafa.wsgi --log-file -
+web: gunicorn wafa.wsgi --timeout 60 --keep-alive 5 --log-level debug
