@@ -6,7 +6,7 @@ import dj_database_url
 from .base import *
 
 env = os.environ.copy()
-DEBUG = env['DEBUG']
+DEBUG = env['DEBUG'] == "True"
 
 SECRET_KEY = '38(^651wmne0(!4p7y$qf8&e6*#-u@wd%6enu#&ybto9dgv)ql'
 db_from_env = dj_database_url.config()
