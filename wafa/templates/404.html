@@ -5,29 +5,33 @@
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
-     {% header self.slug %}
-   <section id="slider" class="slider-parallax full-screen dark error404-wrap" style="background: url({% static "img/growth-min.jpeg" %}) center;">
-			<div class="slider-parallax-inner">
+    {% header self.slug %}
+    <section id="slider" class="slider-parallax full-screen dark error404-wrap"
+             style="background: url({% static "img/growth-min.jpeg" %}) center;">
+        <div class="slider-parallax-inner">
 
-				<div class="container vertical-middle center clearfix">
+            <div class="container vertical-middle center clearfix">
 
-					<div class="error404">404</div>
+                <div class="error404">404</div>
 
-					<div class="heading-block nobottomborder">
-						<h4>{% trans "Ooopps.! The Page you were looking for, couldn't be found." %}</h4>
-						<span>{% trans "Try the search below to find matching pages:" %}</span>
-					</div>
+                <div class="heading-block nobottomborder">
+                    <h4>{% trans "Ooopps.! The Page you were looking for, couldn't be found." %}</h4>
+                    <span>{% trans "Try the search below to find matching pages:" %}</span>
+                </div>
 
-					<form action="/{{ LANGUAGE_CODE }}/news/search/" method="get" role="form" class="divcenter nobottommargin">
-						<div class="input-group input-group-lg">
-							<input name="q" type="text" class="form-control" placeholder="{% trans 'Search for Pages' %}...">
-							<span class="input-group-btn">
+                <form action="/{{ LANGUAGE_CODE }}/news/search/" method="get" role="form"
+                      class="divcenter nobottommargin">
+                    <div class="input-group input-group-lg">
+                        <input name="q" type="text" class="form-control not-dark"
+                               placeholder="{% trans 'Search for Pages' %}...">
+                        <span class="input-group-btn">
 								<button class="btn btn-danger" type="button">{% trans 'Search' %}</button>
 							</span>
-						</div>
-					</form>
+                    </div>
+                </form>
 
-				</div>
-			</div>
-		</section>
+            </div>
+        </div>
+    </section>
+    {% footer %}
 {% endblock %}
