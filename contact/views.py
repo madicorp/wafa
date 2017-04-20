@@ -27,7 +27,8 @@ def send_confirmation_email(name, email, subject, message, ref_num):
         _('Dear %s,\n\nWe received your message %s and will answer soon.\n') % (name, ref_str)
     confirmation_mail_body_p2 = \
         _('Your Message:\n\n%s\n\nSincerely,\n\nWAFA Team') % message
-    return (confirmation_mail_ref, confirmation_mail_body_p1 + confirmation_mail_body_p2, settings.CONTACT_EMAIL, [email])
+    return (
+    confirmation_mail_ref, confirmation_mail_body_p1 + confirmation_mail_body_p2, settings.CONTACT_EMAIL, [email])
 
 
 @api_view(['POST'])
@@ -36,7 +37,7 @@ def post_message(request):
     if 'POST' == request.method:
         data = request.data
         try:
-            ref_num = uuid.uuid4()
+            ref_num = str(uuid.uuid4())[:10]
             name = data['name']
             email = data['email']
             subject = data['subject']

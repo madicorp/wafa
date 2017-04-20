@@ -9,12 +9,9 @@
             reader.onload = function (e) {
                 var arrayBuffer = e.target.result;
                 var uint8Array = new Uint8Array(arrayBuffer);
-                console.log(arrayBuffer);
-
                 PDFJS.disableTextLayer = true;
                 PDFJS.getDocument(uint8Array).then(function (pdf) {
                     pdf.getPage(1).then(function (page) {
-                        console.log(page);
                         var canvas = document.createElement('canvas');
                         var viewport = page.getViewport(1.0);
                         var ctx = canvas.getContext('2d');
@@ -40,13 +37,10 @@
             xhr.onload = function (e) {
                 if (this.status == 200) {
                     var myBlob = this.response;
-                    console.log(myBlob);
                     reader.readAsArrayBuffer(myBlob);
                 }
             };
             xhr.send();
-
-
         });
     });
 

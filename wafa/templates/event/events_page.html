@@ -91,7 +91,7 @@
                                 {{ body|richtext|truncatewords_html:50 }}
                             {% endif %}
                             {% if event.link %}
-                                <a href="{{ event.link }}" class="btn btn-default">
+                                <a target="_blank" href="{{ event.link }}" class="btn btn-default">
                                     {% trans 'Register' %}
                                 </a>
                             {% endif %}

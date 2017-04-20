@@ -10,7 +10,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from contact.views import post_message
-
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 from search import views as search_views
 
 urlpatterns = [
@@ -18,6 +18,7 @@ urlpatterns = [
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
+    url('^sitemap\.xml$', sitemap),
     url(r'', include(puput_urlpatterns)),
     url(r'', include(event_urlpatterns)),
 

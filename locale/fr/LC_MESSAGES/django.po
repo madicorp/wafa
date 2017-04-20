@@ -287,3 +287,24 @@ msgid "Your Message has been sent . Wafa Team Thanks You !"
 msgstr "Votre message a été envoyé . L'équipe Wafa vous remercie!"
 
 
+#########################################################
+#: 404.html
+#########################################################
+
+msgid "Ooopps.! The Page you were looking for, couldn't be found."
+msgstr "Ooopps.! La page que vous recherchiez n'a pas pu être trouvée."
+
+msgid "Try the search below to find matching pages:"
+msgstr "Essayez la recherche ci-dessous pour trouver des pages correspondantes:"
+
+msgid "Search for Pages"
+msgstr "Recherche de pages"
+
+
+#########################################################
+#: base.html
+#########################################################
+
+msgid "The West African  Fertilizer Association (WAFA) was born from the will of the fertilizer sector players in the region to join forces to meet the fertilizers challenges and it represents all ECOWAS countries member."
+msgstr "L'Association des engrais de l'Afrique de l'Ouest (WAFA) est née de la volonté des acteurs du secteur des engrais dans la région de s'unir pour relever les défis des engrais et représente tous les pays membres de la CEDEAO."
+
