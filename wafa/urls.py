@@ -23,10 +23,10 @@ urlpatterns = [
 ]
 urlpatterns += solid_i18n_patterns(
 
-    url(r'', include(puput_urlpatterns)),
-    url(r'', include(event_urlpatterns)),
+    url('', include(puput_urlpatterns)),
+    url('', include(event_urlpatterns)),
     url(r'^search/$', search_views.search, name='search'),
-    url(r'', include(wagtail_urls)),
+    url('', include(wagtail_urls)),
     url(r'^contact/sendemail.php', post_message),
 )
 
