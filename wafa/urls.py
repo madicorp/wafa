@@ -19,11 +19,12 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url('^sitemap\.xml$', sitemap),
-    url(r'', include(puput_urlpatterns)),
-    url(r'', include(event_urlpatterns)),
 
 ]
 urlpatterns += solid_i18n_patterns(
+
+    url(r'', include(puput_urlpatterns)),
+    url(r'', include(event_urlpatterns)),
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),
     url(r'^contact/sendemail.php', post_message),
