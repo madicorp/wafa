@@ -1,5 +1,5 @@
-BeautifulSoup
 appdirs==1.4.1
+BeautifulSoup==3.2.1
 beautifulsoup4==4.5.3
 boto3==1.4.4
 botocore==1.5.35
@@ -36,6 +36,7 @@ requests==2.13.0
 rjsmin==1.0.12
 s3transfer==0.1.10
 six==1.10.0
+solid-i18n==1.4.1
 static3==0.7.0
 Unidecode==0.4.20
 wagtail==1.9

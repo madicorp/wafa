@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.conf.urls import include, url
-from django.conf.urls.i18n import i18n_patterns
+from solid_i18n.urls import solid_i18n_patterns
 from django.contrib import admin
 from puput.urls import urlpatterns as puput_urlpatterns
 from event.urls import urlpatterns as event_urlpatterns
@@ -23,11 +23,10 @@ urlpatterns = [
     url(r'', include(event_urlpatterns)),
 
 ]
-urlpatterns += i18n_patterns(
+urlpatterns += solid_i18n_patterns(
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include(wagtail_urls)),
     url(r'^contact/sendemail.php', post_message),
-    prefix_default_language=True
 )
 
 if settings.DEBUG:

@@ -70,7 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
+    'solid_i18n.middleware.SolidLocaleMiddleware',
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 
@@ -124,6 +124,8 @@ LANGUAGE_CODE = 'fr'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+SOLID_I18N_HANDLE_DEFAULT_PREFIX = True
 
 USE_L10N = True
 
