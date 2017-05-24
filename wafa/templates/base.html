@@ -20,14 +20,11 @@
             {% endwith %}
         {% endblock %}
     </title>
-    <meta name="title" content="WAFA FERTILIZER |  {% block title %}
+    <meta name="title" content="WAFA FERTILIZER |
             {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
-        {% endblock %}
-        {% block title_suffix %}
             {% with self.get_site.site_name as site_name %}
                 {% if site_name %}- {{ site_name }}{% endif %}
-            {% endwith %}
-        {% endblock %}"/>
+            {% endwith %}"/>
     <meta name="description"
           content="{% trans "The association will aim, to promote access to (availability , affordability, timing) adns efficient use of quality and appropriate fertilizers among the farming population of West Africa." %}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
