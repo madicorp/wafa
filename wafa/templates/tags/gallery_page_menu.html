@@ -1,0 +1,41 @@
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+<div id="page-menu" class="no-sticky">
+
+    <div id="page-menu-wrap">
+
+        <div class="container clearfix">
+            <nav>
+                <ul>
+                    <li {% if page_slug == 'galleries' %} class="current"  {% endif %}>
+                        <a href="/{{ LANGUAGE_CODE }}/activities_gallery/gallery">
+                            <div>{% trans "Galleries" %}{{ self.url }}</div>
+                        </a>
+                    </li>
+                    <li {% if page_slug == 'galleries_list' %} class="current"  {% endif %}>
+                        <a href="/{{ LANGUAGE_CODE }}/activities_gallery/gallerylist">
+                            <div>{% trans "Galleries List" %}</div>
+                        </a>
+                    </li>
+                    <!--li {% if page_slug == 'photos' %} class="current"  {% endif %}>
+                        <a href="/{{ LANGUAGE_CODE }}/activities_gallery/photo">
+                            <div>{% trans "Photos" %}</div>
+                        </a>
+                    </li>
+                    <li {% if page_slug == 'photos_list' %} class="current"  {% endif %}>
+                        <a href="/{{ LANGUAGE_CODE }}/activities_gallery/photolist">
+                            <div>{% trans "Photos List" %}</div>
+                        </a>
+                    </li-->
+                </ul>
+            </nav>
+
+            <div id="page-submenu-trigger"><i class="icon-reorder"></i></div>
+
+        </div>
+
+    </div>
+
+</div>

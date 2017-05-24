@@ -3,24 +3,22 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>WAFA FERTILIZER |
-        {% block title %}{{ events_page.title }}{% if events_page.description %} | {{ events_page.description }}
+    <title>WAFA FERTILIZER | {% block title %}{{ events_page.title }}{% if events_page.description %} | {{ events_page.description }}
         {% endif %}{% endblock title %}</title>
+
     <meta charset="utf-8"/>
 
     <meta name="author" content="MADICORP"/>
+    <meta name="ROBOTS" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="title" content="
-
-
-
-
-
-
-
             {% block meta_title %}{% if events_page.seo_title %}{{ events_page.seo_title }}{% else %}{{ events_page.title }}{% endif %}{% endblock meta_title %}"/>
     <meta name="description"
           content="{% block meta_description %}{{ events_page.search_description }}{% endblock meta_description %}"/>
+    <meta name="revisit-after" content="3 month">
+    <meta name="keywords"
+          content="{% trans "WAFA, Fertilizer, West African, ECOWAS, CEDEAO, Africa, West, Fertilizers, Association, agriculture, food,  private sector, environment, sustainability, quality, agricultural research, subsidies, Wafbim" %}"/>
+    <!-- Fertilizer,West African, Agriculture -->
     {% block social_share %}{% endblock social_share %}
     <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
 
@@ -55,6 +53,11 @@
                             <div id="post-list-footer">
                                 {% upcoming_events events_page.num_last_events %}
                             </div>
+                            <div class="fancy-title title-border topmargin">
+                                <h4>{% trans "Gallery" %}</h4>
+                            </div>
+
+                            {% gallery_widget 8 %}
                         </div>
                         <div class="widget clearfix">
                             {% get_images_advertising height=720 campaign='event' cls="aligncenter" %}

@@ -20,14 +20,19 @@
                 <div>{% trans "Members" %}</div>
             </a>
         </li>
-        <li {% if slug == 'news' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/news">
-                <div>{% trans "News" %}</div>
+        <li {% if slug == 'market-news' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/market-news">
+                <div>{% trans "Market News" %}</div>
             </a>
         </li>
-        <li {% if slug == 'events' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/events">
-                <div>{% trans "Events" %}</div>
+        <li {% if slug == 'publications' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/publications">
+                <div>{% trans "Publications" %}</div>
+            </a>
+        </li>
+        <li {% if slug == 'activities' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/activities">
+                <div>{% trans "Activities" %}</div>
             </a>
         </li>
         <li {% if slug == 'contact' %}class="current"{% endif %}>
@@ -60,7 +65,7 @@
     <div id="top-search">
         <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
         <form name="search_form" class="search_form" method="get"
-              action="/{{ LANGUAGE_CODE }}/news/search/">
+              action="/{{ LANGUAGE_CODE }}/publications/search/">
             <input type="search" name="q" placeholder="{% trans 'Search' %}">
         </form>
     </div><!-- #top-search end -->

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'location_field.apps.DefaultConfig',
@@ -59,7 +60,10 @@ INSTALLED_APPS = [
     'taggit',
     'storages',
     'advertising',
+    'photologue',
+    'sortedm2m',
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',

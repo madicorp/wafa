@@ -11,6 +11,7 @@ from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from contact.views import post_message
 from wagtail.contrib.wagtailsitemaps.views import sitemap
+
 from search import views as search_views
 
 urlpatterns = [
@@ -25,9 +26,10 @@ urlpatterns += solid_i18n_patterns(
 
     url('', include(puput_urlpatterns)),
     url('', include(event_urlpatterns)),
+    url(r'^activities_gallery/', include('photologue.urls', namespace='photologue')),
     url(r'^search/$', search_views.search, name='search'),
     url('', include(wagtail_urls)),
-    url(r'^contact/sendemail.php', post_message),
+    url(r'^contact/sendemail\.php', post_message),
 )
 
 if settings.DEBUG:

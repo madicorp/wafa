@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags image %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% page_title "Photo gallery" "West African Fertilizer Professionals are united and commited!" %}
+    <!-- Page Sub Menu
+       ============================================= -->
+    {% page_menu "" %}
+    <!-- #page-menu end -->
+
+    <section id="content">
+        <div class="content-wrap">
+
+            <div class="container clearfix">
+                <div class="divider"><i class="icon-circle"></i></div>
+
+                <div class="col_full clearfix">
+
+                    <h3>{{ gallery.title }}</h3> <span
+                        class="subtitle">{% trans "Published" %} {{ gallery.date_added }}</span>
+
+                    <div class="masonry-thumbs col-3" data-big="2" data-lightbox="gallery">
+                        {% if gallery.description %}{{ gallery.description|safe }}{% endif %}
+                        {% for photo in gallery.public %}
+                            <a href="{{ photo.image.url }}" data-lightbox="gallery-item">
+                                <img class="image_fade" src="{{ photo.image.url }}" alt="{{ photo.title }}">
+                            </a>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- #content end -->
+    {% footer %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Bootstrap Data Table Plugin -->
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% load i18n %}
+<h4>{% trans "Filter by year" %}</h4>
+<ul id="portfolio-filter" class="portfolio-filter clearfix" data-container="#portfolio">
+
+    <li class="activeFilter">
+        <a href="#" data-filter="*">{% trans "All" %}</a>
+    </li>
+    {% for date in date_list %}
+        <li>
+            <a href="#" data-filter=".pf-{{ date|date:"Y" }}">{{ date|date:"Y" }}</a>
+        </li>
+    {% endfor %}
+</ul>

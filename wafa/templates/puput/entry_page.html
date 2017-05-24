@@ -12,7 +12,7 @@
     {{ block.super }}{% endif %}{% endblock meta_description %}
 {% block social_share %}
     {% image blog_page.header_image fill-800x450 as share_image %}
-    <meta property="og:title" content="{{ blog_page.title }}"/>
+    <meta property="og:title" content="WAFA FERTILIZER | {{ blog_page.title }}"/>
     <meta property="og:description" content="{{ blog_page.description }}"/>
     <meta property="og:url" content="{% canonical_url %}"/>
     {% if blog_page.header_image %}

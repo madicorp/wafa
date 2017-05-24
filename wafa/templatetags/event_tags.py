@@ -7,6 +7,8 @@ from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
 from event.urls import get_event_url, get_feeds_url
 from event.models import Category, Tag
 
+from photologue.models import Photo, Gallery
+
 register = Library()
 
 
@@ -44,6 +46,15 @@ def categories_list(context, categories_qs=None):
     return context
 
 
+@register.inclusion_tag('event/tags/gallery_widget.html', takes_context=True)
+def gallery_widget(context, limit=None):
+    photos = Photo.objects.on_site().is_public()
+    if limit:
+        photos = photos[:limit]
+    context['gallery_photos'] = photos
+    return context
+
+
 @register.simple_tag(takes_context=True)
 def event_url(context, event, events_page):
     return get_event_url(event, events_page.page_ptr, context['request'].site.root_page)
@@ -51,7 +62,6 @@ def event_url(context, event, events_page):
 
 @register.simple_tag(takes_context=True)
 def canonical_url(context, event=None):
-
     if event and resolve(context.request.path_info).url_name == 'wagtail_serve':
         return context.request.build_absolute_uri(event_url(context, event, event.events_page))
     return context.request.build_absolute_uri()

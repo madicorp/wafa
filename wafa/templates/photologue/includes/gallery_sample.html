@@ -1,0 +1,32 @@
+{% load i18n %}
+
+<article class="col-md-3 portfolio-item pf-{{ gallery.date_added|date:"Y" }} pf-illustrations">
+    <div class="portfolio-image">
+        <div class="fslider" data-arrows="false" data-speed="400" data-pause="4000">
+            <div class="flexslider">
+                <div class="slider-wrap">
+                    {% for photo in gallery.sample %}
+                        <div class="slide">
+                            <a href="{{ photo.get_absolute_url }}">
+                                <img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}"></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-overlay" data-lightbox="gallery">
+
+            {% for photo in gallery.sample %}
+                <a href="{{ photo.image.url }}" class="left-icon" data-lightbox="gallery-item">
+                    <i class="icon-line-stack-2"></i>
+                </a>
+            {% endfor %}
+            <a href="{{ gallery.get_absolute_url }}" class="right-icon"><i
+                    class="icon-line-ellipsis"></i></a>
+        </div>
+    </div>
+    <div class="portfolio-desc">
+        <h3><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h3>
+        <span><a href="#"><a href="#">{% trans "Published" %}</a>, <a href="#">{{ gallery.date_added }}</a></span>
+    </div>
+</article>

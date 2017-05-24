@@ -8,14 +8,17 @@
         {% endif %}{% endblock title %}</title>
 
     <meta name="author" content="MADICORP"/>
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="3 month">
+    <meta name="keywords"
+          content="{% trans "WAFA, Fertilizer, West African, ECOWAS, CEDEAO, Africa, West, Fertilizers, Association, agriculture, food,  private sector, environment, sustainability, quality, agricultural research, subsidies, Wafbim" %}"/>
+    <!-- Fertilizer,West African, Agriculture -->
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="title" content="
-
-
-            {% block meta_title %}{% if blog_page.seo_title %}{{ blog_page.seo_title }}{% else %}{{ blog_page.title }}{% endif %}{% endblock meta_title %}"/>
+    <meta name="title" content="WAFA FERTILIZER | {% block meta_title %}{% if blog_page.seo_title %}{{ blog_page.seo_title }}{% else %}{{ blog_page.title }}{% endif %}{% endblock meta_title %}"/>
     <meta name="description"
           content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}"/>
+    <!-- Fertilizer,West African, Agriculture -->
     {% block social_share %}{% endblock social_share %}
 
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
@@ -58,29 +61,6 @@
                                 <i class="icon-rss"></i>
                             </a>
                         </div>
-                        <div class="widget clearfix">
-
-                            <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
-                                <ul class="tab-nav clearfix">
-                                    <li><a href="#tabs-popular">{% trans 'Popular Posts' %}</a></li>
-                                    <li><a href="#tabs-recent">{% trans 'Last Posts' %}</a></li>
-                                </ul>
-                                <div class="tab-container">
-
-                                    <div class="tab-content clearfix" id="tabs-popular">
-                                        <div id="popular-post-list-sidebar">
-                                            {% popular_entries blog_page.num_popular_entries %}
-                                        </div>
-                                    </div>
-                                    <div class="tab-content clearfix" id="tabs-recent">
-                                        <div id="recent-post-list-sidebar">
-                                            {% recent_entries blog_page.num_last_entries %}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="line"></div>
                         {% if blog_page.display_categories %}
                             <ul>

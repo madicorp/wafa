@@ -96,3 +96,10 @@ def is_product(categories):
         if category.slug == 'wafbim' or category.slug == 'ferwam':
             return True
     return False
+
+
+@register.inclusion_tag("tags/gallery_page_menu.html", takes_context=False)
+def page_menu(page_slug):
+    return {
+        'page_slug': page_slug,
+    }

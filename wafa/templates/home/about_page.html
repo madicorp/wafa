@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="bottommargin-lg ">
-                 {% get_images_advertising height=720 campaign='about' cls="aligncenter notopmargin nobottommargin" %}
+                {% get_images_advertising height=720 campaign='about' cls="aligncenter notopmargin nobottommargin" %}
             </div>
 
             <div class="container clearfix">
@@ -89,53 +89,54 @@
                             {% trans "One of the key objectives of WAFA is the quality of fertilizers." %}
                         </p>
                     </div>
-                    {% get_objectif_at self.objectives 0 as first %}
-                    {% get_objectif_at self.objectives 1 as secound %}
-                    {% get_objectif_at self.objectives 2 as third %}
-                    <div data-animate="fadeInLeft" class="col_one_third nobottommargin">
-                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
-                            <div class="fbox-icon">
-                                <a href="javascript:void(0)"><i class="i-alt">1</i></a>
+                    {% if self.objectives %}
+                        {% get_objectif_at self.objectives 0 as first %}
+                        {% get_objectif_at self.objectives 1 as secound %}
+                        {% get_objectif_at self.objectives 2 as third %}
+                        <div data-animate="fadeInLeft" class="col_one_third nobottommargin">
+                            <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                                <div class="fbox-icon">
+                                    <a href="javascript:void(0)"><i class="i-alt">1</i></a>
+                                </div>
+                                {% dynamic_trans first.value 'title' as first_title %}
+                                {% dynamic_trans first.value 'description' as first_description %}
+                                {% format_quality_text first_description as first_description %}
+                                <h3>
+                                    {{ first_title }}
+                                    <span class="subtitle"> {{ first_description |richtext }}</span>
+                                </h3>
                             </div>
-                            {% dynamic_trans first.value 'title' as first_title %}
-                            {% dynamic_trans first.value 'description' as first_description %}
-                            {% format_quality_text first_description as first_description %}
-                            <h3>
-                                {{ first_title }}
-                                <span class="subtitle"> {{ first_description |richtext }}</span>
-                            </h3>
-                        </div>
 
-                    </div>
-
-                    <div data-animate="fadeInUp" class="col_one_third nobottommargin">
-                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
-                            <div class="fbox-icon">
-                                <a href="javascript:void(0)"><i class="i-alt">2</i></a>
-                            </div>
-                            {% dynamic_trans secound.value 'title' as secound_title %}
-                            {% dynamic_trans secound.value 'description' as secound_description %}
-                            {% format_quality_text secound_description as secound_description %}
-                            <h3>
-                                {{ secound_title }}
-                                <span class="subtitle">{{ secound_description|richtext }} </span>
-                            </h3>
                         </div>
-                    </div>
-                    <div data-animate="fadeInRight" class="col_one_third nobottommargin col_last">
-                        <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
-                            <div class="fbox-icon">
-                                <a href="javascript:void(0)"><i class="i-alt">3</i></a>
+                        <div data-animate="fadeInUp" class="col_one_third nobottommargin">
+                            <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                                <div class="fbox-icon">
+                                    <a href="javascript:void(0)"><i class="i-alt">2</i></a>
+                                </div>
+                                {% dynamic_trans secound.value 'title' as secound_title %}
+                                {% dynamic_trans secound.value 'description' as secound_description %}
+                                {% format_quality_text secound_description as secound_description %}
+                                <h3>
+                                    {{ secound_title }}
+                                    <span class="subtitle">{{ secound_description|richtext }} </span>
+                                </h3>
                             </div>
-                            {% dynamic_trans third.value 'title' as third_title %}
-                            {% dynamic_trans third.value 'description' as third_description %}
-                            {% format_quality_text third_description as third_description %}
-                            <h3>
-                                {{ third_title }}
-                                <span class="subtitle">{{ third_description |richtext }} </span>
-                            </h3>
                         </div>
-                    </div>
+                        <div data-animate="fadeInRight" class="col_one_third nobottommargin col_last">
+                            <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
+                                <div class="fbox-icon">
+                                    <a href="javascript:void(0)"><i class="i-alt">3</i></a>
+                                </div>
+                                {% dynamic_trans third.value 'title' as third_title %}
+                                {% dynamic_trans third.value 'description' as third_description %}
+                                {% format_quality_text third_description as third_description %}
+                                <h3>
+                                    {{ third_title }}
+                                    <span class="subtitle">{{ third_description |richtext }} </span>
+                                </h3>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="clear"></div>
                 </div>
             </div>
