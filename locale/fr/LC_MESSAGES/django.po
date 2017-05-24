@@ -352,3 +352,7 @@ msgstr "Galeries"
 msgid "Discover our gallery"
 msgstr "Découvrez notre galerie"
 
+
+msgid "Open Gallery"
+msgstr "Ouvrir galerie"
+

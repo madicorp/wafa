@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags image %}
+{% block body_class %}stretched{% endblock %}
+{% block extra_css %}
+
+{% endblock %}
+
+{% block content %}
+    {% header self.slug %}
+    <div class="clear"></div>
+    {% page_title "Photo gallery" "West African Fertilizer Professionals are united and commited!" %}
+    <!-- Page Sub Menu
+       ============================================= -->
+    {% page_menu "galleries" %}
+    <!-- #page-menu end -->
+
+    <section id="content">
+
+        <div class="content-wrap nobottompadding">
+
+            <div class="container clearfix">
+
+                <!-- Portfolio Filter
+                ============================================= -->
+                {% include "photologue/includes/gallery_filter.html" %}
+                <!-- #portfolio-filter end -->
+
+                <div id="portfolio-shuffle" class="portfolio-shuffle" data-container="#portfolio">
+                    <i class="icon-random"></i>
+                </div>
+
+
+                <!-- Portfolio Items
+                ============================================= -->
+                <div id="portfolio" class="portfolio grid-container portfolio-1 clearfix">
+                    {% if object_list %}
+                        {% for gallery in object_list %}
+                            <article class="portfolio-item pf-graphics pf-{{ gallery.date_added|date:"Y" }} clearfix">
+                                <div class="portfolio-image">
+                                    <div class="fslider" data-arrows="false">
+                                        <div class="flexslider">
+                                            <div class="slider-wrap">
+                                                {% for photo in gallery.sample %}
+                                                    <div class="slide">
+                                                        <a href="{{ photo.get_absolute_url }}">
+                                                            <img src="{{ photo.get_thumbnail_url }}"
+                                                                 alt="{{ photo.title }}">
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="portfolio-overlay" data-lightbox="gallery">
+
+
+                                        {% for photo in gallery.sample %}
+                                            <a href="{{ photo.image.url }}" class="left-icon"
+                                               data-lightbox="gallery-item">
+                                                <i class="icon-line-stack-2"></i>
+                                            </a>
+                                        {% endfor %}
+                                        <a href="{{ gallery.get_absolute_url }}" class="right-icon"><i
+                                                class="icon-line-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                                <div class="portfolio-desc">
+                                    <h3><a href="{{ gallery.get_absolute_url }}">{{ gallery.title }}</a></h3>
+                                    <ul class="iconlist">
+                                        <li><i class="icon-ok"></i>
+                                            <strong>{% trans "Published" %}</strong> {{ gallery.date_added }}</li>
+                                    </ul>
+                                    <a href="{{ gallery.get_absolute_url }}" class="button button-3d noleftmargin">
+                                        {% trans "Open Gallery" %}
+                                    </a>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                        <p>{% trans "No galleries were found" %}.</p>
+                    {% endif %}
+
+                </div><!-- #portfolio end -->
+
+                <div class="pagination-container topmargin nobottommargin">
+                    {% include "photologue/includes/paginator.html" %}
+
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- #content end -->
+    {% footer %}
+{% endblock %}
+
+{% block extra_js %}
+    <!-- Bootstrap Data Table Plugin -->
+
+
+{% endblock %}
