@@ -49,7 +49,7 @@ def categories_list(context, categories_qs=None):
 @register.inclusion_tag('event/tags/gallery_widget.html', takes_context=True)
 def gallery_widget(context, limit=None):
     photos = Photo.objects.on_site().is_public()
-    if limit:
+    if limit and len(photos) > 0:
         photos = photos[:limit]
     context['gallery_photos'] = photos
     return context
