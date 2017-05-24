@@ -48,8 +48,6 @@ msgstr "Statistique"
 msgid "Events"
 msgstr "Evenements"
 
-msgid "Activities"
-msgstr "Activités"
 
 #########################################################
 #:  home/templates/home/home_page.html
