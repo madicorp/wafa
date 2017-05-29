@@ -35,6 +35,11 @@
                 <div>{% trans "Activities" %}</div>
             </a>
         </li>
+        <li {% if slug == 'blog' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/blog">
+                <div>{% trans "Blog" %}</div>
+            </a>
+        </li>
         <li {% if slug == 'contact' %}class="current"{% endif %}>
             <a href="/{{ LANGUAGE_CODE }}/contact">
                 <div>{% trans "Contact" %}</div>

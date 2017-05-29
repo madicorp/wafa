@@ -121,3 +121,11 @@
         margin-top: 120px;
     }
 }
+
+.product-prev.preloader {
+    height: inherit;
+}
+
+.post-timeline .entry-timeline span {
+    font-size: 10px
+}

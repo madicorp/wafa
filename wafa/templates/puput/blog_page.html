@@ -42,7 +42,7 @@
                 {% is_product entry.categories as is_product %}
                 <div class="entry clearfix">
                     <div class="entry-timeline">
-                        {{ entry.date|date:"d" }}<span> {{ entry.date|date:"M" }}</span>
+                        {{ entry.date|date:"d" }}<span> {{ entry.date|date:"M" }} {{ entry.date|date:"Y" }}</span>
                         <div class="timeline-divider"></div>
                     </div>
                     {% if entry.header_image %}
@@ -56,7 +56,7 @@
                         </div>
                     {% endif %}
                     {% if is_product %}
-                        <div class="entry-image preloader">
+                        <div class="product-prev entry-image preloader">
                             {% dynamic_trans entry 'body' as body %}
                             {% dynamic_trans entry 'excerpt' as excerpt %}
                             {% product_document body as document %}
