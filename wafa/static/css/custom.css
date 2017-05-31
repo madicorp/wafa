@@ -129,3 +129,7 @@
 .post-timeline .entry-timeline span {
     font-size: 10px
 }
+
+#content .rich-text p{
+    margin-bottom: 15px;
+}
