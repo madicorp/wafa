@@ -43,7 +43,7 @@ msgid "Publications"
 msgstr "Publications"
 
 msgid "Market News"
-msgstr "Statistique"
+msgstr "Statistiques"
 
 msgid "Events"
 msgstr "Evenements"
