@@ -43,7 +43,7 @@
                                                 {% for photo in gallery.sample %}
                                                     <div class="slide">
                                                         <a href="{{ photo.get_absolute_url }}">
-                                                            <img src="{{ photo.get_thumbnail_url }}"
+                                                            <img src="{{ photo.image.url }}"
                                                                  alt="{{ photo.title }}">
                                                         </a>
                                                     </div>
