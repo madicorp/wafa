@@ -14,14 +14,14 @@
                         <a href="{{ header_image.url }}" class="left-icon"
                            data-lightbox="image"><i
                                 class="icon-line-plus"></i></a>
-                        <a href="/{{ LANGUAGE_CODE }}/events" class="right-icon">
+                        <a href="/{{ LANGUAGE_CODE }}/activities" class="right-icon">
                             <i class="icon-line-ellipsis"></i>
                         </a>
                     </div>
                 {% endif %}
             </div>
             <div class="portfolio-desc">
-                <h3><a href="/{{ LANGUAGE_CODE }}/events">{{ event.title }}</a></h3>
+                <h3><a href="/{{ LANGUAGE_CODE }}/activities">{{ event.title }}</a></h3>
                 <span>
                     {{ event.start_date|date:"d M Y" }} -
                     {{ event.end_date|date:"d M Y" }} /
