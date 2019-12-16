@@ -20,7 +20,7 @@ django-storages==1.5.2
 django-taggit==0.22.0
 django-toolbelt==0.0.1
 django-treebeard==4.1.0
-djangorestframework==3.5.4
+djangorestframework==3.9.1
 docutils==0.13.1
 ExifRead==2.1.2
 futures==3.0.5
