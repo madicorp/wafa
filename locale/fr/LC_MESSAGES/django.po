@@ -138,6 +138,10 @@ msgid "Member countries"
 msgstr "Pays membres"
 
 
+msgid "Partners"
+msgstr "Partenaires"
+
+
 
 #########################################################
 #:  home/templates/home/member_page.html
@@ -356,3 +360,16 @@ msgstr "Découvrez notre galerie"
 msgid "Open Gallery"
 msgstr "Ouvrir galerie"
 
+
+#########################################################
+#: footer.html
+#########################################################
+
+msgid "Subscribe to"
+msgstr "Abonnez-vous à la"
+
+msgid "Send"
+msgstr "Envoyez"
+
+msgid "Enter your Email"
+msgstr "Entrer votre Email"

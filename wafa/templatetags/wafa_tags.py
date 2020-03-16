@@ -57,15 +57,14 @@ def change_lang(context, lang=None, *args, **kwargs):
     path = context['request'].path
     url_parts = resolve(path)
 
-    url = path
     cur_language = get_language()
     try:
         activate(lang)
-        url = reverse(url_parts.view_name, args=url_parts.args, kwargs=url_parts.kwargs)
+        path = reverse(url_parts.view_name, args=url_parts.args, kwargs=url_parts.kwargs)
     finally:
         activate(cur_language)
 
-    return "%s" % url
+    return "%s" % path
 
 
 @register.simple_tag(name='dynamic_trans', takes_context=True)

@@ -3,7 +3,7 @@ A wagtail App
 
 ## Requirements
 
-Python 2.7
+Python >= 2.7
 
 ## Install work environment
 
@@ -33,6 +33,14 @@ Install dependencies <br>
 
 Deployed on `http://127.0.0.1:8000/` <br>
 Admin page accessible at `http://127.0.0.1:8000/admin/`
+
+## Update model
+
+`./manage.py makemigrations` <br>
+`./manage.py migrate`
+
+## Update i18n
+`./manage.py compilemessages`
 
 ## Deploy on prod
 

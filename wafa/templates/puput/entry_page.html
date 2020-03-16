@@ -3,7 +3,7 @@
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 {% endblock %}
-{% block title %}{% if search_term %}{{ search_term }} | {{ blog_page.title }}{% else %}{{ block.super }}
+{% block title %}{% if search_term %}{{ search_term }} | {{ self.title }}{% else %}{{ block.super }}
 {% endif %}{% endblock title %}
 
 {% block meta_title %}{% if search_term %}{% trans 'Entries for' %} {{ search_type }} {{ search_term }}{% else %}
@@ -11,19 +11,21 @@
 {% block meta_description %}{% if search_term %}{% trans 'Entries for' %} {{ search_type }} {{ search_term }}{% else %}
     {{ block.super }}{% endif %}{% endblock meta_description %}
 {% block social_share %}
-    {% image blog_page.header_image fill-800x450 as share_image %}
-    <meta property="og:title" content="WAFA FERTILIZER | {{ blog_page.title }}"/>
-    <meta property="og:description" content="{{ blog_page.description }}"/>
+    {% image self.header_image fill-800x450 as share_image %}
+    <meta property="og:title" content="WAFA FERTILIZER | {{ self.title }}"/>
+    <meta property="og:description" content="{{ self.description }}"/>
     <meta property="og:url" content="{% canonical_url %}"/>
-    {% if blog_page.header_image %}
+    {% if self.header_image %}
         <meta property="og:image" content="{% image_url share_image.url %}"/>
         <meta property="og:image:width" content="800"/>
         <meta property="og:image:height" content="450"/>
         <meta name="twitter:image" content="{% image_url share_image.url %}"/>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:domain" content="{{ page.get_site.root_url }}">
     {% endif %}
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="{{ blog_page.title }}"/>
-    <meta name="twitter:description" content="{{ blog_page.description }}"/>
+    <meta name="twitter:title" content="{{ self.title }}"/>
+    <meta name="twitter:description" content="{{ self.description }}"/>
 {% endblock social_share %}
 {% block content %}
 
@@ -77,13 +79,12 @@
                     <span>{% trans "Share this Post" %}:</span>
                     <div style="display: inline-block">
                         {% entry_url self blog_page as url %}
-
                         <div style="margin-left: 10px">
                             {% social_widget_render "google/plus_share_button.html" href=url %}
                         </div>
 
                         <div style="margin-left: 10px">
-                            {% social_widget_render "twitter/share_button.html" href=url %}
+                            {% social_widget_render "twitter/share_button.html" href=request.build_absolute_uri %}
                         </div>
                         <div style="margin-left: 10px">
                             {% social_widget_render "facebook/share_button.html" href=url %}

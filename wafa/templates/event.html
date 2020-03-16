@@ -3,7 +3,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>WAFA FERTILIZER | {% block title %}{{ events_page.title }}{% if events_page.description %} | {{ events_page.description }}
+    <title>WAFA FERTILIZER |
+        {% block title %}{{ events_page.title }}{% if events_page.description %} | {{ events_page.description }}
         {% endif %}{% endblock title %}</title>
 
     <meta charset="utf-8"/>
@@ -12,6 +13,7 @@
     <meta name="ROBOTS" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="title" content="
+
             {% block meta_title %}{% if events_page.seo_title %}{{ events_page.seo_title }}{% else %}{{ events_page.title }}{% endif %}{% endblock meta_title %}"/>
     <meta name="description"
           content="{% block meta_description %}{{ events_page.search_description }}{% endblock meta_description %}"/>
@@ -23,8 +25,10 @@
     <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
 
     <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 8]>
+    <script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300,300italic,100italic,100,400italic,500,500italic,700,900,700italic,900italic'
           rel='stylesheet' type='text/css'>
     {% compress css %}
@@ -75,6 +79,13 @@
     {% footer %}
 </div>
 {% compress js %}
+    <!-- Social Media scripts
+============================================= -->
+    <script async defer crossorigin="anonymous"
+            src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+
     <!-- External JavaScripts
 ============================================= -->
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
@@ -96,8 +107,8 @@
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
         a = s.createElement(o),
             m = s.getElementsByTagName(o)[0];
         a.async = 1;

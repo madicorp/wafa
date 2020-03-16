@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    container_name: wafa_db
+    image: postgres:alpine
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+    - ./docker/postgres/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    - wafa_db:/var/lib/postgresql/data
+    ports:
+    - '5432:5432'
+  web:
+    container_name: wafa_web
+    build:
+      dockerfile: docker/wafa/Dockerfile
+      context: .
+    volumes:
+    - /c/Users/sdiop/Documents/wafa:/usr/src/wafa
+    env_file:
+      - .env
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+    - '8000:8000'
+
+volumes:
+    wafa_db:

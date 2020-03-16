@@ -18,19 +18,25 @@
                 <div class="heading-block center">
                     <h3>{% trans "About WAFA" %}</h3>
                 </div>
-                {% dynamic_trans self 'company_desc' as company_desc %}
-                <p>{{ company_desc|richtext }}</p>
+                <div class="row">
+                    <!-- ===========Entry Image============== -->
+                    {% if self.header_image %}
+                        <div class="entry-image">
+                            {% image self.header_image fill-800x240 as header_image %}
+                            {% image self.header_image original as cover %}
+                            <a href="{{ cover.url }}" data-lightbox="image">
+                                <img class="image_fade" alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
+                            </a>
+                        </div><!-- .entry-image end -->
+                    {% endif %}
+                    {% dynamic_trans self 'company_desc' as company_desc %}
+                    <p>{{ company_desc|richtext }}</p>
+                </div>
             </div>
             <div class="line bottommargin-lg"></div>
             <div class="section">
                 <div class="container clearfix">
-                    <div class="col_two_fifth nobottommargin">
-                        <img class="margin-top-120" data-animate="fadeInLeft" src="{% static 'img/bulk-min.png' %}"
-                             alt="our-mission">
-                    </div>
-
-                    <div class="col_three_fifth nobottommargin col_last">
-
+                    <div class="col_half nobottommargin">
                         <div class="heading-block fancy-title title-bottom-border">
                             <h2>{% trans "Our" %} <span>{% trans "Vision" %}</span>
                             </h2>
@@ -40,33 +46,23 @@
                             {% dynamic_trans self 'vision' as vision %}
                             {{ vision|richtext }}
                         </p>
+                    </div>
 
+                    <div class="col_half nobottommargin col_last">
+                        <div class="heading-block fancy-title title-bottom-border">
+                            <h2>{% trans "Our" %} <span>{% trans "Mission" %}</span>
+                            </h2>
+                        </div>
+
+                        <p>
+                            {% dynamic_trans self 'mission' as mission %}
+                            {{ mission|richtext }}
+                        </p>
                     </div>
                 </div>
             </div>
             <div class="bottommargin-lg ">
                 {% get_images_advertising height=720 campaign='about' cls="aligncenter notopmargin nobottommargin" %}
-            </div>
-
-            <div class="container clearfix">
-                <div class="col_three_fifth nobottommargin ">
-
-                    <div class="heading-block fancy-title title-bottom-border">
-                        <h2>{% trans "Our" %} <span>{% trans "Mission" %}</span>
-                        </h2>
-                    </div>
-
-                    <p>
-                        {% dynamic_trans self 'mission' as mission %}
-                        {{ mission|richtext }}
-                    </p>
-
-                </div>
-                <div class="col_two_fifth nobottommargin col_last">
-                    <img class="margin-top-120" data-animate="fadeInRight" src="{% static 'img/growth-min.jpeg' %}"
-                         alt="our-mission">
-                </div>
-
             </div>
 
             <div class="section parallax nobottommargin"
@@ -76,7 +72,7 @@
                     <h2 style="color: #ffffff">"{% trans "Quality , A Priority" %}"</h2>
                 </div>
             </div>
-            <div class="section nomargin">
+            <div class="section">
                 <div class="container clearfix">
 
                     <div class="heading-block center bottommargin-lg">
@@ -106,7 +102,6 @@
                                     <span class="subtitle"> {{ first_description |richtext }}</span>
                                 </h3>
                             </div>
-
                         </div>
                         <div data-animate="fadeInUp" class="col_one_third nobottommargin">
                             <div class="feature-box fbox-center fbox-bg fbox-outline fbox-dark fbox-effect">
@@ -137,6 +132,15 @@
                             </div>
                         </div>
                     {% endif %}
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="section nomargin">
+                <div class="container clearfix">
+                    <div class="heading-block center bottommargin-lg">
+                        <h2> {% trans "Our " %} <span>{% trans "Partners" %}</span></h2>
+                    </div>
+                    {% partners_list self.partners %}
                     <div class="clear"></div>
                 </div>
             </div>
