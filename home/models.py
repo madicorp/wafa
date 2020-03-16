@@ -5,7 +5,9 @@ from wagtail.wagtailcore.fields import StreamField, RichTextField
 from wagtail.wagtailsearch import index
 from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from home.entities.blocks import MemberOfficerBlock, MemberMembersBlock, AboutObjectifBlock
+from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+
+from home.entities.blocks import MemberOfficerBlock, MemberMembersBlock, AboutObjectifBlock, AboutPartnerBlock
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -33,11 +35,18 @@ class HomePage(Page):
 class AboutPage(Page):
     company_desc_fr = RichTextField(blank=False, verbose_name="Description de l\'association FR", default='')
     company_desc_en = RichTextField(blank=False, verbose_name="Description de l\'association EN", default='')
+    header_image = models.ForeignKey('wagtailimages.Image',
+                                     verbose_name=_('Header image'),
+                                     null=True,
+                                     blank=True,
+                                     on_delete=models.SET_NULL,
+                                     related_name='+')
     mission_fr = RichTextField(blank=False, verbose_name="Mission FR", default='')
     mission_en = RichTextField(blank=False, verbose_name="Mission EN", default='')
     vision_fr = RichTextField(blank=False, verbose_name="Vision FR", default='')
     vision_en = RichTextField(blank=False, verbose_name="Vision EN", default='')
     objectives = StreamField(AboutObjectifBlock(), blank=True, verbose_name='Objectifs')
+    partners = StreamField(AboutPartnerBlock(), blank=True, verbose_name='Partners')
 
     search_fields = Page.search_fields + [
         index.SearchField('company_desc_fr'),
@@ -51,6 +60,7 @@ class AboutPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        ImageChooserPanel('header_image'),
         MultiFieldPanel([
             FieldPanel('company_desc_fr', classname='full title'),
             FieldPanel('company_desc_en', classname='full title'),
@@ -60,6 +70,9 @@ class AboutPage(Page):
             FieldPanel('vision_en', classname='full title'),
             StreamFieldPanel('objectives'),
         ], heading=_("About Company")),
+        MultiFieldPanel([
+            StreamFieldPanel('partners'),
+        ], heading=_("Partners")),
     ]
 
     promote_panels = Page.promote_panels

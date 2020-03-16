@@ -1,0 +1,29 @@
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
+
+<div data-animate="fadeInUp"
+     class="owl-carousel team-carousel bottommargin carousel-widget"
+     data-margin="5"
+     data-pagination="true" data-autoplay="5000" data-loop="true" data-items-xs="2"
+     data-items-sm="2" data-items-lg="4">
+    {% for partner in partners %}
+        {% image  partner.value.logo fill-200x200 as picture %}
+        <div class="oc-item">
+            <div class="team team-list clearfix">
+                <div class="team-image partner-image">
+                    <a href="{{ partner.value.website }}" target="_blank">
+                        <img src="{{ picture.url }}" alt="{{ partner.value.name }}">
+                    </a>
+                    <div class="team-title">
+                        <h4>
+                            <a href="{{ partner.value.website }}" target="_blank">
+                                {{ partner.value.name }}
+                            </a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+

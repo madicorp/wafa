@@ -1,5 +1,6 @@
 from django import template
 from event.models import EventPage
+from puput.models import BlogPage
 import datetime
 import re
 
@@ -9,8 +10,11 @@ register = template.Library()
 @register.inclusion_tag("home/tags/slider.html", takes_context=True)
 def slider(context):
     self = context.get('self')
+    market_news = BlogPage.objects.live().get(slug='market-news')
     return {
-        'request': context['request']
+        'request': context['request'],
+        'market_news': market_news,
+        'market_news_entries': market_news.get_entries().order_by('-date')[:3]
     }
 
 
@@ -19,6 +23,15 @@ def board_members(context, members):
     self = context.get('self')
     return {
         'members': members,
+        'request': context['request']
+    }
+
+
+@register.inclusion_tag("home/tags/partners.html", takes_context=True)
+def partners_list(context, partners):
+    self = context.get('self')
+    return {
+        'partners': partners,
         'request': context['request']
     }
 

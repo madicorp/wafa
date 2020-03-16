@@ -1,9 +1,7 @@
 from wagtail.wagtailcore.blocks import StreamBlock, DateBlock
 from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtaildocs.blocks import DocumentChooserBlock
 from wagtail.wagtailcore.blocks import TextBlock, RichTextBlock
 from wagtail.wagtailcore.blocks import StructBlock
-from django.db import models
 
 
 class MemberBlock(StructBlock):
@@ -23,6 +21,8 @@ class OfficerBlock(MemberBlock):
     image = ImageChooserBlock()
     position_fr = TextBlock(label='Poste FR', required=False)
     position_en = TextBlock(label='Poste EN', required=False)
+    biography_fr = RichTextBlock(label='Biography FR', required=False)
+    biography_en = RichTextBlock(label='Biography EN', required=False)
 
 
 class MemberOfficerBlock(StreamBlock):
@@ -38,3 +38,13 @@ class ObjectifBlock(StructBlock):
 
 class AboutObjectifBlock(StreamBlock):
     objectives = ObjectifBlock(label='Objectifs', required=False)
+
+
+class PartnerBlock(StructBlock):
+    name = TextBlock(label='Nom')
+    logo = ImageChooserBlock(label='logo')
+    website = TextBlock(label='website', required=False)
+
+
+class AboutPartnerBlock(StreamBlock):
+    partners = PartnerBlock(label='Partners', required=False)

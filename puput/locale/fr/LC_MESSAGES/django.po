@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-18 17:44+0100\n"
+"POT-Creation-Date: 2020-03-15 04:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,217 +18,226 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: abstracts.py:16
-msgid "body"
+#: puput/abstracts.py:16
+msgid "body_en"
 msgstr ""
 
-#: abstracts.py:18
+#: puput/abstracts.py:17
+msgid "body_fr"
+msgstr ""
+
+#: puput/abstracts.py:19
 msgid "Post date"
 msgstr ""
 
-#: abstracts.py:19 models.py:31
+#: puput/abstracts.py:20 puput/models.py:31
 msgid "Header image"
 msgstr ""
 
-#: abstracts.py:22
-msgid "excerpt"
+#: puput/abstracts.py:23
+msgid "excerpt_en"
 msgstr ""
 
-#: abstracts.py:23
+#: puput/abstracts.py:24 puput/abstracts.py:27
 msgid ""
 "Entry excerpt to be displayed on entries list. If this field is not filled, "
 "a truncate version of body text will be used."
 msgstr ""
 
-#: abstracts.py:33
+#: puput/abstracts.py:26
+msgid "excerpt_fr"
+msgstr ""
+
+#: puput/abstracts.py:39
 msgid "Content"
 msgstr ""
 
-#: abstracts.py:36 models.py:134 templates/puput/base.html:71
+#: puput/abstracts.py:42 puput/models.py:134 puput/templates/puput/base.html:71
 msgid "Categories"
 msgstr ""
 
-#: abstracts.py:37 templates/puput/related_entries.html:6
+#: puput/abstracts.py:43 puput/templates/puput/related_entries.html:6
 msgid "Related Entries"
 msgstr ""
 
-#: abstracts.py:39
+#: puput/abstracts.py:45
 msgid "Metadata"
 msgstr ""
 
-#: models.py:29 models.py:111
+#: puput/models.py:29 puput/models.py:111
 msgid "Description"
 msgstr ""
 
-#: models.py:30
+#: puput/models.py:30
 msgid "The blog description that will appear under the title."
 msgstr ""
 
-#: models.py:34
+#: puput/models.py:34
 msgid "Display comments"
 msgstr ""
 
-#: models.py:35
+#: puput/models.py:35
 msgid "Display categories"
 msgstr ""
 
-#: models.py:36
+#: puput/models.py:36
 msgid "Display tags"
 msgstr ""
 
-#: models.py:37
+#: puput/models.py:37
 msgid "Display popular entries"
 msgstr ""
 
-#: models.py:38
+#: puput/models.py:38
 msgid "Display last entries"
 msgstr ""
 
-#: models.py:39
+#: puput/models.py:39
 msgid "Display archive"
 msgstr ""
 
-#: models.py:44
+#: puput/models.py:44
 msgid "Entries per page"
 msgstr ""
 
-#: models.py:45
+#: puput/models.py:45
 msgid "Last entries limit"
 msgstr ""
 
-#: models.py:46
+#: puput/models.py:46
 msgid "Popular entries limit"
 msgstr ""
 
-#: models.py:47
+#: puput/models.py:47
 msgid "Tags limit entry header"
 msgstr ""
 
-#: models.py:49
+#: puput/models.py:49
 msgid "Use short description in feeds"
 msgstr ""
 
-#: models.py:64
+#: puput/models.py:64
 msgid "Widgets"
 msgstr ""
 
-#: models.py:70
+#: puput/models.py:70
 msgid "Parameters"
 msgstr ""
 
-#: models.py:75
+#: puput/models.py:75
 msgid "Comments"
 msgstr ""
 
-#: models.py:78
+#: puput/models.py:78
 msgid "Feeds"
 msgstr ""
 
-#: models.py:101
+#: puput/models.py:101
 msgid "Blog"
 msgstr ""
 
-#: models.py:107
+#: puput/models.py:107
 msgid "Category name"
 msgstr ""
 
-#: models.py:110
+#: puput/models.py:110
 msgid "Parent category"
 msgstr ""
 
-#: models.py:122
+#: puput/models.py:122
 msgid "Parent category cannot be self."
 msgstr ""
 
-#: models.py:124
+#: puput/models.py:124
 msgid "Cannot have circular Parents."
 msgstr ""
 
-#: models.py:133 models.py:138
+#: puput/models.py:133 puput/models.py:138
 msgid "Category"
 msgstr ""
 
-#: models.py:158 models.py:159 models.py:202
+#: puput/models.py:158 puput/models.py:159 puput/models.py:204
 msgid "Entry"
 msgstr ""
 
-#: models.py:203
+#: puput/models.py:205
 msgid "Entries"
 msgstr ""
 
-#: routes.py:24
+#: puput/routes.py:24
 msgid "date"
 msgstr ""
 
-#: routes.py:37
+#: puput/routes.py:37
 msgid "tag"
 msgstr ""
 
-#: routes.py:44
+#: puput/routes.py:44
 msgid "category"
 msgstr ""
 
-#: routes.py:51
+#: puput/routes.py:51
 msgid "author"
 msgstr ""
 
-#: routes.py:64
+#: puput/routes.py:64
 msgid "search"
 msgstr ""
 
-#: templates/el_pagination/show_more.html:5
+#: puput/templates/el_pagination/show_more.html:5
 msgid "more"
 msgstr ""
 
-#: templates/puput/base.html:45
+#: puput/templates/puput/base.html:45
 msgid "Feed RSS"
 msgstr ""
 
-#: templates/puput/base.html:50
+#: puput/templates/puput/base.html:50
 msgid "Search"
 msgstr ""
 
-#: templates/puput/base.html:59
+#: puput/templates/puput/base.html:59
 msgid "Last Entries"
 msgstr ""
 
-#: templates/puput/base.html:65
+#: puput/templates/puput/base.html:65
 msgid "Popular Entries"
 msgstr ""
 
-#: templates/puput/base.html:77
+#: puput/templates/puput/base.html:77
 msgid "Tags"
 msgstr ""
 
-#: templates/puput/base.html:83
+#: puput/templates/puput/base.html:83
 msgid "Archive"
 msgstr ""
 
-#: templates/puput/blog_page.html:6 templates/puput/blog_page.html:7
-#: templates/puput/blog_page.html:29
+#: puput/templates/puput/blog_page.html:6
+#: puput/templates/puput/blog_page.html:7
+#: puput/templates/puput/blog_page.html:29
 msgid "Entries for"
 msgstr ""
 
-#: templates/puput/blog_page.html:48
+#: puput/templates/puput/blog_page.html:48
 msgid "Continue reading"
 msgstr ""
 
-#: templates/puput/blog_page.html:52
+#: puput/templates/puput/blog_page.html:52
 msgid "No results found."
 msgstr ""
 
-#: templates/puput/tags/archives_list.html:23
+#: puput/templates/puput/tags/archives_list.html:23
 msgid "No entry archives yet"
 msgstr ""
 
-#: templates/puput/tags/categories_list.html:9
+#: puput/templates/puput/tags/categories_list.html:9
 msgid "No categories yet"
 msgstr ""
 
-#: templates/puput/tags/entries_list.html:31
+#: puput/templates/puput/tags/entries_list.html:31
 msgid "No entries yet"
 msgstr ""
 
-#: templates/puput/tags/tags_list.html:9
+#: puput/templates/puput/tags/tags_list.html:9
 msgid "No tags yet"
 msgstr ""
