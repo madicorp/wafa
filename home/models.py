@@ -40,7 +40,7 @@ class AboutPage(Page):
                                      null=True,
                                      blank=True,
                                      on_delete=models.SET_NULL,
-                                     related_name='+')
+                                     related_name='+', default=models.SET_NULL)
     mission_fr = RichTextField(blank=False, verbose_name="Mission FR", default='')
     mission_en = RichTextField(blank=False, verbose_name="Mission EN", default='')
     vision_fr = RichTextField(blank=False, verbose_name="Vision FR", default='')
