@@ -35,12 +35,12 @@ class HomePage(Page):
 class AboutPage(Page):
     company_desc_fr = RichTextField(blank=False, verbose_name="Description de l\'association FR", default='')
     company_desc_en = RichTextField(blank=False, verbose_name="Description de l\'association EN", default='')
-    header_image = models.ForeignKey('wagtailimages.Image',
-                                     verbose_name=_('Header image'),
-                                     null=True,
-                                     blank=True,
-                                     on_delete=models.SET_NULL,
-                                     related_name='+', default=models.SET_NULL)
+    page_image = models.ForeignKey('wagtailimages.Image',
+                                   verbose_name=_('Header image'),
+                                   null=True,
+                                   blank=True,
+                                   on_delete=models.SET_NULL,
+                                   related_name='+', default=models.SET_NULL)
     mission_fr = RichTextField(blank=False, verbose_name="Mission FR", default='')
     mission_en = RichTextField(blank=False, verbose_name="Mission EN", default='')
     vision_fr = RichTextField(blank=False, verbose_name="Vision FR", default='')
@@ -60,7 +60,7 @@ class AboutPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        ImageChooserPanel('header_image'),
+        ImageChooserPanel('page_image'),
         MultiFieldPanel([
             FieldPanel('company_desc_fr', classname='full title'),
             FieldPanel('company_desc_en', classname='full title'),

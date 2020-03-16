@@ -20,12 +20,12 @@
                 </div>
                 <div class="row">
                     <!-- ===========Entry Image============== -->
-                    {% if self.header_image %}
+                    {% if self.page_image %}
                         <div class="entry-image">
-                            {% image self.header_image fill-800x240 as header_image %}
-                            {% image self.header_image original as cover %}
+                            {% image self.page_image fill-800x240 as page_image %}
+                            {% image self.page_image original as cover %}
                             <a href="{{ cover.url }}" data-lightbox="image">
-                                <img class="image_fade" alt="{{ self.header_image.title }}" src="{{ header_image.url }}">
+                                <img class="image_fade" alt="{{ self.page_image.title }}" src="{{ page_image.url }}">
                             </a>
                         </div><!-- .entry-image end -->
                     {% endif %}
