@@ -174,3 +174,24 @@ html {
     border-left: none !important;
     border-right: none !important;
 }
+
+#page-menu,
+#page-menu-wrap {
+    height: auto;
+}
+
+#slider .tp-caption h4 {
+    white-space: pre-line !important;
+}
+
+@media (min-width: 817px) {
+    #slider .tp-caption {
+        width: max-content;
+    }
+}
+
+@media (max-width: 817px) {
+    #slider .tp-caption h4 {
+        width: 25rem;
+    }
+}
