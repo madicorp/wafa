@@ -8,7 +8,7 @@ from .base import *
 env = os.environ.copy()
 DEBUG = env['DEBUG'] == "True"
 
-SECRET_KEY = '38(^651wmne0(!4p7y$qf8&e6*#-u@wd%6enu#&ybto9dgv)ql'
+SECRET_KEY = env['SECRET_KEY']
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
@@ -54,6 +54,10 @@ if not DEBUG:
                 'handlers': ['mail_admins'],
                 'level': 'ERROR',
                 'propagate': True,
+            },
+            'django': {
+                'handlers': ['console'],
+                'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
             },
         }
     }

@@ -1,4 +1,4 @@
-{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailuserbar compress puput_tags wafa_tags image %}
+{% load static i18n wagtailcore_tags wagtailroutablepage_tags wagtailuserbar puput_tags wafa_tags image %}
 {% wagtailuserbar %}
 <!DOCTYPE HTML>
 <html>
@@ -16,6 +16,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="title" content="WAFA FERTILIZER |
+
             {% block meta_title %}{% if blog_page.seo_title %}{{ blog_page.seo_title }}{% else %}{{ blog_page.title }}{% endif %}{% endblock meta_title %}"/>
     <meta name="description"
           content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}"/>
@@ -31,13 +32,11 @@
     <link rel="stylesheet" href="assets/css/ie8.css"/><![endif]-->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300,300italic,100italic,100,400italic,500,500italic,700,900,700italic,900italic'
           rel='stylesheet' type='text/css'>
-    {% compress css %}
-        <link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
-              rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" type="text/css"
-              href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/wafa.css' %}">
-    {% endcompress %}
+    <link href="//fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" type="text/css"
+          href="//cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/wafa.css' %}">
 </head>
 <body class="{% block body_class %}{% endblock %}">
 <div id="wrapper" class="clearfix">
@@ -103,29 +102,27 @@
     </section>
     {% footer %}
 </div>
-{% compress js %}
-    <!-- Social Media scripts
+<!-- Social Media scripts
 ============================================= -->
-    <script async defer crossorigin="anonymous"
-            src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0"></script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
 
-    <!-- External JavaScripts
+<!-- External JavaScripts
 ============================================= -->
-    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/plugins.js' %}"></script>
 
-    <!-- Footer Scripts
-    ============================================= -->
-    <script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
-    <script src="{% static 'advertising/js/events.js' %}"></script>
-    {# Global javascript #}
-    <script type="text/javascript" src="{% static 'js/wafa.js' %}"></script>
-    {% block extra_js %}
-        {# Override this in templates to add extra javascript #}
-    {% endblock %}
-{% endcompress js %}
+<!-- Footer Scripts
+============================================= -->
+<script type="text/javascript" src="{% static 'js/functions.js' %}"></script>
+<script src="{% static 'advertising/js/events.js' %}"></script>
+{# Global javascript #}
+<script type="text/javascript" src="{% static 'js/wafa.js' %}"></script>
+{% block extra_js %}
+    {# Override this in templates to add extra javascript #}
+{% endblock %}
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;

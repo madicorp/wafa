@@ -7,6 +7,7 @@ from django import http
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.template.defaultfilters import truncatewords_html
+from django.utils.translation import get_language
 
 from wagtail.wagtailcore.models import Site
 from .models import EventsPage
@@ -55,15 +56,18 @@ class EventsPageFeed(Feed):
         return item.title
 
     def _item_short_description(self, item):
-        if item.excerpt and item.excerpt.strip() != '':
-            return item.excerpt
+        excerpt = item.excerpt_en if get_language() is 'en' else item.excerpt_fr
+        body = item.body_en if get_language() is 'en' else item.body_fr
+        if excerpt and excerpt.strip() != '':
+            return excerpt
         else:
-            return truncatewords_html(item.body, 70)
+            return truncatewords_html(body, 70)
 
     def item_description(self, item):
+        body = item.body_en if get_language() is 'en' else item.body_fr
         if self.events_page.short_feed_description:
             return self._item_short_description(item)
-        return item.body
+        return body
 
     def item_pubdate(self, item):
         return item.date

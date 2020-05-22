@@ -209,14 +209,7 @@ website:   	http://www.themepunch.com
 
 .tp-svg-layer svg {	width:100%; height:100%;position: relative;vertical-align: top}
 
-	
-/* CAROUSEL FUNCTIONS */
-.tp-carousel-wrapper {
-	cursor:url(openhand.cur), move;
-}
-.tp-carousel-wrapper.dragged {
-	cursor:url(closedhand.cur), move;
-}
+
 
 /* ADDED FOR SLIDELINK MANAGEMENT */
 .tp-caption {
@@ -496,16 +489,6 @@ img.tp-slider-alternative-image	{
 .rs-background-video-layer audio::-webkit-media-controls { display:none !important;}
 
 .tp-audio-html5 .tp-video-controls {	opacity: 1 !important; visibility: visible !important}
-
-/********************************
-	-	DOTTED OVERLAYS	-
-*********************************/
-.tp-dottedoverlay						{	background-repeat:repeat;width:100%;height:100%;position:absolute;top:0px;left:0px;z-index:3}
-.tp-dottedoverlay.twoxtwo				{	background:url(../assets/gridtile.png)}
-.tp-dottedoverlay.twoxtwowhite			{	background:url(../assets/gridtile_white.png)}
-.tp-dottedoverlay.threexthree			{	background:url(../assets/gridtile_3x3.png)}
-.tp-dottedoverlay.threexthreewhite		{	background:url(../assets/gridtile_3x3_white.png)}
-
 
 /******************************
 	-	SHADOWS		-
@@ -922,8 +905,8 @@ img.tp-slider-alternative-image	{
 
 /*  CAPTION SLIDELINK   **/
 .caption.slidelink a div,
-.tp-caption.slidelink a div {	width:3000px; height:1500px;  background:url(../assets/coloredbg.png) repeat}
-.tp-caption.slidelink a span{	background:url(../assets/coloredbg.png) repeat}
+.tp-caption.slidelink a div {	width:3000px; height:1500px;  background:url(./images/pattern2.png) repeat}
+.tp-caption.slidelink a span{	background:url(./images/pattern2.png) repeat}
 .tp-shape {	width:100%;height:100%;}
 
 
@@ -1005,7 +988,7 @@ img.tp-slider-alternative-image	{
 	width: 40px;
 	height: 40px;
 	background-color: #fff;
-	background:url(../assets/loader.gif) no-repeat center center;
+	background:url(../img/preloader.gif) no-repeat center center;
 	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
 	-webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.15);
 	margin-top:-20px;
@@ -1036,7 +1019,7 @@ img.tp-slider-alternative-image	{
 
 
 .tp-loader.spinner5 	{	
-	background:url(../assets/loader.gif) no-repeat 10px 10px;
+	background:url(../img/preloader.gif) no-repeat 10px 10px;
 	background-color:#fff;
 	margin:-22px -22px;
 	width:44px;height:44px;

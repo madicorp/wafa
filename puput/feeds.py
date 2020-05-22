@@ -7,6 +7,7 @@ from django import http
 from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.template.defaultfilters import truncatewords_html
+from django.utils.translation import get_language
 
 from wagtail.wagtailcore.models import Site
 from .models import BlogPage
@@ -28,6 +29,7 @@ class BlogPageFeedGenerator(Rss201rev2Feed):
 class BlogPageFeed(Feed):
 
     feed_type = BlogPageFeedGenerator
+    cur_language = get_language()
 
     def __call__(self, request, *args, **kwargs):
         if request.resolver_match.url_name == 'blog_page_feed_slug':
@@ -55,15 +57,18 @@ class BlogPageFeed(Feed):
         return item.title
 
     def _item_short_description(self, item):
-        if item.excerpt_en and item.excerpt_en.strip() != '':
-            return item.excerpt_en
+        excerpt = item.excerpt_en if get_language() is 'en' else item.excerpt_fr
+        body = item.body_en if get_language() is 'en' else item.body_fr
+        if excerpt and excerpt.strip() != '':
+            return excerpt
         else:
-            return truncatewords_html(item.body, 70)
+            return truncatewords_html(body, 70)
 
     def item_description(self, item):
+        body = item.body_en if get_language() is 'en' else item.body_fr
         if self.blog_page.short_feed_description:
             return self._item_short_description(item)
-        return item.body
+        return body
 
     def item_pubdate(self, item):
         return item.date
