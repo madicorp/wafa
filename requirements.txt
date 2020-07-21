@@ -43,7 +43,7 @@ six==1.10.0
 solid-i18n==1.4.1
 static3==0.7.0
 Unidecode==0.4.20
-wagtail==1.9
+wagtail==2.7.4
 webencodings==0.5
 whitenoise==3.3.0
 Willow==0.4
