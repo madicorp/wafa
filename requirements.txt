@@ -36,7 +36,7 @@ python-dateutil==2.6.0
 pytz==2016.10
 PyYAML==3.12
 rcssmin==1.0.6
-requests==2.13.0
+requests==2.20.0
 rjsmin==1.0.12
 s3transfer==0.1.10
 six==1.10.0
