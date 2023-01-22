@@ -2,7 +2,7 @@
 
 from django.db import models
 from django.db.models import Count
-from wagtail.wagtailcore.models import PageManager
+from wagtail.models import PageManager
 from puput.utils import strip_prefix_and_ending_slash
 
 

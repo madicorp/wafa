@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import datetime
 
-from wagtail.wagtailsnippets.models import register_snippet
+from wagtail.snippets.models import register_snippet
 
 from django.conf import settings
 
@@ -12,21 +12,20 @@ from puput.abstracts import EntryAbstract
 from .routes import EventsRoutes
 from puput.utils import import_model, get_image_model_path
 from .managers import TagManager, CategoryManager, EventsManager
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
+import six
 from django.template.defaultfilters import slugify
 from modelcluster.fields import ParentalKey
 from taggit.models import TaggedItemBase, Tag as TaggitTag
-from django.utils import six
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from django.db import models
-from wagtail.wagtailsearch import index
-from wagtail.wagtailcore.models import Page, PageBase
-from wagtail.wagtailadmin.edit_handlers import InlinePanel, PageChooserPanel
+from wagtail.search import index
+from wagtail.models import Page, PageBase
+from wagtail.admin.panels import InlinePanel, PageChooserPanel
 from modelcluster.contrib.taggit import ClusterTaggableManager
 
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 EventAbstract = import_model(getattr(settings, 'PUPUT_ENTRY_MODEL', EntryAbstract))
 
@@ -38,10 +37,11 @@ class Event(EventAbstract):
     categories = models.ManyToManyField('event.Category', through='event.CategoryEventPage', blank=True)
     start_date = models.DateField(verbose_name=_("Event Start date"), default=datetime.datetime.today)
     end_date = models.DateField(verbose_name=_("Event End date"), default=datetime.datetime.today)
+
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
-            ImageChooserPanel('header_image'),
+            FieldPanel('header_image'),
             FieldPanel('body_en', classname="full"),
             FieldPanel('body_fr', classname="full"),
             FieldPanel('excerpt_en', classname="full"),
@@ -91,7 +91,7 @@ class EventsPage(EventsRoutes, Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full"),
-        ImageChooserPanel('header_image'),
+        FieldPanel('header_image'),
     ]
     settings_panels = Page.settings_panels + [
         MultiFieldPanel([
@@ -141,7 +141,7 @@ class Category(models.Model):
     name = models.CharField(max_length=80, unique=True, verbose_name=_('Category name'))
     slug = models.SlugField(unique=True, max_length=80)
     parent = models.ForeignKey('self', blank=True, null=True, related_name="children",
-                               verbose_name=_('Parent category'))
+                               verbose_name=_('Parent category'), on_delete=models.CASCADE)
     description = models.CharField(max_length=500, blank=True, verbose_name=_('Description'))
 
     objects = CategoryManager()
@@ -169,7 +169,7 @@ class Category(models.Model):
 
 
 class CategoryEventPage(models.Model):
-    category = models.ForeignKey(Category, related_name="+", verbose_name=_('Category'))
+    category = models.ForeignKey(Category, related_name="+", verbose_name=_('Category'), on_delete=models.CASCADE)
     page = ParentalKey('EventPage', related_name='event_categories')
     panels = [
         FieldPanel('category')

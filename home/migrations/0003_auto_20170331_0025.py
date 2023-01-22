@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
+import wagtail.blocks
+import wagtail.fields
+import wagtail.documents.blocks
 
 
 class Migration(migrations.Migration):
@@ -24,12 +24,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='productpage',
             name='excerpt_en',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, default='', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en'),
+            field=wagtail.fields.RichTextField(blank=True, default='', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en'),
         ),
         migrations.AddField(
             model_name='productpage',
             name='excerpt_fr',
-            field=wagtail.wagtailcore.fields.RichTextField(blank=True, default='', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr'),
+            field=wagtail.fields.RichTextField(blank=True, default='', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr'),
         ),
         migrations.AddField(
             model_name='productpage',
@@ -39,6 +39,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='productpage',
             name='products',
-            field=wagtail.wagtailcore.fields.StreamField([(b'products', wagtail.wagtailcore.blocks.StructBlock([(b'desc_fr', wagtail.wagtailcore.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition FR")), (b'desc_en', wagtail.wagtailcore.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition EN")), (b'file_fr', wagtail.wagtaildocs.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'file_en', wagtail.wagtaildocs.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR'))], blank=True, label=b'Produit'))], blank=True),
+            field=wagtail.fields.StreamField([(b'products', wagtail.blocks.StructBlock([(b'desc_fr', wagtail.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition FR")), (b'desc_en', wagtail.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition EN")), (b'file_fr', wagtail.documents.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'file_en', wagtail.documents.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR'))], blank=True, label=b'Produit'))], blank=True),
         ),
     ]

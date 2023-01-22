@@ -9,7 +9,7 @@ import django.db.models.manager
 import modelcluster.contrib.taggit
 import modelcluster.fields
 import puput.routes
-import wagtail.wagtailcore.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -77,11 +77,11 @@ class Migration(migrations.Migration):
             name='EntryPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body_en', wagtail.wagtailcore.fields.RichTextField(default=b'', verbose_name='body_en')),
-                ('body_fr', wagtail.wagtailcore.fields.RichTextField(default=b'', verbose_name='body_fr')),
+                ('body_en', wagtail.fields.RichTextField(default=b'', verbose_name='body_en')),
+                ('body_fr', wagtail.fields.RichTextField(default=b'', verbose_name='body_fr')),
                 ('date', models.DateTimeField(default=datetime.datetime.today, verbose_name='Post date')),
-                ('excerpt_en', wagtail.wagtailcore.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en')),
-                ('excerpt_fr', wagtail.wagtailcore.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr')),
+                ('excerpt_en', wagtail.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en')),
+                ('excerpt_fr', wagtail.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr')),
                 ('num_comments', models.IntegerField(default=0, editable=False)),
                 ('categories', models.ManyToManyField(blank=True, through='puput.CategoryEntryPage', to='puput.Category')),
                 ('header_image', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtailimages.Image', verbose_name='Header image')),

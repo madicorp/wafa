@@ -1,7 +1,7 @@
-from wagtail.wagtailcore.blocks import StreamBlock, DateBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailcore.blocks import TextBlock, RichTextBlock
-from wagtail.wagtailcore.blocks import StructBlock
+from wagtail.blocks import StreamBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.blocks import TextBlock, RichTextBlock
+from wagtail.blocks import StructBlock
 
 
 class MemberBlock(StructBlock):

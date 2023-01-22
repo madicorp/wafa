@@ -2,8 +2,11 @@
 
 from six import string_types
 from importlib import import_module
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
 
 def import_model(path_or_callable):
     if hasattr(path_or_callable, '__call__'):

@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.blocks
+import wagtail.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -45,37 +45,37 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='aboutpage',
             name='mission_en',
-            field=wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Mission EN'),
+            field=wagtail.fields.RichTextField(default='', verbose_name='Mission EN'),
         ),
         migrations.AddField(
             model_name='aboutpage',
             name='mission_fr',
-            field=wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Mission FR'),
+            field=wagtail.fields.RichTextField(default='', verbose_name='Mission FR'),
         ),
         migrations.AddField(
             model_name='aboutpage',
             name='objectives',
-            field=wagtail.wagtailcore.fields.StreamField([(b'objectives', wagtail.wagtailcore.blocks.StructBlock([(b'title_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Titre_fr')), (b'title_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Titre_en')), (b'description_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'description_fr')), (b'description_en', wagtail.wagtailcore.blocks.TextBlock(label=b'description_en'))], label=b'Objectifs', required=False))], blank=True, verbose_name='Objectifs'),
+            field=wagtail.fields.StreamField([(b'objectives', wagtail.blocks.StructBlock([(b'title_fr', wagtail.blocks.TextBlock(label=b'Titre_fr')), (b'title_en', wagtail.blocks.TextBlock(label=b'Titre_en')), (b'description_fr', wagtail.blocks.TextBlock(label=b'description_fr')), (b'description_en', wagtail.blocks.TextBlock(label=b'description_en'))], label=b'Objectifs', required=False))], blank=True, verbose_name='Objectifs'),
         ),
         migrations.AddField(
             model_name='aboutpage',
             name='vision_en',
-            field=wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Vision EN'),
+            field=wagtail.fields.RichTextField(default='', verbose_name='Vision EN'),
         ),
         migrations.AddField(
             model_name='aboutpage',
             name='vision_fr',
-            field=wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Vision FR'),
+            field=wagtail.fields.RichTextField(default='', verbose_name='Vision FR'),
         ),
         migrations.AddField(
             model_name='memberpage',
             name='officers',
-            field=wagtail.wagtailcore.fields.StreamField([(b'office', wagtail.wagtailcore.blocks.StructBlock([(b'member_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Nom')), (b'country', wagtail.wagtailcore.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite EN')), (b'deputy_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Representant')), (b'contact', wagtail.wagtailcore.blocks.TextBlock(label=b'Contact', required=False)), (b'image', wagtail.wagtailimages.blocks.ImageChooserBlock()), (b'position_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Poste FR', required=False)), (b'position_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Poste EN', required=False))], icon=b'user', label=b'Membre', required=False))], blank=True, verbose_name='Bureau'),
+            field=wagtail.fields.StreamField([(b'office', wagtail.blocks.StructBlock([(b'member_name', wagtail.blocks.TextBlock(label=b'Nom')), (b'country', wagtail.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.blocks.TextBlock(label=b'Activite EN')), (b'deputy_name', wagtail.blocks.TextBlock(label=b'Representant')), (b'contact', wagtail.blocks.TextBlock(label=b'Contact', required=False)), (b'image', wagtail.images.blocks.ImageChooserBlock()), (b'position_fr', wagtail.blocks.TextBlock(label=b'Poste FR', required=False)), (b'position_en', wagtail.blocks.TextBlock(label=b'Poste EN', required=False))], icon=b'user', label=b'Membre', required=False))], blank=True, verbose_name='Bureau'),
         ),
         migrations.AlterField(
             model_name='memberpage',
             name='members',
-            field=wagtail.wagtailcore.fields.StreamField([(b'member', wagtail.wagtailcore.blocks.StructBlock([(b'member_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Nom')), (b'country', wagtail.wagtailcore.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite EN'))], icon=b'user', label=b'Membre', required=False))], blank=True, verbose_name='Membres'),
+            field=wagtail.fields.StreamField([(b'member', wagtail.blocks.StructBlock([(b'member_name', wagtail.blocks.TextBlock(label=b'Nom')), (b'country', wagtail.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.blocks.TextBlock(label=b'Activite EN'))], icon=b'user', label=b'Membre', required=False))], blank=True, verbose_name='Membres'),
         ),
         migrations.DeleteModel(
             name='ProductPage',

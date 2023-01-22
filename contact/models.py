@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
-from wagtail.wagtailcore.models import Page
+
+from wagtail.fields import RichTextField
+from wagtail.models import Page
 
 from django.db import models
 from location_field.models.plain import PlainLocationField
-from django.utils.translation import ugettext_lazy as _
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
+from django.utils.translation import gettext_lazy as _
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 
 class ContactPage(Page):

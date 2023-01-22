@@ -9,7 +9,7 @@ from django.utils.feedgenerator import Rss201rev2Feed
 from django.template.defaultfilters import truncatewords_html
 from django.utils.translation import get_language
 
-from wagtail.wagtailcore.models import Site
+from wagtail.models import Site
 from .models import EventsPage
 
 

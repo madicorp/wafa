@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.blocks
+import wagtail.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -18,6 +18,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='aboutpage',
             name='countries',
-            field=wagtail.wagtailcore.fields.StreamField([(b'countries', wagtail.wagtailcore.blocks.StructBlock([(b'flag', wagtail.wagtailimages.blocks.ImageChooserBlock(label=b'Drapeau')), (b'name', wagtail.wagtailcore.blocks.TextBlock(label=b'Nom'))], label=b'Pays Membre', required=False))], blank=True, verbose_name='Pays'),
+            field=wagtail.fields.StreamField([(b'countries', wagtail.blocks.StructBlock([(b'flag', wagtail.images.blocks.ImageChooserBlock(label=b'Drapeau')), (b'name', wagtail.blocks.TextBlock(label=b'Nom'))], label=b'Pays Membre', required=False))], blank=True, verbose_name='Pays'),
         ),
     ]

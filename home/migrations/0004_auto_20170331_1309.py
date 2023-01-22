@@ -3,9 +3,9 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtaildocs.blocks
+import wagtail.blocks
+import wagtail.fields
+import wagtail.documents.blocks
 
 
 class Migration(migrations.Migration):
@@ -23,6 +23,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='productpage',
             name='products',
-            field=wagtail.wagtailcore.fields.StreamField([(b'products', wagtail.wagtailcore.blocks.StructBlock([(b'desc_fr', wagtail.wagtailcore.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition FR")), (b'desc_en', wagtail.wagtailcore.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition EN")), (b'file_fr', wagtail.wagtaildocs.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'file_en', wagtail.wagtaildocs.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'start_date', wagtail.wagtailcore.blocks.DateBlock(label=b"Date l'edition"))], blank=True, label=b'Produit'))], blank=True),
+            field=wagtail.fields.StreamField([(b'products', wagtail.blocks.StructBlock([(b'desc_fr', wagtail.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition FR")), (b'desc_en', wagtail.blocks.RichTextBlock(blank=False, default=b'', verbose_name=b"Description de l'edition EN")), (b'file_fr', wagtail.documents.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'file_en', wagtail.documents.blocks.DocumentChooserBlock(blank=True, verbose_name=b'Document Version FR')), (b'start_date', wagtail.blocks.DateBlock(label=b"Date l'edition"))], blank=True, label=b'Produit'))], blank=True),
         ),
     ]

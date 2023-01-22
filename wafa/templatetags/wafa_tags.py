@@ -1,8 +1,10 @@
 from django import template
-from django.core.urlresolvers import resolve, reverse
-from django.utils.translation import activate, get_language, ugettext as _
+from django.urls import reverse, resolve
+
+from django.utils.translation import activate, get_language
+from django.utils.translation import gettext_lazy as _
 from contact.models import ContactPage
-from wagtail.wagtaildocs.models import get_document_model
+from wagtail.documents import get_document_model
 from django.shortcuts import get_object_or_404
 
 try:

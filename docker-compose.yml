@@ -16,7 +16,7 @@ services:
       dockerfile: docker/wafa/Dockerfile
       context: .
     volumes:
-    - /c/Users/sdiop/Documents/wafa:/usr/src/wafa
+    - ./:/usr/src/wafa
     env_file:
       - .env
     depends_on:

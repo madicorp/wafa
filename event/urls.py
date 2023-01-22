@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.conf.urls import url, include
-from django.core.urlresolvers import reverse
+from django.conf.urls import include
+from django.urls import re_path as url
+from django.urls import reverse
 
 from .feeds import EventsPageFeed
 from .views import EventPageServe
@@ -8,53 +9,53 @@ from puput.utils import strip_prefix_and_ending_slash
 
 urlpatterns = [
     url(
-        regex=r'^(?P<events_path>[-\w\/]+)/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
+        r'^(?P<events_path>[-\w\/]+)/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         view=EventPageServe.as_view(),
         name='event_page_serve_slug'
     ),
     url(
-        regex=r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
+        r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/(?P<slug>[-\w]+)/$',
         view=EventPageServe.as_view(),
         name='event_page_serve'
     ),
     url(
-        regex=r'^(?P<events_path>[-\w\/]+)/feed/$',
+        r'^(?P<events_path>[-\w\/]+)/feed/$',
         view=EventsPageFeed(),
         name='events_page_feed_slug'
     ),
     url(
-        regex=r'^feed/$',
+        r'^feed/$',
         view=EventsPageFeed(),
         name='events_page_feed'
     )
 ]
 
 if not getattr(settings, 'EVENT_AS_PLUGIN', False):
-    from wagtail.wagtailcore import urls as wagtail_urls
-    from wagtail.wagtailadmin import urls as wagtailadmin_urls
-    from wagtail.wagtaildocs import urls as wagtaildocs_urls
-    from wagtail.wagtailsearch import urls as wagtailsearch_urls
-    from wagtail.contrib.wagtailsitemaps.views import sitemap
+    from wagtail import urls as wagtail_urls
+    from wagtail.admin import urls as wagtailadmin_urls
+    from wagtail.documents import urls as wagtaildocs_urls
+    from wagtail.search import urls as wagtailsearch_urls
+    from wagtail.contrib.sitemaps.views import sitemap
 
     urlpatterns.extend([
         url(
-            regex=r'^events_admin/',
+            r'^events_admin/',
             view=include(wagtailadmin_urls)
         ),
         url(
-            regex=r'',
+            r'',
             view=include(wagtail_urls)
         ),
         url(
-            regex=r'^search/',
+            r'^search/',
             view=include(wagtailsearch_urls)
         ),
         url(
-            regex=r'^documents/',
+            r'^documents/',
             view=include(wagtaildocs_urls)
         ),
         url(
-            regex='^sitemap\.xml$',
+            '^sitemap\.xml$',
             view=sitemap
         )
     ])

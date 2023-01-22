@@ -1,14 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 from django.db import models
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailcore.fields import StreamField, RichTextField
-from wagtail.wagtailsearch import index
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel, FieldPanel, MultiFieldPanel
-from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.models import Page
+from wagtail.fields import StreamField, RichTextField
+from wagtail.search import index
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
 from home.entities.blocks import MemberOfficerBlock, MemberMembersBlock, AboutObjectifBlock, AboutPartnerBlock
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class HomePage(Page):
@@ -60,7 +58,7 @@ class AboutPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
-        ImageChooserPanel('page_image'),
+        FieldPanel('page_image'),
         MultiFieldPanel([
             FieldPanel('company_desc_fr', classname='full title'),
             FieldPanel('company_desc_en', classname='full title'),
@@ -68,10 +66,10 @@ class AboutPage(Page):
             FieldPanel('mission_en', classname='full title'),
             FieldPanel('vision_fr', classname='full title'),
             FieldPanel('vision_en', classname='full title'),
-            StreamFieldPanel('objectives'),
+            FieldPanel('objectives'),
         ], heading=_("About Company")),
         MultiFieldPanel([
-            StreamFieldPanel('partners'),
+            FieldPanel('partners'),
         ], heading=_("Partners")),
     ]
 
@@ -106,11 +104,11 @@ class MemberPage(Page):
         MultiFieldPanel([
             FieldPanel('membership_fr', classname='full title'),
             FieldPanel('membership_en', classname='full title'),
-            DocumentChooserPanel('file'),
+            FieldPanel('file'),
         ], heading=_("Membership")),
         MultiFieldPanel([
-            StreamFieldPanel('officers'),
-            StreamFieldPanel('members'),
+            FieldPanel('officers'),
+            FieldPanel('members'),
         ], heading=_("Members")),
 
     ]

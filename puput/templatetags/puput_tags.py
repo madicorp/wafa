@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.template import Library, loader
-from django.core.urlresolvers import resolve
 
 from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
 

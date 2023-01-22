@@ -1,8 +1,8 @@
 import os
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
-from wagtail.wagtailsnippets.models import register_snippet
+from six import python_2_unicode_compatible
+from wagtail.snippets.models import register_snippet
 
 from .validators import valid_extension
 
@@ -33,7 +33,7 @@ def generate_path(instance, filename):
 @register_snippet
 @python_2_unicode_compatible
 class ImageAdvertising(models.Model):
-    advertising = models.ForeignKey(Advertising, related_name='images')
+    advertising = models.ForeignKey(Advertising, related_name='images', on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     url = models.URLField(max_length=450)
     photo = models.FileField("Photo", blank=False, null=False,

@@ -5,15 +5,14 @@ from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.template.defaultfilters import slugify
-from django.utils.translation import ugettext_lazy as _
-from django.utils.encoding import python_2_unicode_compatible
-from django.utils import six
+from django.utils.translation import gettext_lazy as _
+from six import python_2_unicode_compatible
+import six
 
-from wagtail.wagtailcore.models import Page, PageBase
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsearch import index
+from wagtail.models import Page, PageBase
+from wagtail.admin.panels import FieldPanel, MultiFieldPanel
+from wagtail.snippets.models import register_snippet
+from wagtail.search import index
 from taggit.models import TaggedItemBase, Tag as TaggitTag
 from modelcluster.fields import ParentalKey
 
@@ -52,7 +51,7 @@ class BlogPage(BlogRoutes, Page):
 
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full"),
-        ImageChooserPanel('header_image'),
+        FieldPanel('header_image'),
     ]
     settings_panels = Page.settings_panels + [
         MultiFieldPanel([
@@ -107,7 +106,7 @@ class Category(models.Model):
     name = models.CharField(max_length=80, unique=True, verbose_name=_('Category name'))
     slug = models.SlugField(unique=True, max_length=80)
     parent = models.ForeignKey('self', blank=True, null=True, related_name="children",
-                               verbose_name=_('Parent category'))
+                               verbose_name=_('Parent category'), on_delete=models.CASCADE)
     description = models.CharField(max_length=500, blank=True, verbose_name=_('Description'))
 
     objects = CategoryManager()
@@ -135,7 +134,7 @@ class Category(models.Model):
 
 
 class CategoryEntryPage(models.Model):
-    category = models.ForeignKey(Category, related_name="+", verbose_name=_('Category'))
+    category = models.ForeignKey(Category, related_name="+", verbose_name=_('Category'), on_delete=models.CASCADE)
     page = ParentalKey('EntryPage', related_name='entry_categories')
     panels = [
         FieldPanel('category')

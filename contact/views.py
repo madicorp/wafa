@@ -6,7 +6,7 @@ import uuid
 
 from django.conf import settings
 from django.core.mail import send_mass_mail
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 from rest_framework import status
 from rest_framework.decorators import api_view

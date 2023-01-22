@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.wagtailcore.blocks
-import wagtail.wagtailcore.fields
-import wagtail.wagtailimages.blocks
+import wagtail.blocks
+import wagtail.fields
+import wagtail.images.blocks
 
 
 class Migration(migrations.Migration):
@@ -23,9 +23,9 @@ class Migration(migrations.Migration):
             name='AboutPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('company_desc_fr', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name="Description de l'association FR")),
-                ('company_desc_en', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name="Description de l'association EN")),
-                ('officers', wagtail.wagtailcore.fields.StreamField([(b'office', wagtail.wagtailcore.blocks.StructBlock([(b'member_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Nom')), (b'deputy_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Representant')), (b'country', wagtail.wagtailcore.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite EN')), (b'contact', wagtail.wagtailcore.blocks.TextBlock(label=b'Contact', required=False)), (b'image', wagtail.wagtailimages.blocks.ImageChooserBlock()), (b'position_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Poste FR', required=False)), (b'position_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Poste EN', required=False))], icon=b'user', label=b'Membre', required=False))], verbose_name='Bureau')),
+                ('company_desc_fr', wagtail.fields.RichTextField(default='', verbose_name="Description de l'association FR")),
+                ('company_desc_en', wagtail.fields.RichTextField(default='', verbose_name="Description de l'association EN")),
+                ('officers', wagtail.fields.StreamField([(b'office', wagtail.blocks.StructBlock([(b'member_name', wagtail.blocks.TextBlock(label=b'Nom')), (b'deputy_name', wagtail.blocks.TextBlock(label=b'Representant')), (b'country', wagtail.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.blocks.TextBlock(label=b'Activite EN')), (b'contact', wagtail.blocks.TextBlock(label=b'Contact', required=False)), (b'image', wagtail.images.blocks.ImageChooserBlock()), (b'position_fr', wagtail.blocks.TextBlock(label=b'Poste FR', required=False)), (b'position_en', wagtail.blocks.TextBlock(label=b'Poste EN', required=False))], icon=b'user', label=b'Membre', required=False))], verbose_name='Bureau')),
             ],
             options={
                 'verbose_name': 'About Us Page',
@@ -36,10 +36,10 @@ class Migration(migrations.Migration):
             name='HomePage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('who_are_we_fr', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Qui sommes nous FR')),
-                ('who_are_we_en', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Qui sommes nous EN')),
-                ('mission_vision_fr', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Vision/Mission FR')),
-                ('mission_vision_en', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name='Vision/Mission EN')),
+                ('who_are_we_fr', wagtail.fields.RichTextField(default='', verbose_name='Qui sommes nous FR')),
+                ('who_are_we_en', wagtail.fields.RichTextField(default='', verbose_name='Qui sommes nous EN')),
+                ('mission_vision_fr', wagtail.fields.RichTextField(default='', verbose_name='Vision/Mission FR')),
+                ('mission_vision_en', wagtail.fields.RichTextField(default='', verbose_name='Vision/Mission EN')),
             ],
             options={
                 'verbose_name': 'Home Page',
@@ -50,9 +50,9 @@ class Migration(migrations.Migration):
             name='MemberPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('membership_fr', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name="Conditions d'admission FR")),
-                ('membership_en', wagtail.wagtailcore.fields.RichTextField(default='', verbose_name="Conditions d'admission EN")),
-                ('members', wagtail.wagtailcore.fields.StreamField([(b'member', wagtail.wagtailcore.blocks.StructBlock([(b'member_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Nom')), (b'deputy_name', wagtail.wagtailcore.blocks.TextBlock(label=b'Representant')), (b'country', wagtail.wagtailcore.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.wagtailcore.blocks.TextBlock(label=b'Activite EN')), (b'contact', wagtail.wagtailcore.blocks.TextBlock(label=b'Contact', required=False))], icon=b'user', label=b'Membre', required=False))], verbose_name='Membres')),
+                ('membership_fr', wagtail.fields.RichTextField(default='', verbose_name="Conditions d'admission FR")),
+                ('membership_en', wagtail.fields.RichTextField(default='', verbose_name="Conditions d'admission EN")),
+                ('members', wagtail.fields.StreamField([(b'member', wagtail.blocks.StructBlock([(b'member_name', wagtail.blocks.TextBlock(label=b'Nom')), (b'deputy_name', wagtail.blocks.TextBlock(label=b'Representant')), (b'country', wagtail.blocks.TextBlock(label=b'Pays')), (b'activity_fr', wagtail.blocks.TextBlock(label=b'Activite FR')), (b'activity_en', wagtail.blocks.TextBlock(label=b'Activite EN')), (b'contact', wagtail.blocks.TextBlock(label=b'Contact', required=False))], icon=b'user', label=b'Membre', required=False))], verbose_name='Membres')),
                 ('file', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='+', to='wagtaildocs.Document')),
             ],
             options={

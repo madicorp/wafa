@@ -4,12 +4,11 @@ from __future__ import unicode_literals
 
 import datetime
 from django.db import migrations, models
-import django.db.models.deletion
 import django.db.models.manager
 import event.routes
 import modelcluster.contrib.taggit
 import modelcluster.fields
-import wagtail.wagtailcore.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -49,11 +48,11 @@ class Migration(migrations.Migration):
             name='EventPage',
             fields=[
                 ('page_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='wagtailcore.Page')),
-                ('body_en', wagtail.wagtailcore.fields.RichTextField(default=b'', verbose_name='body_en')),
-                ('body_fr', wagtail.wagtailcore.fields.RichTextField(default=b'', verbose_name='body_fr')),
+                ('body_en', wagtail.fields.RichTextField(default=b'', verbose_name='body_en')),
+                ('body_fr', wagtail.fields.RichTextField(default=b'', verbose_name='body_fr')),
                 ('date', models.DateTimeField(default=datetime.datetime.today, verbose_name='Post date')),
-                ('excerpt_en', wagtail.wagtailcore.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en')),
-                ('excerpt_fr', wagtail.wagtailcore.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr')),
+                ('excerpt_en', wagtail.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_en')),
+                ('excerpt_fr', wagtail.fields.RichTextField(blank=True, default=b'', help_text='Entry excerpt to be displayed on entries list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt_fr')),
                 ('num_comments', models.IntegerField(default=0, editable=False)),
                 ('link', models.URLField(blank=True, verbose_name='Link')),
                 ('location', models.CharField(default='', max_length=250, verbose_name='Location')),

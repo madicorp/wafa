@@ -99,3 +99,5 @@ media/*
 db.sqlite3*
 
 locals.bat
+
+static

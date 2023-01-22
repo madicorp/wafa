@@ -1,13 +1,12 @@
 import datetime
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
+from wagtail.admin.panels import FieldPanel, InlinePanel, MultiFieldPanel, PageChooserPanel
 
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.fields import RichTextField
 
 from .utils import get_image_model_path
 
@@ -31,7 +30,7 @@ class EntryAbstract(models.Model):
     content_panels = [
         MultiFieldPanel([
             FieldPanel('title', classname="title"),
-            ImageChooserPanel('header_image'),
+            FieldPanel('header_image'),
             FieldPanel('body_en', classname="full"),
             FieldPanel('body_fr', classname="full"),
             FieldPanel('excerpt_en', classname="full"),

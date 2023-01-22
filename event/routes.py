@@ -4,12 +4,12 @@ from datetime import date
 
 from django.utils.dateformat import DateFormat
 from django.utils.formats import date_format
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 
-from wagtail.contrib.wagtailroutablepage.models import RoutablePageMixin, route
-from wagtail.wagtailcore.models import Page
-from wagtail.wagtailsearch.models import Query
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from wagtail.models import Page
+from wagtail.search.models import Query
 
 USERNAME_REGEX = getattr(settings, 'PUPUT_USERNAME_REGEX', '\w+')
 
