@@ -1,5 +1,5 @@
 {% extends "blog.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags puput_tags social_widgets %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags puput_tags social_share %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 {% endblock %}
@@ -80,14 +80,14 @@
                     <div style="display: inline-block">
                         {% entry_url self blog_page as url %}
                         <div style="margin-left: 10px">
-                            {% social_widget_render "google/plus_share_button.html" href=url %}
+                            {% post_to_gplus url %}
                         </div>
 
                         <div style="margin-left: 10px">
-                            {% social_widget_render "twitter/share_button.html" href=request.build_absolute_uri %}
+                            {% post_to_twitter request.build_absolute_uri %}
                         </div>
                         <div style="margin-left: 10px">
-                            {% social_widget_render "facebook/share_button.html" href=url %}
+                            {% post_to_facebook url %}
                         </div>
 
                     </div><!-- Post Single - Share End -->

@@ -1,5 +1,5 @@
 {% extends "event.html" %}
-{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags event_tags social_widgets event_tags image %}
+{% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags event_tags social_share event_tags image %}
 {% block body_class %}stretched{% endblock %}
 {% block extra_css %}
 {% endblock %}
@@ -44,7 +44,7 @@
                         <li><i class="icon-calendar3"></i> {{ self.start_date|date:"d M Y" }}</li>
                         <li><i class="icon-calendar3"></i> {{ self.end_date|date:"d M Y" }}</li>
                         <li><i class="icon-map-marker2"></i>{{ self.location }}</li>
-                        <input type="hidden" id="eventStartDate" data-start="{{ self.start_date|date:"Y-m-d" }}">
+                        <input type="hidden" id="eventStartDate" data-start="{{ self.start_date|date:'Y-m-d' }}">
                     </ul>
                 </div>
             </div>
@@ -72,14 +72,14 @@
                         {% event_url self events_page as url %}
 
                         <div style="margin-left: 15px">
-                            {% social_widget_render "google/plus_share_button.html" href=url %}
+                            {% post_to_gplus url %}
                         </div>
 
                         <div style="margin-left: 15px">
-                            {% social_widget_render "twitter/share_button.html" href=url %}
+                            {% post_to_twitter url %}
                         </div>
                         <div style="margin-left: 15px">
-                            {% social_widget_render "facebook/share_button.html" href=url %}
+                            {% post_to_facebook url %}
                         </div>
 
                     </div><!-- Post Single - Share End -->
