@@ -5,7 +5,7 @@ from .base import *
 try:
     import dj_database_url
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(dotenv_path='.env.development')
 except ImportError:
     pass
 

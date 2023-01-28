@@ -18,13 +18,13 @@ services:
     volumes:
     - ./:/usr/src/wafa
     env_file:
-      - .env
+      - .env.development
     depends_on:
       - db
     links:
       - db
     ports:
-    - '8000:8000'
+    - '8000:80'
 
 volumes:
     wafa_db:

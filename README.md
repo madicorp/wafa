@@ -24,6 +24,9 @@ Install dependencies <br>
 `source venv/bin/activate`
 
 ## Launch locally
+Set env file from .env.sample
+
+## Launch locally
 
 `./manage.py migrate` <br>
 `./manage.py createsuperuser` <br>
@@ -41,9 +44,3 @@ Admin page accessible at `http://127.0.0.1:8000/admin/`
 
 ## Update i18n
 `./manage.py compilemessages`
-
-## Deploy on prod
-
-- create a `config.yml` file base on `sample.config.yml` and set variables <br>
-- change `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wafa.settings.dev")` by `os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wafa.settings.production")` in `manage.py`
-

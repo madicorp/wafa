@@ -1,4 +1,4 @@
-FROM python:3.9.2-alpine3.13
+FROM python:3.11.1-alpine3.17
 RUN apk update && \
     apk add jpeg-dev \
             zlib-dev \
@@ -18,5 +18,5 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apk --purge del .build-deps
 COPY . .
-EXPOSE 8000
-CMD [ "python", "./manage.py", "runserver", "0.0.0.0:8000"]
+EXPOSE 80
+CMD ["sh","-c","python manage.py compilemessages && python manage.py collectstatic --noinput && python ./manage.py runserver 0.0.0.0:80"]

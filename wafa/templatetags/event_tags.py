@@ -7,7 +7,7 @@ from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
 from event.urls import get_event_url, get_feeds_url
 from event.models import Category, Tag
 
-from photologue.models import Photo, Gallery
+from photologue.models import Photo
 
 register = Library()
 
