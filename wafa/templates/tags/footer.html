@@ -25,7 +25,7 @@
                                </span>
                                 <input type="email" value="" name="EMAIL" class="form-control required email"
                                        id="mce-EMAIL"
-                                       placeholder="{% trans "Enter your Email" %}">
+                                       placeholder="{% trans 'Enter your Email' %}">
                                 <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
                                 <div style="position: absolute; left: -5000px;" aria-hidden="true">
                                     <input type="text"
@@ -54,40 +54,42 @@
     ============================================= -->
     <div id="copyrights">
         {% if contact %}
-            <div class="container clearfix">
-                <div class="col-md-6">
-                    <a target="_blank" href="{{ contact.facebook }}"
-                       class="social-icon si-small si-borderless si-facebook">
-                        <i class="icon-facebook"></i>
-                        <i class="icon-facebook"></i>
-                    </a>
-                    <a target="_blank" href="{{ contact.twitter }}"
-                       class="social-icon si-small si-borderless si-twitter">
-                        <i class="icon-twitter"></i>
-                        <i class="icon-twitter"></i>
-                    </a>
-                    <a target="_blank" href="{{ contact.googleplus }}"
-                       class="social-icon si-small si-borderless si-gplus">
-                        <i class="icon-gplus"></i>
-                        <i class="icon-gplus"></i>
-                    </a>
-                    <a target="_blank" href="{{ contact.linkedin }}"
-                       class="social-icon si-small si-borderless si-linkedin">
-                        <i class="icon-linkedin"></i>
-                        <i class="icon-linkedin"></i>
-                    </a>
-                </div>
-                <div class="col-md-6">
-                    <div class="pull-right">
-                        <i class="icon-envelope2"></i> {{ emails |first }} <span class="middot">&middot;</span>
-                        <i class="icon-phone"></i> {{ contact.phone }} <span class="middot">&middot;</span>
-                        <i class="icon-print"></i> {{ contact.fax }}
-                    </div>
-                </div>
-
+        <div class="container clearfix">
+            <div class="col-md-6">
+                <a target="_blank" href="{{ contact.facebook }}"
+                   class="social-icon si-small si-borderless si-facebook">
+                    <i class="icon-facebook"></i>
+                    <i class="icon-facebook"></i>
+                </a>
+                <a target="_blank" href="{{ contact.twitter }}"
+                   class="social-icon si-small si-borderless si-twitter">
+                    <i class="icon-twitter"></i>
+                    <i class="icon-twitter"></i>
+                </a>
+                <a target="_blank" href="{{ contact.googleplus }}"
+                   class="social-icon si-small si-borderless si-gplus">
+                    <i class="icon-gplus"></i>
+                    <i class="icon-gplus"></i>
+                </a>
+                <a target="_blank" href="{{ contact.linkedin }}"
+                   class="social-icon si-small si-borderless si-linkedin">
+                    <i class="icon-linkedin"></i>
+                    <i class="icon-linkedin"></i>
+                </a>
             </div>
+            {% if contact %}
+            {% split contact.email ";" as emails %}
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <i class="icon-envelope2"></i> {{ emails |first }} <span class="middot">&middot;</span>
+                    <i class="icon-phone"></i> {{ contact.phone }} <span class="middot">&middot;</span>
+                    <i class="icon-print"></i> {{ contact.fax }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
 
-            <div class="clear"></div>
+        <div class="clear"></div>
         {% endif %}
         <div class="row">
             <div class="container clearfix">
@@ -131,12 +133,12 @@
                     </div>
                 </div>
                 {% if contact %}
-                    {% split contact.email ";" as emails %}
-                    <div class="col_half col_last tright">
-                        <i class="icon-envelope2"></i> {{ emails | first }} <span class="middot">&middot;</span>
-                        <i class="icon-phone"></i> {{ contact.phone }} <span class="middot">&middot;</span>
-                        <i class="icon-print"></i> {{ contact.fax }}
-                    </div>
+                {% split contact.email ";" as emails %}
+                <div class="col_half col_last tright">
+                    <i class="icon-envelope2"></i> {{ emails | first }} <span class="middot">&middot;</span>
+                    <i class="icon-phone"></i> {{ contact.phone }} <span class="middot">&middot;</span>
+                    <i class="icon-print"></i> {{ contact.fax }}
+                </div>
                 {% endif %}
             </div>
         </div>
