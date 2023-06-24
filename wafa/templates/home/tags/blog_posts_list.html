@@ -1,0 +1,30 @@
+{% load static i18n wagtailimages_tags %}
+{% for post in blog_posts %}
+{% get_current_language as LANGUAGE_CODE %}
+<div class="oc-item">
+    <div class="iportfolio">
+        <div class="portfolio-image">
+
+            {% if post.header_image %}
+            {% image post.header_image fill-300x200 as header_image %}
+            <a href="#">
+                <img src="{{ header_image.url }}" alt="{{ post.header_image.title }}">
+            </a>
+            <div class="portfolio-overlay">
+                <a href="{{ header_image.url }}" class="left-icon"
+                   data-lightbox="image"><i
+                        class="icon-line-plus"></i></a>
+                <a href="/{{ LANGUAGE_CODE }}/blog/{{post.slug}}" class="right-icon">
+                    <i class="icon-line-ellipsis"></i>
+                </a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="portfolio-desc">
+            <h3><a href="/{{ LANGUAGE_CODE }}/blog/{{post.slug}}">{{ post.title }}</a></h3>
+        </div>
+    </div>
+</div>
+{% empty %}
+{% trans 'No blog post yet' %}
+{% endfor %}

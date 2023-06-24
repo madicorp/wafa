@@ -1,4 +1,4 @@
-{% load static i18n wagtailimages_tags event_tags %}
+{% load static i18n wagtailimages_tags %}
 {% for event in events_upcoming %}
     {% get_current_language as LANGUAGE_CODE %}
     <div class="oc-item">
@@ -6,7 +6,7 @@
             <div class="portfolio-image">
 
                 {% if event.header_image %}
-                    {% image event.header_image original as header_image %}
+                    {% image event.header_image fill-300x200 as header_image %}
                     <a href="#">
                         <img src="{{ header_image.url }}" alt="{{ event.header_image.title }}">
                     </a>

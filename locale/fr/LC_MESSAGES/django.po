@@ -81,6 +81,16 @@ msgstr "Quelques"
 msgid "To Come"
 msgstr "A Venir"
 
+msgid "Last"
+msgstr "Derniers"
+
+msgid "Blog Posts"
+msgstr "Articles"
+
+msgid "Recent"
+msgstr "Récentes"
+
+
 msgid "Quality , A Priority"
 msgstr "La Qualité, Une Priorité"
 

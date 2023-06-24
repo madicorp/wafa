@@ -18,7 +18,7 @@ def slider(context):
     }
 
 
-@register.inclusion_tag("home/tags/board-members.html", takes_context=True)
+@register.inclusion_tag("home/tags/board_members.html", takes_context=True)
 def board_members(context, members):
     self = context.get('self')
     return {
@@ -34,6 +34,24 @@ def partners_list(context, partners):
         'partners': partners,
         'request': context['request']
     }
+
+
+@register.inclusion_tag('home/tags/market_news_list.html', takes_context=True)
+def last_market_news(context, limit=None):
+    market_news = BlogPage.objects.live().get(slug='market-news').get_entries().order_by('-date')
+    if limit:
+        market_news = market_news[:limit]
+    context['market_news'] = market_news
+    return context
+
+
+@register.inclusion_tag('home/tags/blog_posts_list.html', takes_context=True)
+def last_blog_posts(context, limit=None):
+    blog_posts = BlogPage.objects.live().get(slug='blog').get_entries().order_by('-date')
+    if limit:
+        blog_posts = blog_posts[:limit]
+    context['blog_posts'] = blog_posts
+    return context
 
 
 @register.inclusion_tag('home/tags/events_list.html', takes_context=True)

@@ -91,12 +91,42 @@
                 <div class="container clearfix">
 
                     <div class="heading-block center">
+                        <h3>{% trans "Recent" %} <span>{% trans "Market News" %}</span></h3>
+                    </div>
+
+                    <div class="owl-carousel portfolio-carousel portfolio-nomargin carousel-widget"
+                         data-margin="30" data-pagi="false" data-autoplay="7000" data-items-xxs="1" data-items-xs="2"
+                         data-items-sm="3" data-items-lg="4" data-rewind="true">
+                        {% last_market_news 5 %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container clearfix">
+
+                    <div class="heading-block center">
+                        <h3>{% trans "Last" %} <span>{% trans "Blog Posts" %}</span></h3>
+                    </div>
+
+                    <div class="owl-carousel portfolio-carousel portfolio-nomargin carousel-widget"
+                         data-margin="30" data-pagi="false" data-autoplay="6000" data-items-xxs="1" data-items-xs="2"
+                         data-items-sm="3" data-items-lg="4" data-rewind="true">
+                        {% last_blog_posts 5 %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container clearfix">
+
+                    <div class="heading-block center">
                         <h3>{% trans "Some" %} <span>{% trans "Events" %}</span> {% trans "To Come" %}</h3>
                     </div>
 
-                    <div id="oc-portfolio" class="owl-carousel portfolio-carousel portfolio-nomargin carousel-widget"
-                         data-margin="1" data-pagi="false" data-autoplay="5000" data-items-xxs="1" data-items-xs="2"
-                         data-items-sm="3" data-items-lg="4">
+                    <div class="owl-carousel portfolio-carousel portfolio-nomargin carousel-widget"
+                         data-margin="30" data-pagi="false" data-autoplay="5000" data-items-xxs="1" data-items-xs="2"
+                         data-items-sm="3" data-items-lg="4" data-loop="true">
                         {% upcoming_events %}
 
                     </div>
