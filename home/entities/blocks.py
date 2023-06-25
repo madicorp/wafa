@@ -29,6 +29,10 @@ class MemberOfficerBlock(StreamBlock):
     office = OfficerBlock(label='Membre', icon='user', required=False)
 
 
+class ExecutiveOfficerBlock(StreamBlock):
+    office = OfficerBlock(label='Membre', icon='user', required=False)
+
+
 class ObjectifBlock(StructBlock):
     title_fr = TextBlock(label='Titre_fr')
     title_en = TextBlock(label='Titre_en')

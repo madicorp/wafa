@@ -138,6 +138,9 @@ msgstr "À propos de WAFA"
 msgid "West African Fertilizer Professionals are united and commited!"
 msgstr "Les Professionnels de l'engrais en Afrique de l'Ouest s'unissent et s'engagent !"
 
+msgid "Executive Management"
+msgstr "Direction"
+
 msgid "Board Members"
 msgstr "Membres du bureau"
 

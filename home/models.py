@@ -5,7 +5,8 @@ from wagtail.fields import StreamField, RichTextField
 from wagtail.search import index
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel
 
-from home.entities.blocks import MemberOfficerBlock, MemberMembersBlock, AboutObjectifBlock, AboutPartnerBlock
+from home.entities.blocks import MemberOfficerBlock, MemberMembersBlock, AboutObjectifBlock, AboutPartnerBlock, \
+    ExecutiveOfficerBlock
 from django.utils.translation import gettext_lazy as _
 
 
@@ -89,7 +90,8 @@ class MemberPage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-    officers = StreamField(MemberOfficerBlock(), blank=True, verbose_name='Bureau')
+    executive_officers = StreamField(ExecutiveOfficerBlock(), blank=True, verbose_name='Executive Officers')
+    officers = StreamField(MemberOfficerBlock(), blank=True, verbose_name='Officers')
     members = StreamField(MemberMembersBlock(), blank=True, verbose_name='Membres')
     search_fields = Page.search_fields + [
         index.SearchField('membership_fr'),
@@ -97,6 +99,7 @@ class MemberPage(Page):
         index.SearchField('file'),
         index.SearchField('members'),
         index.SearchField('officers'),
+        index.SearchField('executive_officers'),
     ]
 
     content_panels = [
@@ -107,6 +110,7 @@ class MemberPage(Page):
             FieldPanel('file'),
         ], heading=_("Membership")),
         MultiFieldPanel([
+            FieldPanel('executive_officers'),
             FieldPanel('officers'),
             FieldPanel('members'),
         ], heading=_("Members")),

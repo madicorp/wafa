@@ -1,7 +1,7 @@
 {% load home_tags wafa_tags wagtailcore_tags i18n static wagtailimages_tags %}
 
 <div id="oc-team" class="owl-carousel team-carousel bottommargin carousel-widget" data-margin="30"
-     data-pagi="true" data-autoplay="5000" data-loop="true" data-items-xs="1"
+     data-pagi="true" data-autoplay="5000" data-rewind="true" data-items-xs="1"
      data-items-sm="1" data-items-lg="2">
     {% for member in members %}
         {% dynamic_trans member.value 'position' as position %}

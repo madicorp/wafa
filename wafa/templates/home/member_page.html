@@ -19,7 +19,13 @@
 
         <div class="content-wrap">
 
-
+            <div class="container clearfix">
+                <div class="heading-block center">
+                    <h3>{% trans "Executive Management" %}</h3>
+                </div>
+                {% board_members self.executive_officers %}
+            </div>
+            <div class="line bottommargin-lg"></div>
             <div class="container clearfix">
                 <div class="heading-block center">
                     <h3>{% trans "Board Members" %}</h3>
