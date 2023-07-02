@@ -25,9 +25,9 @@
                 <div>{% trans "Market News" %}</div>
             </a>
         </li>
-        <li {% if slug == 'publications' %}class="current"{% endif %}>
-            <a href="/{{ LANGUAGE_CODE }}/publications">
-                <div>{% trans "Publications" %}</div>
+        <li {% if slug == 'resources' %}class="current"{% endif %}>
+            <a href="/{{ LANGUAGE_CODE }}/resources">
+                <div>{% trans "Resources" %}</div>
             </a>
         </li>
         <li {% if slug == 'activities' %}class="current"{% endif %}>
@@ -65,7 +65,7 @@
     <div id="top-search">
         <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
         <form name="search_form" class="search_form" method="get"
-              action="/{{ LANGUAGE_CODE }}/publications/search/">
+              action="/{{ LANGUAGE_CODE }}/resources/search/">
             <input type="search" name="q" placeholder="{% trans 'Search' %}">
         </form>
     </div><!-- #top-search end -->

@@ -39,8 +39,8 @@ msgstr "Produits"
 msgid "Activities"
 msgstr "Activités"
 
-msgid "Publications"
-msgstr "Publications"
+msgid "Resources"
+msgstr "Ressources"
 
 msgid "Market News"
 msgstr "Statistiques"
