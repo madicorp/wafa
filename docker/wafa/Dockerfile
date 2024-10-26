@@ -1,4 +1,4 @@
-FROM python:3.11.1-alpine3.17
+FROM python:3.10.0-alpine
 RUN apk update && \
     apk add jpeg-dev \
             zlib-dev \

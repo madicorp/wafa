@@ -2,7 +2,7 @@
 from django.template import Library, loader
 
 from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
-
+from django.urls import resolve
 from ..urls import get_entry_url, get_feeds_url
 from ..models import Category, Tag
 

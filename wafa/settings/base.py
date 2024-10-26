@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'wagtail',
     'wagtail.contrib.sitemaps',
     'wagtail.contrib.routable_page',
+    'wagtail.contrib.search_promotions',
     'compressor',
     'modelcluster',
     'django_social_share',
@@ -166,3 +167,9 @@ WAGTAIL_SITE_NAME = "wafa"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://wafafertilizer.org'
+
+# Add this for Wagtail's admin URL generation:
+WAGTAILADMIN_BASE_URL = 'http://wafafertilizer.org'  # Replace with your actual site's URL
+
+# Add this to specify the default primary key type:
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

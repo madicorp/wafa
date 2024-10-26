@@ -9,9 +9,9 @@ from django.conf import settings
 
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.models import Page
-from wagtail.search.models import Query
+from wagtail.contrib.search_promotions.models import Query
 
-USERNAME_REGEX = getattr(settings, 'PUPUT_USERNAME_REGEX', '\w+')
+USERNAME_REGEX = getattr(settings, 'PUPUT_USERNAME_REGEX', r'\w+')
 
 
 class EventsRoutes(RoutablePageMixin):

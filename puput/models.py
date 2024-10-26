@@ -94,7 +94,8 @@ class BlogPage(BlogRoutes, Page):
         """
         Get the BlogPage url without the domain
         """
-        return self.get_url_parts()[-1]
+        url_parts = self.get_url_parts() or []
+        return url_parts[-1] if url_parts else ''
 
     class Meta:
         verbose_name = _('Blog')
