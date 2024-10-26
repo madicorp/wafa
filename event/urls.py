@@ -55,7 +55,7 @@ if not getattr(settings, 'EVENT_AS_PLUGIN', False):
             view=include(wagtaildocs_urls)
         ),
         url(
-            '^sitemap\.xml$',
+            r'^sitemap\.xml$',
             view=sitemap
         )
     ])

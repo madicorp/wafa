@@ -56,8 +56,8 @@ class EventsPageFeed(Feed):
         return item.title
 
     def _item_short_description(self, item):
-        excerpt = item.excerpt_en if get_language() is 'en' else item.excerpt_fr
-        body = item.body_en if get_language() is 'en' else item.body_fr
+        excerpt = item.excerpt_en if get_language() == 'en' else item.excerpt_fr
+        body = item.body_en if get_language() == 'en' else item.body_fr
         if excerpt and excerpt.strip() != '':
             return excerpt
         else:

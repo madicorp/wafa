@@ -61,7 +61,7 @@ if not getattr(settings, 'PUPUT_AS_PLUGIN', False):
             view=include(wagtaildocs_urls)
         ),
         url(
-            regex='^sitemap\.xml$',
+            regex=r'^sitemap\.xml$',
             view=sitemap
         )
     ])
