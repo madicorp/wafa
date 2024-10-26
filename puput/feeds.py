@@ -65,7 +65,7 @@ class BlogPageFeed(Feed):
             return truncatewords_html(body, 70)
 
     def item_description(self, item):
-        body = item.body_en if get_language() is 'en' else item.body_fr
+        body = item.body_en if get_language() == 'en' else item.body_fr
         if self.blog_page.short_feed_description:
             return self._item_short_description(item)
         return body
