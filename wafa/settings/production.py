@@ -19,8 +19,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STORAGES = {
     'default': {
-        'class': 'storages.backends.s3boto3.S3Boto3Storage',
-        'options': {
+        'BACKEND': 'storages.backends.s3boto3.S3Boto3Storage',
+        'OPTIONS': {
             'access_key': env['AWS_ACCESS_KEY_ID'],
             'secret_key': env['AWS_SECRET_ACCESS_KEY'],
             'bucket_name': env['AWS_STORAGE_BUCKET_NAME'],
