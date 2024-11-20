@@ -28,6 +28,12 @@ STORAGES = {
             'custom_domain': AWS_S3_CUSTOM_DOMAIN,
         },
     },
+    'staticfiles': {
+        'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+        'OPTIONS': {
+            'location': STATIC_ROOT,
+        },
+    },
 }
 
 
