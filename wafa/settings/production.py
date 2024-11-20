@@ -12,14 +12,23 @@ SECRET_KEY = env['SECRET_KEY']
 db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 
-AWS_STORAGE_BUCKET_NAME = env['AWS_STORAGE_BUCKET_NAME']
-AWS_ACCESS_KEY_ID = env['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = env['AWS_SECRET_ACCESS_KEY']
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % env['AWS_STORAGE_BUCKET_NAME']
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_DEFAULT_ACL = env['AWS_DEFAULT_ACL']
+
+STORAGES = {
+    'default': {
+        'class': 'storages.backends.s3boto3.S3Boto3Storage',
+        'options': {
+            'access_key': env['AWS_ACCESS_KEY_ID'],
+            'secret_key': env['AWS_SECRET_ACCESS_KEY'],
+            'bucket_name': env['AWS_STORAGE_BUCKET_NAME'],
+            'default_acl': env['AWS_DEFAULT_ACL'],
+            'custom_domain': AWS_S3_CUSTOM_DOMAIN,
+        },
+    },
+}
 
 
 ALLOWED_HOSTS = env['ALLOWED_HOSTS'].split(',')
