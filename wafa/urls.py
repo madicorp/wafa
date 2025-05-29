@@ -24,9 +24,8 @@ urlpatterns = [
 
 ]
 urlpatterns += i18n_patterns(
-
-    url('', include(puput_urlpatterns)),
     url('', include(event_urlpatterns)),
+    url('', include(puput_urlpatterns)),
     url(r'^activities_gallery/', include('photologue.urls', namespace='photologue')),
     url(r'^search/$', search_views.search, name='search'),
     url('', include(wagtail_urls)),
