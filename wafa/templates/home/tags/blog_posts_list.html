@@ -14,17 +14,17 @@
                 <a href="{{ header_image.url }}" class="left-icon"
                    data-lightbox="image"><i
                         class="icon-line-plus"></i></a>
-                <a href="/{{ LANGUAGE_CODE }}/blog/{{post.slug}}" class="right-icon">
+                <a href="/{{ LANGUAGE_CODE }}/wafa-hub/{{post.slug}}" class="right-icon">
                     <i class="icon-line-ellipsis"></i>
                 </a>
             </div>
             {% endif %}
         </div>
         <div class="portfolio-desc">
-            <h3><a href="/{{ LANGUAGE_CODE }}/blog/{{post.slug}}">{{ post.title }}</a></h3>
+            <h3><a href="/{{ LANGUAGE_CODE }}/wafa-hub/{{post.slug}}">{{ post.title }}</a></h3>
         </div>
     </div>
 </div>
 {% empty %}
-{% trans 'No blog post yet' %}
+{% trans 'No WAFA Hub post yet' %}
 {% endfor %}

@@ -47,7 +47,7 @@ def last_market_news(context, limit=None):
 
 @register.inclusion_tag('home/tags/blog_posts_list.html', takes_context=True)
 def last_blog_posts(context, limit=None):
-    blog_posts = BlogPage.objects.live().get(slug='blog').get_entries().order_by('-date')
+    blog_posts = BlogPage.objects.live().get(slug='wafa-hub').get_entries().order_by('-date')
     if limit:
         blog_posts = blog_posts[:limit]
     context['blog_posts'] = blog_posts

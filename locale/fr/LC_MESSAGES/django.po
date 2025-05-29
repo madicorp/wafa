@@ -43,7 +43,7 @@ msgid "Resources"
 msgstr "Ressources"
 
 msgid "Market News"
-msgstr "Statistiques"
+msgstr "Actualités du marché"
 
 msgid "Events"
 msgstr "Evenements"
@@ -84,8 +84,8 @@ msgstr "A Venir"
 msgid "Last"
 msgstr "Derniers"
 
-msgid "Blog Posts"
-msgstr "Articles"
+msgid "WAFA Hub Posts"
+msgstr "Articles WAFA Hub"
 
 msgid "Recent"
 msgstr "Récentes"
