@@ -2,6 +2,8 @@
 from django.template import Library
 
 import datetime
+
+from django.urls import resolve
 from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
 
 from event.urls import get_event_url, get_feeds_url
