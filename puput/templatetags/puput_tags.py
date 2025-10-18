@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.template import Library, loader
 
-from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
+from el_pagination.templatetags.el_pagination_tags import paginate
 from django.urls import resolve
 from wagtail.models import Site
 from ..urls import get_entry_url, get_feeds_url
@@ -103,5 +103,27 @@ def show_comments(context):
     return ""
 
 # Avoid to import endless_pagination in installed_apps and in the templates
-register.tag('show_paginator', show_pages)
+@register.inclusion_tag('puput/tags/paginator.html', takes_context=True)
+def show_paginator(context):
+    # Build the PageList from the context populated by {% paginate %}
+    try:
+        from el_pagination.models import PageList
+        data = context.get('endless') or {}
+        if not data:
+            # Nothing to paginate (likely no {% paginate %} call earlier)
+            return {'pages': None}
+        pages = PageList(
+            context['request'],
+            data['page'],
+            data['querystring_key'],
+            context=context,
+            default_number=data.get('default_number', 1),
+            override_path=data.get('override_path'),
+        )
+        return {'pages': pages}
+    except Exception:
+        # Fail-safe: do not break the page if something is missing
+        return {'pages': None}
+
+# Re-export paginate tag from django-el-pagination
 register.tag('paginate', paginate)
