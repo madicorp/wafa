@@ -1,0 +1,20 @@
+{% load i18n %}
+{% if pages %}
+    {% if pages.previous %}
+        <li class="page-item prev"><a class="page-link" href="{{ pages.previous.path }}" rel="prev">{% trans "Previous" %}</a></li>
+    {% endif %}
+
+    {% for page in pages %}
+        {% if page == None %}
+            <li class="page-item disabled"><span class="page-link">&hellip;</span></li>
+        {% elif page.is_current %}
+            <li class="page-item active" aria-current="page"><span class="page-link">{{ page.label }}</span></li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="{{ page.path }}">{{ page.label }}</a></li>
+        {% endif %}
+    {% endfor %}
+
+    {% if pages.next %}
+        <li class="page-item next"><a class="page-link" href="{{ pages.next.path }}" rel="next">{% trans "Next" %}</a></li>
+    {% endif %}
+{% endif %}
