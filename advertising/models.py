@@ -3,18 +3,28 @@ import os
 from django.db import models
 from six import python_2_unicode_compatible
 from wagtail.snippets.models import register_snippet
+from wagtail.admin.panels import FieldPanel, InlinePanel
+from modelcluster.models import ClusterableModel
+from modelcluster.fields import ParentalKey
 
 from .validators import valid_extension
 
 
 @register_snippet
 @python_2_unicode_compatible
-class Advertising(models.Model):
+class Advertising(ClusterableModel):
     id_advertising = models.CharField(unique=True, max_length=10)
     name = models.CharField(max_length=80)
     timeout = models.PositiveIntegerField(
         default=0, help_text="The input value is in seconds"
     )
+
+    panels = [
+        FieldPanel('id_advertising'),
+        FieldPanel('name'),
+        FieldPanel('timeout'),
+        InlinePanel('images', label="Images"),
+    ]
 
     class Meta(object):
         ordering = ['id_advertising']
@@ -30,15 +40,20 @@ def generate_path(instance, filename):
     return os.path.join("campaigns", folder, filename)
 
 
-@register_snippet
 @python_2_unicode_compatible
 class ImageAdvertising(models.Model):
-    advertising = models.ForeignKey(Advertising, related_name='images', on_delete=models.CASCADE)
+    advertising = ParentalKey(Advertising, related_name='images', on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     url = models.URLField(max_length=450)
     photo = models.FileField("Photo", blank=False, null=False,
                              upload_to=generate_path,
                              validators=[valid_extension])
+
+    panels = [
+        FieldPanel('title'),
+        FieldPanel('url'),
+        FieldPanel('photo'),
+    ]
 
     def __str__(self):
         return self.advertising.name
