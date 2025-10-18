@@ -3,6 +3,7 @@ from django.template import Library, loader
 
 from el_pagination.templatetags.el_pagination_tags import show_pages, paginate
 from django.urls import resolve
+from wagtail.models import Site
 from ..urls import get_entry_url, get_feeds_url
 from ..models import Category, Tag
 
@@ -62,7 +63,11 @@ def archives_list(context):
 
 @register.simple_tag(takes_context=True)
 def entry_url(context, entry, blog_page):
-    return get_entry_url(entry, blog_page.page_ptr, context['request'].site.root_page)
+    request = context['request']
+    site = Site.find_for_request(request) or getattr(request, 'site', None)
+    root_page = site.root_page if site else getattr(blog_page.get_site(), 'root_page', None)
+    # Return absolute URL to ensure correct links under i18n/prefix setups
+    return request.build_absolute_uri(get_entry_url(entry, blog_page.page_ptr, root_page))
 
 
 @register.simple_tag(takes_context=True)
@@ -79,7 +84,10 @@ def image_url(context, url):
 
 @register.simple_tag(takes_context=True)
 def feeds_url(context, blog_page):
-    return get_feeds_url(blog_page.page_ptr, context['request'].site.root_page)
+    request = context['request']
+    site = Site.find_for_request(request)
+    root_page = site.root_page if site else getattr(request, 'site', None).root_page
+    return get_feeds_url(blog_page.page_ptr, root_page)
 
 
 @register.simple_tag(takes_context=True)

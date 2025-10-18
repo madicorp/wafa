@@ -72,7 +72,7 @@ dependencies = [
     "webencodings >=0.5.1",
     "whitenoise >=6.3.0",
     "willow >=1.10.0"
-]
+    ]
 
 [tool.poetry]
 package-mode = false

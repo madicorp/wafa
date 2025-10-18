@@ -5,7 +5,6 @@ from django.urls import include
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import re_path as url
 from django.contrib import admin
-from puput.urls import urlpatterns as puput_urlpatterns
 from event.urls import urlpatterns as event_urlpatterns
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -34,7 +33,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     url(r'^admin/', include(wagtailadmin_urls)),
     url('', include(event_urlpatterns)),
-    url('', include(puput_urlpatterns)),
+    url('', include('puput.urls')),
     url(r'^activities_gallery/', include('photologue.urls', namespace='photologue')),
     url(r'^search/$', search_views.search, name='search'),
     url('', include(wagtail_urls)),

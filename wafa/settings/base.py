@@ -108,6 +108,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 PUPUT_AS_PLUGIN = True
 EVENT_AS_PLUGIN = True
 
+
 WSGI_APPLICATION = 'wafa.wsgi.application'
 
 # Database
