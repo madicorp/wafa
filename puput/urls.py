@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import include
+from django.urls import include
 from django.urls import re_path as url
 from django.urls import reverse
 
@@ -44,26 +44,11 @@ if not getattr(settings, 'PUPUT_AS_PLUGIN', False):
     from wagtail.contrib.sitemaps.views import sitemap
 
     urlpatterns.extend([
-        url(
-            regex=r'^blog_admin/',
-            view=include(wagtailadmin_urls)
-        ),
-        url(
-            regex=r'',
-            view=include(wagtail_urls)
-        ),
-        url(
-            regex=r'^search/',
-            view=include(wagtailsearch_urls)
-        ),
-        url(
-            regex=r'^documents/',
-            view=include(wagtaildocs_urls)
-        ),
-        url(
-            regex=r'^sitemap\.xml$',
-            view=sitemap
-        )
+        url(r'^blog_admin/', include(wagtailadmin_urls)),
+        url(r'', include(wagtail_urls)),
+        url(r'^search/', include(wagtailsearch_urls)),
+        url(r'^documents/', include(wagtaildocs_urls)),
+        url(r'^sitemap\.xml$', sitemap),
     ])
 
 

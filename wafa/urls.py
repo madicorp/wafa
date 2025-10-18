@@ -19,15 +19,20 @@ from django.utils.translation import get_language
 def redirect_to_language(request):
     return redirect(f'/{get_language()}/')
 
+def redirect_admin_to_language(request, path=None):
+    path = path or ''
+    return redirect(f'/{get_language()}/admin{path}')
+
 urlpatterns = [
     url(r'^$', redirect_to_language),
     url(r'^django-admin/', admin.site.urls),
-    url(r'^admin/', include(wagtailadmin_urls)),
+    url(r'^admin(?P<path>/.*)?$', redirect_admin_to_language),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^sitemap\.xml$', sitemap),
 ]
 
 urlpatterns += i18n_patterns(
+    url(r'^admin/', include(wagtailadmin_urls)),
     url('', include(event_urlpatterns)),
     url('', include(puput_urlpatterns)),
     url(r'^activities_gallery/', include('photologue.urls', namespace='photologue')),
