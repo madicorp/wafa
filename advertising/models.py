@@ -2,7 +2,6 @@ import os
 
 from django.db import models
 from six import python_2_unicode_compatible
-from wagtail.snippets.models import register_snippet
 from wagtail.admin.panels import FieldPanel, InlinePanel
 from modelcluster.models import ClusterableModel
 from modelcluster.fields import ParentalKey
@@ -10,7 +9,6 @@ from modelcluster.fields import ParentalKey
 from .validators import valid_extension
 
 
-@register_snippet
 @python_2_unicode_compatible
 class Advertising(ClusterableModel):
     id_advertising = models.CharField(unique=True, max_length=10)
