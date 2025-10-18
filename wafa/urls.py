@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
-from django.conf.urls import include
+from django.urls import include
 from django.conf.urls.i18n import i18n_patterns
 from django.urls import re_path as url
 from django.contrib import admin
@@ -20,11 +20,11 @@ def redirect_to_language(request):
     return redirect(f'/{get_language()}/')
 
 urlpatterns = [
+    url(r'^$', redirect_to_language),
     url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^sitemap\.xml$', sitemap),
-    #url(r'^$', redirect_to_language),
 ]
 
 urlpatterns += i18n_patterns(
