@@ -20,11 +20,11 @@ def redirect_to_language(request):
     return redirect(f'/{get_language()}/')
 
 urlpatterns = [
-    url(r'^$', redirect_to_language),
     url(r'^django-admin/', admin.site.urls),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'^sitemap\.xml$', sitemap),
+    #url(r'^$', redirect_to_language),
 ]
 
 urlpatterns += i18n_patterns(
